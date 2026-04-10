@@ -1,0 +1,269 @@
+\section{Review of differentiable manifolds}
+
+\begin{definition}[n-dimensional differentiable manifold]
+An \emph{n-dimensional differentiable manifold} is a topological space $M$ 
+with an open cover $\{U_{\alpha}\}_{\alpha}$ and maps
+\[\{\phi_{\alpha} : U_{\alpha} \to \phi_{\alpha}(U_{\alpha})\subset\mathbb{R}^n\}_{\alpha \in \Lambda}\]
+satisfying
+\begin{enumerate}
+    \item $\phi_{\alpha}(U_{\alpha})\subset\mathbb{R}^n$ is open and $\phi_{\alpha}:U_{\alpha} \to \phi_{\alpha}(U_{\alpha})$ is a homeomorphism.
+    \item If $U_{\alpha}\cap U_{\beta}\neq \emptyset$, then the transition map $\phi_{\beta} \circ \phi_{\alpha}^{-1}$ is a diffeomorphism (between open subsets of $\mathbb{R}^n$).
+\end{enumerate}
+$\{(U_{\alpha}, \phi_{\alpha}) : \alpha \in \Lambda\}$ is called a \emph{coordinate neighborhood system} or \emph{atlas}.
+\end{definition}
+
+Some terminology
+\begin{itemize}
+\item $n = \operatorname{dim}M$ \emph{dimension} of $M$.
+\item $\phi_{\alpha}$ \emph{coordinate map} or \emph{chart}.
+\item $\phi_{\alpha} = (x^1, \dots, x^n)$ \emph{local coordinates} $x^i : U_{\alpha} \to \mathbb{R}$.
+\end{itemize}
+
+\begin{definition}[Compatible charts]
+Assume $M$ is an n-differentiable manifold with atlas $\{(U_{\alpha}, \phi_{\alpha}) : \alpha \in \Lambda\}$. A chart $(U, \phi)$ is \emph{compatible} with the atlas if
+$\{U_{\alpha}, \phi_{\alpha})\}_{\alpha \in \Lambda} \cup (U,\phi)$ is again an atlas.
+The set of all such charts is called the \emph{maximal coordinate neighborhood system} (or \textit{atlas}) of $M$.
+\end{definition}
+
+Henceforth, we assume the atlases of $M$ are always maximal.
+
+\subsection{Differential of maps and tangent spaces}
+
+\begin{definition}[$C^{\infty}$]
+Assume $M,N$ are differentiable manifolds. A map continuous $f:M\to N$ is \emph{$C^{\infty}$} at $p \in M$
+if there exists charts $(U, \phi)$ around $p$ and $(V, \psi)$ around $f(p)$ such that $\psi \circ f \circ \phi^{-1}: \phi(U) \to \psi(V)$ is $C^{\infty}$.
+\end{definition}
+
+\begin{remark}
+\begin{itemize}
+\item $M = I \subset \mathbb{R}, c:I\to N$ is a $C^{\infty}$ curve.
+\item $N = \mathbb{R}, f:M\to \mathbb{R}$ is a $C^{\infty}$ function.
+\item $C^{\infty}(M):= \{C^{\infty}\text{ function on } M\}$.
+\end{itemize}
+\end{remark}
+
+\begin{definition}[Tangent vector and tangent space]
+A map $v: C^{\infty}(M) \to \mathbb{R}$ is a \emph{tangent vector} at $p \in M$ if for all $a,b\in\mathbb{R}$ and all $f,g \in C^{\infty}(M)$, we have
+\begin{enumerate}
+\item $v(af + bg) = av(f) + bv(g)$ (linearity).
+\item $v(fg) = f(p)v(g) + g(p)v(f)$ (Leibniz rule).
+\end{enumerate}
+The set $T_pM : = \{v : v \text{ is a tangent vector at } p\}$ is the \emph{tangent space} to $M$ at $p$.
+\end{definition}
+
+\begin{definition}[Velocity vector]
+Let $c:I \to M$ be a $C^{\infty}$ curve with $c(0) = p \in M$. The \emph{velocity vector} of $c$ at $p$ is the map $c'(0) \in T_pM$ defined by
+\[c'(0)(f) = \frac{d}{dt}\bigg|_{t=0} (f \circ c)(t), \quad f \in C^{\infty}(M).\]
+\end{definition}
+
+\begin{definition}[Coordinate vector fields]
+Let $(U,\phi)$ be a chart around $p$ with $\phi(p)=0$, $\phi=(x^1,\dots,x^n)$.
+Define curves
+\[
+c_i(t) := \phi^{-1}(0,\dots,t,\dots,0).
+\]
+Then
+\[
+\left.\frac{\partial}{\partial x^i}\right|_p := c_i'(0).
+\]
+\end{definition}
+
+\begin{theorem}
+For $p \in M$ an n-differentiable manifold, the tangent space $T_pM$ is an n-dimensional vector space with basis $\{\frac{\partial}{\partial x^1}\big|_p, \dots, \frac{\partial}{\partial x^n}\big|_p\}$.
+I.e.
+\[T_pM = \operatorname{span}\left\{\left.\frac{\partial}{\partial x^1}\right|_p, \dots, \left.\frac{\partial}{\partial x^n}\right|_p\right\}.\]
+\end{theorem}
+
+\begin{definition}[Differential]
+Let $f:M\to N$ be a $C^{\infty}$ map between differentiable manifolds. The \emph{differential} of $f$ at $p \in M$ is the map
+$df_p: T_pM \to T_{f(p)}N$ defined by
+\[df_p(v)(g) := (f\circ c)'(0), \quad c \in C^{\infty}, \quad c(0) = p \text{ and } c'(0) = v. \]
+\end{definition}
+
+\begin{remark}
+$c$ in the above definition is not unique, but $df_p(v)$ is well-defined.
+\end{remark}
+
+\begin{definition}[Diffeomorphism]
+Let $M,N$ be differentiable manifolds. $f:M\to N$ is a \emph{diffeomorphism} if
+\begin{itemize}
+\item $f$ is a bijection.
+\item $f$ and $f^{-1}$ are $C^{\infty}$.
+\end{itemize}
+In this case, $M$ and $N$ are \emph{diffeomorphic}.
+\end{definition}
+
+\subsection{Diffeomorphism groups and quotient manifolds}
+
+Let $M$ be an n-differentiable manifold.
+
+\begin{definition}[$C^{\infty}$ transformation group]
+A set of diffeomorphisms $\Gamma = {\gamma_i}_{i\in I}$ on $M$ is a \emph{$C^{\infty}$ transformation group} if
+\begin{itemize}
+    \item For all $\gamma_i, \gamma_j \in \Gamma$, we have $\gamma_i \circ \gamma_j \in \Gamma$.
+    \item For all $\gamma_i \in \Gamma$, we have $\gamma_i^{-1} \in \Gamma$.
+    \item The identity map $\operatorname{Id}_M$ is in $\Gamma$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Proper discontinuous transformation group]
+A $C^{\infty}$ transformation group $\Gamma$ on $M$ is \emph{properly discontinuous} if for each $p \in M$, there exists a chart $(U, \phi)$ around $p$ such that 
+\[\gamma_i \in \Gamma \setminus \{\operatorname{Id}_M\} \implies \gamma_i(U) \cap U = \emptyset \text{ for all } i \in I.\]
+\label{def:properly_disc_transf_group}
+\end{definition}
+
+Let $\Gamma$ be a properly discontinuous transformation group on $M$.
+For each $p \in M$, let $(U_p, \phi_p)$ be a chart around $p$ as in definition \ref{def:properly_disc_transf_group}.
+
+\begin{lemma}
+For all $p\in M$ and all $\gamma_i, \gamma_j \in \Gamma$ ($\gamma_i \neq \gamma_j$), we have $\gamma_i(U_p) \cap \gamma_j(U_p) = \emptyset$ or $\gamma_i(U_p) = \gamma_j(U_p)$.
+\end{lemma}
+
+\begin{proof}
+    $\gamma_i \neq \gamma_j \implies \gamma_i^{-1}\circ\gamma_j\neq\operatorname{Id}_M$. Then, by defintition \ref{def:properly_disc_transf_group},
+    $U_p \cap \gamma_i^{-1}\circ\gamma_j(U_p) = \emptyset \implies \gamma_i(U_p) \cap \gamma_j(U_p) = \emptyset$.
+\end{proof}
+
+\begin{definition}[Orbit equivalence relation]
+Let $\Gamma$ be a group acting on $M$. Define a relation on $M$ by
+\[
+p \sim q \iff \exists \gamma \in \Gamma \text{ such that } q = \gamma(p).
+\]
+\end{definition}
+
+\begin{proposition}
+The relation $\sim$ is an equivalence relation.
+\end{proposition}
+
+\begin{definition}[Orbit]
+The equivalence class of $p$,
+\[
+[p] = \{ \gamma(p) \mid \gamma \in \Gamma \} \in M/\sim,
+\]
+is  the \emph{orbit} of $p$.
+\end{definition}
+
+\begin{definition}[Quotient manifold]
+The quotient set $M/\Gamma := M/\sim$ is called the \emph{quotient manifold} of $M$ by $\Gamma$.
+\begin{itemize}
+    \item $M/\Gamma$ is equipped with the quotient topology via the projection map $\pi: M \to M/\Gamma$.
+    \item $D \subset M$ is a \emph{fundamental domain} if $\pi|_D:D \to M/\Gamma$ is surjective.
+\end{itemize}
+\end{definition}
+
+To show that $M/\Gamma$ is a differentiable manifold, we construct charts.
+For $p \in M$, let $\hat{U}_p := \pi(U_p) \subset M/\Gamma$.
+
+\begin{lemma}
+If $q, r \in U_p$ satisfy $q \sim r$ then $q = r$. In particular, $\pi|_{U_p}: U_p \to \hat{U}_p$ is a
+bijection.
+\end{lemma}
+
+\begin{proof}
+$q \sim r \implies \exists \gamma_i \in \Gamma : r = \gamma_i(q) \in \gamma_i(U_p)$.
+Thus $r \in \gamma_i(U_p)$ for some $\gamma_i \in \Gamma$.
+Since $\Gamma$ is properly discontinuos, $\gamma_i = \operatorname{Id}_M$.
+Hence, $r = \gamma_i(q) = q$. The second claim follows from $\pi(q) = \pi(r) \iff q \sim r$.
+\end{proof}
+
+\begin{problem}
+Define $\hat{\phi}:\hat{U}_p \to \hat{\phi}_p(\hat{U}_p) = \phi_p(U_p) \subset \mathbb{R}^n$ by
+\[\hat{\phi}_p := \phi_p \circ (\pi|_{U_p})^{-1}.\]
+Show that $\hat{\phi}_p$ is a homeomorphism.
+(Hint: In general, quotient maps are not necessarily open; use the proply discontinous property).
+\end{problem}
+
+\begin{theorem}
+$\{(\hat{U}_p, \hat{\phi}_p) : p \in M\}$ is an atlas for $M/\Gamma$. Hence, $M/\Gamma$ is a differentiable manifold.
+\end{theorem}
+
+\subsection{Topology of differentiable manifolds}
+
+Recall the convergence of a sequence $\{p_i\}_{i=1}^{\infty}$:
+\[\lim_{i\to \infty} p_i = p \iff \forall \text{ open } O \ni p, \exists i_0 \in \mathbb{N} : i > i_0 \implies p_i \in O.\]
+
+\begin{proposition}[Convergence in differentiable manifolds]
+$\lim_{i\to\infty} p_i = p$ if and only if for every chart $(U, \phi)$ around $p$, we have $\lim_{i\to\infty} \phi(p_i) = \phi(p)$ (in $\mathbb{R}^n$).
+That is, 
+\[\lim_{i\to\infty} p_i = p \iff \forall (U, \phi) \exists i_0 \in \mathbb{N} : i > i_0 \implies \phi(p_i) \to \phi(p).\]
+\end{proposition}
+
+\begin{remark}
+$M$ is Haussdorff and second countable and locally Euclidean. 
+Thus, $f: M \to N$ is continuous at $p \in M$ if and only if $p_i \to p$ implies $f(p_i) \to f(p)$.
+\end{remark}
+
+\begin{lemma}
+Let $(U,\phi)$ be a chart, $c:(a,b) \to M$ be a $C^{\infty}$ curve and $t_0 \in (a,b)$ that satisfy 
+\begin{enumerate} 
+    \item The map $\phi \circ c: (a,b) \to \mathbb{R}^n$ is $C^{\infty}$.
+    \item $\exists \{t_i\}_{i=1}^{\infty} \subset (a,b) : t_i \to t_0$ and $t_i \geq t_0$ and $c(t_i) \notin U$.
+\end{enumerate}
+Then
+\begin{enumerate}
+    \item $c(t_0) \notin U$.
+    \item $\forall \{s_i\}_{i=1}^{\infty} \subset (a,b) : s_i \to t_0$ and $s_i < t_0$, $(\phi \circ c)(s_i)$ does not converge in $\phi(U)$.
+    \label{num}
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(1) Assume $c(t_0) \in U$. 
+By continuity, $\exists \delta_0 > 0$ such that $c((t_0 - \delta_0, t_0 + \delta_0)) \subset U$.
+For sufficiently large $i$, we have $t_i \in (t_0, t_0 + \delta_0) \implies c(t_i) \in U$, which contradicts \ref{num}.
+(2) Assume $\exists \{s_i\} \to t_0$ ($s_i < t_0$) such that $\{\phi \circ c(s_i)\}$ converges in $\phi(U)$.
+Then $(\phi \circ c)(s_i) \to x_0$ for some $x_0 \in \phi(U)$. By continuity of $\phi^{-1}$,
+$c(s_i) = (\phi^{-1} \circ \phi)(c(s_i)) \to \phi^{-1}(x_0)$ as $i \to \infty$. By the continuity of $c$, we have $c(s_i) \to c(t_0)$ as $i \to \infty$. 
+Since $M$ is Haussdorff, the limit is unique, so $\phi^{-1}(x_0) = c(t_0)$. Thus, $c(t_0) = \phi^{-1}(x_0) \in U$, which contradicts (1).
+\end{proof}
+
+\subsection{Tangent bundle}
+
+Let $M$ be a differentiable manifold.
+
+\begin{definition}[Tangent bundle]
+The \emph{tangent bundle} of $M$ is the set
+\[TM := \bigsqcup_{p \in M} T_pM = \{(p,v) : p \in M, v \in T_pM\}.\]
+\end{definition}
+
+We introduce a differentiable structure on $TM$ using the following framework:
+
+\begin{problem}
+Let $\{X_{\lambda}, \mathcal{O}_{\lambda}\}_{\lambda \in \Lambda}$ be a family of topological spaces satisfying the \emph{gluing axiom}:
+\begin{align}
+X_{\lambda} \cap X_{\mu} \neq \emptyset \implies
+\begin{aligned}
+&\text{the relative topologies from } X_{\lambda} \text{ and } X_{\mu} \text{ coincide on } X_{\lambda} \cap X_{\mu},\\
+&\text{and } X_{\lambda} \cap X_{\mu} = \mathcal{O}_{\lambda} \cap \mathcal{O}_{\mu}.
+\end{aligned}
+\label{eq:gluing_axiom}
+\end{align}
+Set $X := \bigsqcup_{\lambda \in \Lambda} X_{\lambda}$.
+\begin{enumerate}[label=(\arabic*)]
+\item Show that $\mathcal{O} := \{U \subset X : X_{\lambda} \cap U \in U_{\lambda} \forall \lambda \in \Lambda\}$ is a topology
+on $X$.
+\item Show that the relative topology on $X_{\lambda}$ from $(X, \mathcal{O})$ coincides with $\mathcal{O}_{\lambda}$ for each $\lambda \in \Lambda$.
+\label{prob:2.2}
+\end{enumerate}
+\label{prob:2}
+\end{problem} 
+
+\begin{remark}
+The gluing axiom \ref{eq:gluing_axiom} is necessary for \ref{prob:2.2} and to ensure $X_{\lambda} \in \mathcal{O}$. Such a topology $\mathcal{O}$ is uniquely determined
+by the base $\bigcup_{\lambda \in \Lambda} \mathcal{O}_{\lambda}$.
+\end{remark}
+
+Let $(U, \phi)$ be any chart on $M$ and set
+\[TU := \bigsqcup_{p \in U} T_pM = \{(p,v) : p \in U, v \in T_pM\} \subset TM.\]
+Define $\tilde{\phi}: TU \to \phi(U) \times \mathbb{R}^n \subset \mathbb{R}^{2n}$ as follows:
+For $p \in U$, $v \in T_pM$, let $\phi(p) = (x_1, \ldots, x_n)$ and $v = \sum_{i=1}^n v_i\partial_i$, then
+\[\tilde{\phi}(p,v) := (x_1, \ldots, x_n, v_1, \ldots, v_n).\]
+
+\begin{theorem}
+\begin{enumerate}[label=(\arabic*)]
+\item The family of topological spaces $\{TU\}$ satisfies the gluing axiom \ref{eq:gluing_axiom}.
+Thus, $TM = \bigsqcup_{(U,\phi)} TU$ is a topological space with the topology definited in problem \ref{prob:2}.
+\item $TM$ is a $2n$-dimensional manifold with atlas $\{(TU, \tilde{\phi})\}$.
+\item The projection $\pi:TM \to M$ defined by $\pi(p,v) := p$ for $v \in T_pM \quad (p \in M)$ is a $C^{\infty}$ map.
+\end{enumerate}
+\end{theorem}

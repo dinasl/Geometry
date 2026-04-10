@@ -1,0 +1,36 @@
+% --- Theorem styles (italic body) ---
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% --- Definition style (upright text) ---
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}{Problem}
+
+% --- Remark style ---
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% --- Custom QED symbols ---
+\renewcommand{\qedsymbol}{$\square$} % proofs end with □
+% Custom end symbols for non-proof environments
+% \renewcommand{\endmarker}{\hfill $\blacksquare$}
+
+% Patch environments to end with ■
+\usepackage{etoolbox}
+
+\AtEndEnvironment{definition}{\hfill $\blacksquare$}
+\AtEndEnvironment{example}{\hfill $\blacksquare$}
+\AtEndEnvironment{problem}{\hfill $\blacksquare$}
+\AtEndEnvironment{remark}{\hfill $\blacksquare$}
+
+\usepackage{enumitem}
+\setlist[enumerate]{label=(\roman*)}
+
+\setlength{\parskip}{0pt}
+
+\numberwithin{equation}{section}
