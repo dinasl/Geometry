@@ -118,3 +118,107 @@ The inclusion $C : N \to M$ is always an isometric map.
 \subsubsection{Remember 3.10 Nash Embedding Theorem}
 Every Riemannian manifold is isometric to a riemannian submanifold of some Euclidian space $\mathbb{R}^n$. $\Leftrightarrow$
 \emph{Whitney Embedding Theorem}
+
+\subsection{Riemannian product and warped product}
+
+\begin{definition}[Riemannian product and product Riemannian manifold]
+Let $M, N$ be Riemannian manifolds. The \emph{Riemannian product} $M \times N$ is defined by
+\[
+T_{(p,q)} (M \times N) \simeq T_p M \times T_q N, \quad (p,q) \in M \times N.
+\]
+The metric is defined by
+\[
+\langle v, w \rangle_{M \times N} := \langle v_1, w_1\rangle + \langle v_2, w_2 \rangle, \quad v = (v_1, v_2), w = (w_1, w_2) \in T_pM \times T_qN.
+\]
+We call $(M\times N, \langle \cdot, \cdot \rangle_{M \times N})$ the \emph{product Riemannian manifold} (of $M$ and $N$).
+
+In this metric, $T_pM$ and $T_qN$ are orthonormal to each other and each factor remains its original inner product.
+\end{definition}
+
+\begin{example}
+The Riemannian product $\mathbb{R}^m \times \mathbb{R}^n$ is isometric to $\mathbb{R}^{m+n}$.
+\end{example}
+
+\begin{definition}[Warped product]
+Let $M, N$ be Riemannian manifolds and let $f : M \to \mathbb{R}_{>0}$ be a $C^{\infty}$ function. 
+The \emph{warped product} $M \times_f N$ is teh product manifold $M\times N$ equipped with the metric
+\[
+\langle v, w \rangle_{M \times_f N} := \langle v_1, w_1\rangle + f(p)^2 \langle v_2, w_2 \rangle, \quad v = (v_1, v_2), w = (w_1, w_2) \in T_{(p,q)}(M \times N).
+\]
+We call the function $f$ the \emph{warping function}.
+\end{definition}
+
+\begin{problem}
+Let $(0, +\infty)$ have the Euclidean metric and $\mathbb{S}^{n-1} \in \mathbb{R}^n$ have the standard metric.
+Show that the warped product $(0, +\infty) \times_r \mathbb{S}^{n-1}$ is isometric to $(\mathbb{R}^n \setminus \{0\},g_{\mathbb{R}^n})$,
+where $r(x) := x,\quad x \in (0, +\infty)$ is the warping function. 
+\end{problem}
+
+\subsection{Riemannian quotient manifolds}
+
+\begin{definition}[$C^{\infty}$ transformation group]
+A \emph{$C^{\infty}$ transformation group} $P = \{\gamma_i\}_{i\in I}$ on a Riemannian manifold $M$ is a group of isometries if each $\gamma_i \in P$ is an isometry.
+\end{definition}
+Let $M$ be a Riemmanian manifold and $P$ be a properly discontinuous group of isometries on $M$.
+\begin{lemma}
+Suppose $p,q \in M$ satisfy $p \sim q$. For any $v, w \in T_{[p]}(M/\Gamma)$, we have 
+\[
+\langle d(\pi|_{U_p}^{-1})(v), d(\pi|_{U_p}^{-1})(w) \rangle = \langle d(\pi|_{U_q}^{-1})(v), d(\pi|_{U_q}^{-1})(w) \rangle.
+\]
+\textcolor{red}{I'm not sure what $U$ represents here.}
+\end{lemma}
+
+\begin{proof}
+Since $p\sim q$, there exists $\gamma_i \in \Gamma$ such that $q = \gamma_i(p)$.
+Furthermore, since $\gamma_i$ is an isometry and $\pi \odot \gamma_i = \pi$, it follows that
+\[
+\begin{aligned}
+\langle d (\pi|_{U_q}^{-1})(v), d(\pi|_{U_q}^{-1})(w)\rangle
+&= \langle d\gamma_i(d\pi|_{U_p}^{-1}(v)), d\gamma_i(d\pi|_{U_p}^{-1}(w)) \rangle \\
+&= \langle d\pi|_{U_p}^{-1}(v), d\pi|_{U_p}^{-1}(w) \rangle.
+\end{aligned}
+\]
+\end{proof}
+
+We define a Riemannian metric on $M/\Gamma$ by
+\[
+\langle v, w \rangle_{M/\Gamma} := \langle d(\pi|_{U_p}^{-1})(v), d(\pi|_{U_p}^{-1})(w) \rangle, \quad v,w \in T_{[p]}(M/\Gamma).
+\]
+With this metric, $M/\Gamma$ is called a \emph{quotient Riemannian manifold}.
+By construction, the projection $\pi:M\to M/\Gamma$ ius a local isometry.
+
+\subsection{Volume element}
+
+Let $M$ be an oriented $n$-diemnsional Riemannian manifold.
+\begin{definition}
+For a positively oriented chart $(U, \phi)$ with $\phi = (x^1, \dots, x^n)$, the n-form on
+\[
+\operatorname{dvol} := \sqrt{|g|}dx^1 \wedge \dots \wedge dx^n, \quad |g| := \operatorname{det}(g_{ij}),
+\]
+is called the \emph{volume element} (or \emph{volume form}) of $M$. 
+\end{definition}
+
+\begin{remark}
+$\operatorname{dvol}$ is a symbol and not necessarly the exterior derivative or some $(n-1)$-form.
+This form is globally well-defined on $M$.
+In fact, if $(U,\phi), (V,\psi)$ are two positively oriented charts on $M$, then on $U\cap V(\neq \emptyset)$,
+\[
+\begin{aligned}
+&\operatorname{det}(\hat{g}_kl) = \operatorname{det}\left(\frac{\partial x^i}{\partial y^k}\right)^2 \operatorname{det}(g_{ij}) \\
+\implies &\sqrt{|\hat{g}|} = \left|\operatorname{det}\left(\frac{\partial x}{\partial y}\right)\right| \sqrt{|g|} \text{ and} \\
+& dy^1 \wedge \dots \wedge dy^n = \operatorname{det}\left(\frac{\partial y}{\partial x}\right) dx^1 \wedge \dots \wedge dx^n.
+\end{aligned}
+\]
+Thus $\sqrt{|\hat{g}|} dy^1 \wedge \dots \wedge dy^n = \sqrt{|g|} dx^1 \wedge \dots \wedge dx^n$.
+\end{remark}
+
+\begin{definition}[Volume]
+The \emph{volume} of an open subset $D \subset M$ is defined by:
+\[
+\operatorname{vol}(D) := \int_D \operatorname{dvol}.
+\]
+\end{definition}
+
+\begin{remark}
+For non-orientable manifolds, the volume can still be defined by partitioning $D$ into small orientable regions.
+\end{remark}
