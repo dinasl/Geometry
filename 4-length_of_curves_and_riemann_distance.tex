@@ -1,0 +1,133 @@
+\section{Length of curves and Riemann distance}
+
+Let $M$ be a Riemannian manifold, $I \subset \mathbb{R}$ be an interval, and $c:I\to M$ a $C^{\infty}$ curve.
+\begin{definition}[Length of a curve]\label{def:length_of_curve}
+For $a,b\in I$ such that $a<$, the \emph{length} $L(c|_{[a,b]})$ of $c$ on $[a,b]$ is defined by
+\[
+L(c|_{[a,b]}) := \int^b_a ||c'(t)|| dt.
+\]
+\textcolor{red}{Here, I believe $||\dots|| = \sqrt{\langle \dots, \dots \rangle}$.}
+\end{definition}
+
+\begin{definition}[Regular curve]
+A $C^{\infty}$ curve $C:I\to M$ is \emph{regular} if
+\[
+c'(t) \neq 0, \quad \forall t \in I.
+\]
+\end{definition}
+
+\begin{theorem}[Inverse function theorem for regular curves] \label{thm:inverse_function_theorem}
+Assume that the parameter $t$ is a $C^{\infty}$ function of $u$ on $J \subset \mathbb{R}$, i.e. $t = t(u)$ satisfying:
+\begin{enumerate}
+\item $t: J \to I$ is surjective.
+\item $\frac{dt}{du}(u) \neq 0 \forall u \in J$.
+\end{enumerate}
+Then there exists a $C^{\infty}$ inverse $t^{-1}: I \to J$. This is called a \emph{transformation of parameter} $t$ to $u$.
+\end{theorem}
+
+Let $\tilde{c} := c(t(u))$ be a reparametrization of $c$ by $t$. Fix a chart $(U, \phi), \phi = (x^1, \dots, x^n)$ and subinterval $I'\subset I$ such that $c(I')\subset U$.
+For $t \in I'$ and $u\in t^{-1}(I')$, let
+\[
+\phi(c(t)) = (c^1(t), \dots, c^n(t)), \quad \phi(\tilde{c}(u)) = (\tilde{c}^1(u), \dots, \tilde{c}^n(u)).
+\]
+Since $\tilde{c}^i(u) = c^i(t(u))$, we have
+\[
+\begin{aligned}
+\tilde{c}'(u) &= \sum_{i=1}^n \frac{d\tilde{c}^i}{du}\left(\frac{\partial}{\partial x^i}\right)_{\tilde{c}(u)} \\
+&= \sum_{i=1}^n \frac{dt}{du} \frac{dc^i}{dt}(t(u))\left(\frac{\partial}{\partial x^i}\right)_{\tilde{c}(u)}\\
+&= \frac{dt}{du} c'(t(u)).
+\end{aligned}
+\]
+Since $(U,\phi)$ was arbitrary, for all $u \in J$,
+\[
+\tilde{c}'(u) = c'(t(u))\frac{dt}{du}.
+\]
+\begin{proposition}
+Let $c:I\to M$ be a regular curve and $t = t(u)$ ($u \in J$) be a transformation. Then
+\begin{enumerate}[label=(\arabic*)]
+\item If $\frac{dt}{du}(u) > 0 $ ($\forall u \in J$), then $L(\tilde{c}|_{[a,b]}) = L(c|_{[t(a),t(b)]}) \forall a,b \in J (a < b)$.
+\item If $\frac{dt}{du}(u) < 0 $ ($\forall u \in J$), then $L(\tilde{c}|_{[a,b]}) = L(c|_{[t(b),t(a)]}) \forall a,b \in J (a < b)$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}[label=(\arabic*)]
+\item By \autoref{def:length_of_curve} (length of a curve),
+\[
+\begin{aligned}
+L(\tilde{c}|_{[a,b]}) &= \int^b_a ||\tilde{c}'(u)|| du \\
+&= \int^b_a ||c'(t(u))|| \left|\frac{dt}{du}\right| du \\
+&= \int^{t(b)}_{t(a)} ||c'(t)|| dt \\
+&= L(c|_{[t(a),t(b)]}).
+\end{aligned}
+\]
+\item Again, by \autoref{def:length_of_curve},
+\[
+\begin{aligned}
+L(\tilde{c}|_{[a,b]}) &= \int^b_a ||\tilde{c}'(u)|| du \\
+&= \int^b_a ||c'(t(u))|| \left|\frac{dt}{du}\right| du \\
+&= \int^{t(a)}_{t(b)} ||c'(t)|| dt \\
+&= L(c|_{[t(b),t(a)]}).
+\end{aligned}
+\]
+\end{enumerate}
+\end{proof}
+
+\begin{definition}[Arclength parameter]
+A regular curve $c:I\to M$ is said to have an \emph{arclength parameter} $s$ if $||c'(s)|| = 1$ for all $s \in I$.
+\end{definition}
+If $c:I\to M$ has an arclength parameter, then
+\[
+L(c|_{[a,b]}) = \int^b_a ||c'(s)|| ds = \int^b_a 1 ds = b-a, \quad \forall a,b \in I (a < b).
+\]
+Meaning the "elapsed time" $b-a$ equals the distance traveled along $L(c|_{[a,b]})$.
+For any regular curve $c:I\to M$ and $t_0 \in I$, let
+\[
+s(t) := \int^t_{t_0} ||c'(t)|| dt.
+\]
+Since $\frac{ds}{dt} = ||c'(t)|| > 0 \implies$ there exists a global inverse $t=t(s)$ by \autoref{thm:inverse_function_theorem} (inverse function theorem).
+
+\begin{lemma}
+$\tilde{c}(s) = c(t(s))$ has an arclength parameter $s$.
+\end{lemma}
+\begin{proof}
+By $\tilde{c}'(s) = c'(t(s)) \frac{dt}{ds}$, we have
+\[
+\begin{aligned}
+||\tilde{c}'(s)|| &= ||c'(t(s))|| \left|\frac{dt}{ds}\right|,\\
+\left|\frac{dt}{ds}\right| &= \frac{1}{\frac{ds}{dt}} = \frac{1}{||c'(t)||}.
+\end{aligned}
+\]
+Meaning we have $||\tilde{c}'(s)|| = 1$ for all $s \in I$.
+\end{proof}
+
+\begin{definition}[Piecewise smooth curve]
+A continuous curve $c:[a,b]\to M$ is a \emph{piecewise smooth regular curve} if there exists a finite sequence $a = t_0 < t_1 < \dots < t_k = b$ such that
+\[
+c|_{[t_,t_{i+1}]}:[t_i,t_{i+1}] \to M
+\]
+is regular for all $i = 0, \dots, k-1$.
+
+Furthermore, the length $L(c)$ is defined by
+\[
+L(c) := \sum^{k-1}_{i=0} L(c|_{[t_i,t_{i+1}]}) = \sum^{k-1}_{i=0} \int^{t_{i+1}}_{t_i} ||c'(t)|| dt.
+\]
+\end{definition}
+
+Assume $M$ is connected, i.e. any two points are joinable by a regular curve.
+\begin{definition}[Riemannian distance]
+The \emph{Riemannian distance} $d(p,q)$ between two points $p, q \in M$ is defined as
+\[
+d(p,q) := \inf \{ L(c) : c \text{ is a piecewise smooth regular curve from } p \text{ to } q \}.
+\]
+$d:M\times M \to \mathbb{R}$ is called the \emph{Riemannian distance function}.
+If there exists some function $c$ attaining the "inf", then $c$ is called a \emph{minimal curve}.
+\end{definition}
+
+\begin{theorem}
+The function $d:M\times M \to \mathbb{R}$ is satisfies the axioms of distance. That is, for all $p,q,r \in M$,
+\begin{enumerate}[label=(\arabic*)]
+\item $d(p,q) = 0$ if and only if $p=q$,
+\item $d(p,q) = d(q,p)$,
+\item $d(p,r) \leq d(p,q) + d(q,r)$.
+\end{enumerate}
+\end{theorem}
