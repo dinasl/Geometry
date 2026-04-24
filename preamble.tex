@@ -1,3 +1,4 @@
+% Theorem style (italics) for propositions, lemmas, and corollaries.
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
 
@@ -16,17 +17,33 @@
 \aliascntresetthe{corollary}
 \providecommand{\corollaryautorefname}{Corollary}
 
-% --- Definition style (upright text) ---
+% Definition style (upright text) for definitions, examples and problems.
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{problem}{Problem}
 
-% --- Remark style ---
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\providecommand{\definitionautorefname}{Definition}
+
+\newaliascnt{example}{theorem}
+\newtheorem{example}[example]{Example}
+\aliascntresetthe{example}
+\providecommand{\exampleautorefname}{Example}
+
+\newaliascnt{problem}{theorem}
+\newtheorem{problem}[problem]{Problem}
+\aliascntresetthe{problem}
+\providecommand{\problemautorefname}{Problem}
+
+% Remark style (upright text) for remarks.
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
 
-% --- Custom QED symbols ---
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\providecommand{\remarkautorefname}{Remark}
+
+% Custom QED symbols
 \renewcommand{\qedsymbol}{$\square$} % proofs end with □
 \newcommand\logeq{\mathrel{\vcentcolon\Leftrightarrow}}
 % Custom end symbols for non-proof environments
