@@ -1,106 +1,86 @@
 \section{Tensors and Tensor Fields}
 
-
 \subsection{Tensor Algebra}
 
 We generalize bilinear forms to multilinear forms.
-\begin{definition}[Multilinear]
+
+\begin{definition}[Multilinear map and multilinear function]
 Let $V_1, \dots, V_k$ and $W$ be real vector spaces. A map
 \[
 f: V_1 \times \dots \times V_k \to W
 \]
-is \emph{multilinear} if it is linear in each component; for example,
+is \emph{multilinear} if it is linear in each component. For example,
 \[
 f(a v_1 + b w_1, v_2, \dots, v_k)
 = a f(v_1, v_2, \dots, v_k) + b f(w_1, v_2, \dots, v_k)
 \]
 for all $a,b\in\mathbb{R}$ and $v_1,w_1\in V_1$. If $W=\mathbb{R}$, $f$ is called a \emph{multilinear function}.
-\end{definition}[Multilinear function]
-
-We generalize bilinear formto multilinear forms. 
-\begin{definition}
-$V_1, \dots, V_k$ and $W$ : real vector space.
-
-A map $f: V_1 \times \dots \times V_k \to W$ is multi linear
-map  $\logeq$ it is linear in each component $V_i$.
-
-$f(av_1 + bw_1, v_2, \dots, v_k) = a f(v_1, v_2, \dots, v_k) + b f(w_1, v_2, \dots, v_k)$
-
-If $W= \mathbb{R}$, f is called a \textit{multilinear function}.
 \label{def:multilinear}
 \end{definition}
 
-\begin{definition}[(s,t)-type tensor]
-    Let $V$ be an $n$-dimensional real vector space and $V^*$ its dual.
+\begin{definition}[$(s,t)$-type tensor]
+Let $V$ be an $n$-dimensional real vector space and $V^*$ its dual.
 
-    For $s,t \in \mathbb{Z}_{\ge 0}$, a multilinear map
-    \[
-    T : (V^*)^s \times V^t \to \mathbb{R}
-    \]
-    is called a \emph{tensor of type} $(s,t)$. The set of all such tensors is denoted by $T_t^s(V)$; it is a real vector space under pointwise addition and scalar multiplication.
+For $s,t \in \mathbb{Z}_{\ge 0}$, a multilinear map
+\[
+T : (V^*)^s \times V^t \to \mathbb{R},
+\]
+is called a \emph{tensor of type} $(s,t)$. The set of all such tensors is denoted by $T_t^s(V)$; it is a real vector space under pointwise addition and scalar multiplication.
 \end{definition}
 
 \begin{remark}
-    Since the evaluation map $V \to V^{**}$
-
-    $v^{**}(f):= f(v)$ is a linear isomorphism.
-
-    It is sufficient to consider only $V^*$ and $V$ in definition \ref{def:multilinear} 
+Since the evaluation map $V \to V^{**}$
+$v^{**}(f):= f(v)$ is a linear isomorphism,
+it is sufficient to consider only $V^*$ and $V$ in definition \ref{def:multilinear} 
 \end{remark}
 
-
 \begin{problem}
-    For a multilinear map $T: (V^*)^s \times V^t \to V$, define $\hat{T} \in T_t^{s+1}(V)$ by
-    \[
-    \hat{T}(\omega^1, \dots, \omega^{s+1}, v_1, \dots, v_t)
-    := \omega^{s+1}\bigl(T(\omega^1, \dots, \omega^s, v_1, \dots, v_t)\bigr),
-    \]
-    where $\omega^1, \dots, \omega^{s+1} \in V^*$ and $v_1, \dots, v_t \in V$.
-
-    Show that the map $T \mapsto \hat{T}$ is a linear isomorphism.
+For a multilinear map $T: (V^*)^s \times V^t \to \mathbb{R}$, define $\hat{T} \in T_t^{s+1}(V)$ by
+\[
+\hat{T}(\omega^1, \dots, \omega^{s+1}, v_1, \dots, v_t)
+:= \omega^{s+1}\bigl(T(\omega^1, \dots, \omega^s, v_1, \dots, v_t)\bigr),
+\]
+where $\omega^1, \dots, \omega^{s+1} \in V^*$ and $v_1, \dots, v_t \in V$.
+Show that the map $T \mapsto \hat{T}$ is a linear isomorphism.
 \end{problem}
 
-
-\begin{definition}
-    For $T \in T_t^s(V)$ and $S \in T_{t'}^{s'}(V)$, define $T \otimes S \in T_{t+t'}^{s+s'}(V)$ by
-    \[
-    \begin{aligned}
-    (T \otimes S)&(\omega^1, \dots, \omega^{s+s'}, v_1, \dots, v_{t+t'})\\
-    &:=\; T(\omega^1, \dots, \omega^s, v_1, \dots, v_t) 
-    \times\; S(\omega^{s+1}, \dots, \omega^{s+s'}, v_{t+1}, \dots, v_{t+t'}),
-    \end{aligned}
-    \]
-    where $\omega^1, \dots, \omega^{s+s'} \in V^*$ and $v_1, \dots, v_{t+t'} \in V$.
+\begin{definition}[Tensor product]
+For $T \in T_t^s(V)$ and $S \in T_{t'}^{s'}(V)$, define $T \otimes S \in T_{t+t'}^{s+s'}(V)$ by
+\[
+\begin{aligned}
+(T \otimes S)&(\omega^1, \dots, \omega^{s+s'}, v_1, \dots, v_{t+t'})\\
+&:=\; T(\omega^1, \dots, \omega^s, v_1, \dots, v_t) 
+\times\; S(\omega^{s+1}, \dots, \omega^{s+s'}, v_{t+1}, \dots, v_{t+t'}),
+\end{aligned}
+\]
+where $\omega^1, \dots, \omega^{s+s'} \in V^*$ and $v_1, \dots, v_{t+t'} \in V$.
 \end{definition}
 
-For any tensors $T, S, R$ and $a \in \mathbb{R}$
-
+\begin{remark}
+For any tensors $T, S, R$ and $a \in \mathbb{R}$, we have:
 \begin{enumerate}
-    \item $\left(T \otimes S \right) \otimes R = T \otimes \left(S \otimes R\right)$
-    \item $\left(aT\right) \otimes S = T \otimes \left(a S \right) = a \left(T \otimes S\right)$
+\item $\left(T \otimes S \right) \otimes R = T \otimes \left(S \otimes R\right)$.
+\item $\left(aT\right) \otimes S = T \otimes \left(a S \right) = a \left(T \otimes S\right)$.
 \end{enumerate}
-
-
-These are denoted as $T \otimes S \otimes R$ and $a T \otimes S$ respectively.
-
-If $S$ and $R$ have the same type, the distributive laws hold :
+These are denoted as $T \otimes S \otimes R$ and $a T \otimes S$, respectively.
+Furthermore, $S$ and $R$ have the same type, the distributive laws hold :
 \begin{enumerate}
-    \item $T \otimes (S + R) = T \otimes S + T \otimes R$
-    \item $(S+R) \otimes T = S \otimes T + R \otimes T$
+    \item $T \otimes (S + R) = T \otimes S + T \otimes R$.
+    \item $(S+R) \otimes T = S \otimes T + R \otimes T$.
 \end{enumerate}
+\end{remark}
 
-%nokka m@ skje her
-\emph{Note} : in general, $S \otimes T \neq T \otimes S$.
+\begin{remark}
+In general, $S \otimes T \neq T \otimes S$.
+\end{remark}
 
 Let $\{e_i \}$ be a basis for $V$ and $\{e^i\}$ be its dual.
-
 For $T \in T_t^s(V)$, the $n^{s+t}$ real numbers
 \[
 T^{i_1 \dots i_s}_{j_1 \dots j_t}
-:= T(e^{i_1}, \dots, e^{i_s}, e_{j_1}, \dots, e_{j_t})
+:= T(e^{i_1}, \dots, e^{i_s}, e_{j_1}, \dots, e_{j_t}),
 \]
-are called the coefficients (or components) of $T$.
-
+are called the \emph{coefficients} (or \emph{components}) of $T$.
 For $T \in T_t^s(V)$ and $S \in T_{t'}^{s'}(V)$, the coefficients of $T \otimes S$ are given by
 \[
  (T\otimes S)^{i_1 \dots i_{s+s'}}_{j_1 \dots j_{t+t'} }
@@ -108,76 +88,75 @@ For $T \in T_t^s(V)$ and $S \in T_{t'}^{s'}(V)$, the coefficients of $T \otimes 
 \]
 
 \begin{problem}
-    Show that the set of $n^{s+t}$ tensors
-
-    $e_{i_1} \otimes \dots \otimes e_{i_s} \otimes e^{j_1} \otimes \dots \otimes e^{j_t}$
-
-    where $i_1, \dots, i_s, j_1, \dots, j_t = 1, \dots, n$ 
-
-    forms a basis for $T_t^s(V)$. and for any $T \in T_t^s(V)$,
-
-    $T = \sum_{i_1, \dots, i_s, j_1, \dots, j_t} T_{j_1 \dots j_t}^{i_1 \dots i_s} e_{i_1} \otimes \dots \otimes e_{i_s} \otimes e^{j_1} \otimes \dots \otimes e^{j_t}$.
-    In particular, dim $T_t^s(V) = n^{s+t}$.
-    We often write 
-
-    $T_t^s(V) = V \otimes \dots \otimes V \otimes V^* \otimes \dots \otimes V^*$
-
-    
+Show that the set of $n^{s+t}$ tensors
+\[
+e_{i_1} \otimes \dots \otimes e_{i_s} \otimes e^{j_1} \otimes \dots \otimes e^{j_t},
+\]
+where $i_1, \dots, i_s, j_1, \dots, j_t = 1, \dots, n$ 
+forms a basis for $T_t^s(V)$; and that for any $T \in T_t^s(V)$,
+\[
+T = \sum_{i_1, \dots, i_s, j_1, \dots, j_t} T_{j_1 \dots j_t}^{i_1 \dots i_s} e_{i_1} \otimes \dots \otimes e_{i_s} \otimes e^{j_1} \otimes \dots \otimes e^{j_t}.
+\]
+In particular, show that $\dim T_t^s(V) = n^{s+t}$. We often write 
+\[
+T_t^s(V) = V \otimes \dots \otimes V \otimes V^* \otimes \dots \otimes V^*.
+\]
 \end{problem}
 
 \subsection{Exterior Algebra}
 
-\begin{definition}
-    Let V be a real vector space and $p \in \mathbb{N}$
-
-    An element of $T_p^0(V)$ is called a p-form
+\begin{definition}[p-form]
+    Let V be a real vector space and $p \in \mathbb{N}$.
+    An element of $T_p^0(V)$ is called a \emph{p-form}.
 \end{definition}
-
-A p-form $\omega$ is skew symmetric
-
-$\logeq \omega(v_{\sigma(1)}, \dots, v_{\sigma(p)}) = \text{sgn}(\sigma) \omega(v_1, \dots, v_p)$
-
-$v_1, \dots, v_p \in V$ and $\sigma \in S_p$.
-
+\begin{remark}
+A p-form $\omega$ is \emph{skew symmetric}. That is,
+\[
+\omega(v_{\sigma(1)}, \dots, v_{\sigma(p)}) = \text{sgn}(\sigma) \omega(v_1, \dots, v_p),
+\]
+for any $v_1, \dots, v_p \in V$ and $\sigma \in S_p$.
+Furthermore, 
 $\Lambda^p V^* := \{ \text{skew symmetric p-forms} \}$ is a vector space.
+\end{remark}
 
-\begin{definition}
+\begin{definition}[Exterior product]
     For $\alpha \in \Lambda^p(V^*)$ and $\beta \in \Lambda^q(V^*)$, 
-
     the \emph{exterior product} $\alpha \wedge \beta$ is defined by 
-
-    $\alpha \wedge \beta := \frac{1}{p! q!} \sum_{\sigma \in S_{p+q}} \text{sgn}(\sigma) \alpha \otimes \beta \left(v_{\sigma(1)}, \dots, v_{\sigma(p+q)}\right)$.
+    \[
+    \alpha \wedge \beta := \frac{1}{p! q!} \sum_{\sigma \in S_{p+q}} \text{sgn}(\sigma) \alpha \otimes \beta \left(v_{\sigma(1)}, \dots, v_{\sigma(p+q)}\right).
+    \]
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:exterior_product}
     Let $\alpha, \alpha^1, \alpha^2 \in \Lambda^p(V^*)$ and $\beta, \beta^1, \beta^2 \in \Lambda^q(V^*)$.
-
     \begin{enumerate}
-        \item $\left( a \alpha^1 + b \alpha^2 \right) \wedge \beta = a \alpha^1 \wedge \beta + b \alpha^2 \wedge \beta$
-        \item $\alpha \wedge \left( a \beta^1 + b \beta^2 \right) = a \alpha \wedge \beta^1 + b \alpha \wedge \beta^2$
-        \item $\left(\alpha \wedge \beta \right) \wedge \gamma = \alpha \wedge \left( \beta \wedge \gamma \right)$
-        \item $\beta \wedge \alpha = (-1)^{pq} \alpha \wedge \beta$
+        \item $\left( a \alpha^1 + b \alpha^2 \right) \wedge \beta = a \alpha^1 \wedge \beta + b \alpha^2 \wedge \beta$.
+        \item $\alpha \wedge \left( a \beta^1 + b \beta^2 \right) = a \alpha \wedge \beta^1 + b \alpha \wedge \beta^2$.
+        \item $\left(\alpha \wedge \beta \right) \wedge \gamma = \alpha \wedge \left( \beta \wedge \gamma \right)$.
+        \item $\beta \wedge \alpha = (-1)^{pq} \alpha \wedge \beta$.
     \end{enumerate}
 \end{proposition}
 
-\subsection{Tensor Fields and Differential Forms on Manifolds}
+\subsection{Tensor Fields and differential forms on manifolds}
 
 Let M be an n-dimensional manifold an $\left( V, \phi \right)$ a chart with
-$\phi = (x^1, \dots, x^n)$. At each $p \in U$, applying the previous results with $V = T_pM:$
+$\phi = (x^1, \dots, x^n)$. At each $p \in U$, applying \autoref{prop:exterior_product} with $V = T_pM$, yields
+\[
+\frac{\partial}{\partial x^{i1}} \otimes \dots \otimes \frac{\partial}{\partial x^{is}} \otimes dx^{j1} \otimes \dots \otimes dx^{jt},
+\]
+which forms a basis for $T_t^s(T_pM)$. Any $T_p \in T_t^s (T_pM)$ can be written as,
+\[
+T_p = \sum_{i_1, \dots, i_s, j_1, \dots, j_t} T_{j_1 \dots j_t}^{i_1 \dots i_s} \frac{\partial}{\partial x^{i_1}} \otimes \dots \otimes \frac{\partial}{\partial x^{i_s}} \otimes dx^{j_1} \otimes \dots \otimes dx^{j_t}.
+\]
 
-$\frac{\partial}{\partial x^{i1}} \otimes \dots \otimes \frac{\partial}{\partial x^{is}} \otimes dx^{j1} \otimes \dots \otimes dx^{jt}$
-forms a basis for $T_t^s(T_pM)$. Any $T_p \in T_t^s (T_pM)$ is written as:
-
-\begin{align*}
-T_p = \sum_{i_1, \dots, i_s, j_1, \dots, j_t} T_{j_1 \dots j_t}^{i_1 \dots i_s} \frac{\partial}{\partial x^{i_1}} \otimes \dots \otimes \frac{\partial}{\partial x^{i_s}} \otimes dx^{j_1} \otimes \dots \otimes dx^{j_t}
-\end{align*}
-
-\begin{definition}
-    A map $T: M \owns p \to T_p \in T_t^s(T_pM)$ is a\emph{(s.t) type tensor field}. $T$ is $C^{\infty}$ if all its coefficients 
-    $T_{j_1 \dots j_t}^{i_1 \dots i_s}$ are $C^{\infty}$ functions on any chart $(V, \phi)$.
+\begin{definition}[$(s,t)$-type tensor field]
+A map $T: M \owns p \to T_p \in T_t^s(T_pM)$ is a\emph{(s,t)-type tensor field}. $T$ is $C^{\infty}$ if all its coefficients 
+$T_{j_1 \dots j_t}^{i_1 \dots i_s}$ are $C^{\infty}$ functions on any chart $(V, \phi)$.
 \end{definition}
 
-\emph{Note}: It suffices to check the $C^{\infty}$ property on a single atlas.
+\begin{remark}
+It suffices to check the $C^{\infty}$ property on a single atlas.
+\end{remark}
 
 
 

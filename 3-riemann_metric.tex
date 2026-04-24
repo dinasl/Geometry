@@ -1,134 +1,116 @@
 \section{Riemannian metric}
 
 Assume that $M$ is Hansforff differentiable manifold.
-
-\begin{definition}
-    A Riemannian metric $g$ is a map
-    $$
-        M \owns p \to \langle \cdot, \cdot \rangle_p =: g_p ( \cdot, \cdot ) \text{that assigns a}
-    $$
-
+\begin{definition}[Riemannian metric and Riemannian manifold]
+    A \emph{Riemannian metric} $g$ is a map
+    \[
+        M \owns p \to \langle \cdot, \cdot \rangle_p =: g_p ( \cdot, \cdot ) \text{that assigns a},
+    \]
     (postive definite) inner product to each $T_pM$.
-
-    The pair $\left(M, g\right)$ is called a Riemannian manifold.
-
-    In terms of tensor field, g is a $(0,2)$- type tensor field (or a 2-form) on M
+    The pair $\left(M, g\right)$ is called a \emph{Riemannian manifold}.
+    In terms of tensor field, $g$ is a $(0,2)$-type tensor field (or a 2-form) on $M$.
 \end{definition}
 
-\begin{definition}
-    For $v,w \in T_p M$
-    \begin{itemize}
-        \item Length $\|v\| := \sqrt{\langle v, v \rangle}$
-        \item Angle : $\theta \in [0,\pi]$ such that $cos \theta = \frac{\langle v, w \rangle}{\|v\| \|w\|}$
-    \end{itemize}
+\begin{definition}[Length and angle]
+For $v,w \in T_p M$, we have the following notions of length and angle:
+\begin{itemize}
+    \item \emph{Length} $\|v\| := \sqrt{\langle v, v \rangle}$.
+    \item \emph{Angle} : $\theta \in [0,\pi]$ such that $cos \theta = \frac{\langle v, w \rangle}{\|v\| \|w\|}$.
+\end{itemize}
 \end{definition}
 
+\begin{example}
 Let $(v, \phi)$ be a chart with
 \[
-\begin{aligned}
-\phi = &(x^1, \dots, x^n). \text{ Define } g_{ij} : U \to \mathbb{R} \text{ by } \\
- &g_{ij}(p) :=  \langle \left(\frac{\partial}{\partial x^i}\right)_p, \left(\frac{\partial}{\partial x^j}\right)_p \rangle.
-\end{aligned}
+\phi = (x^1, \dots, x^n).
 \]
-
-
+Define $g_{ij} : U \to \mathbb{R}$ by
+\[
+g_{ij}(p) :=  \left\langle \left(\frac{\partial}{\partial x^i}\right)_p, \left(\frac{\partial}{\partial x^j}\right)_p \right\rangle.
+\]
 On $U$, $g$ is expressed as 
 \[
 g = \sum_{i,j=1} g_{ij} dx^i \otimes dx^j.
 \]
-
 The matrix $(g_{ij})$ is a postive definite symmetric matrix.
-
 \[
-ds^2 = \sum_{i,j =1}^n \delta_{ij} dx^i \otimes dx^j = \sum_{i=1}^n (dx^i)^2
+ds^2 = \sum_{i,j =1}^n \delta_{ij} dx^i \otimes dx^j = \sum_{i=1}^n (dx^i)^2.
 \]
+\end{example}
 
 \begin{problem}
-    Consider two charts $(U, \phi)$ and $(V, \psi)$ with $U \cap V \neq \emptyset$. 
-
-    \[
-    \phi = (x^1, \dots, x^n), \psi = (y^1, \dots, y^n)
-    \]
-
-    let $g_{ij}$, $\hat{g}_{kl}$ be the components of g with respect to these charts.
-
-    Show that on $U \cap V$,
-
+Consider two charts $(U, \phi)$ and $(V, \psi)$ with $U \cap V \neq \emptyset$. 
+\[
+\phi = (x^1, \dots, x^n), \psi = (y^1, \dots, y^n),
+\]
+and let $g_{ij}$, $\hat{g}_{kl}$ be the components of g with respect to these charts.
+Show that on $U \cap V$ satisfies the following transformation law:
 \[
 \hat{g}_{kl} = \sum_{i,j=1}^n g_{ij} \frac{\partial x^i}{\partial y^k} \frac{\partial x^j}{\partial y^l}.
 \]
 \end{problem}
 
-\begin{definition}
-    (M,G) is a $C^{\infty}$ Riemannian manifold
-
-    \[
-    \logeq g \text{ is a } c^{\infty} \text{ tensor field}
-    \]
-
-    The following are equivalent:
-    \begin{itemize}
-        \item (M,g) is a $C^{\infty}$ Riemannian manifold
-        \item Copmonents $g_{ij}$ are $C^{\infty}$ functions for any chart $(U, \phi)$
-        \item $p \to \langle _p, Y_P \rangle$ is $C^{\infty}$ for any $C^{\infty}$ vector fields $X,Y$.
-    \end{itemize}    
+\begin{definition}[$C^{\infty}$ Riemannian manifold]
+$(M,g)$ is a \emph{$C^{\infty}$ Riemannian manifold} if $g$ is a $C^{\infty}$ tensor field.
 \end{definition}
-    Henceforth, assume that all Riemanninan metrics are $C^{\infty}$
-
-    $g,h$ : Riemannian metric, $f \in c^{\infty} ( M, \mathbb{R}_{>0})$
-
-    $\implies$ $fg$ and $g+h$ are also Riemannian metrics.
+\begin{proposition}
+The following are equivalent:
+\begin{itemize}
+    \item (M,g) is a $C^{\infty}$ Riemannian manifold.
+    \item Copmonents $g_{ij}$ are $C^{\infty}$ functions for any chart $(U, \phi)$.
+    \item $p \to \langle X_p, Y_p \rangle$ is $C^{\infty}$ for any $C^{\infty}$ vector fields $X,Y$.
+\end{itemize}    
+\end{proposition}
+Henceforth, assume that all Riemanninan metrics are $C^{\infty}$.
+\begin{remark}
+$g,h$ : Riemannian metric, $f \in c^{\infty} ( M, \mathbb{R}_{>0})$
+$\implies$ $fg$ and $g+h$ are also Riemannian metrics.
+\end{remark}
 
 \begin{proposition}
     Every paracompact manifold admits a Riemannian metric.
 \end{proposition}
 
-\begin{proof}[case : M is cpt]
-    Let $\{(U_k, \phi_k)\}_{k=1}^{K_0}$ be a finite atlas. let $\{x_k\}^{K_0}_{k=1}$
-
-    be a partition of unity subordinate to ${U_k}$/
-
-    On $U_k$, define $g_k$
-
+\begin{proof}
+    Let $\{(U_k, \phi_k)\}_{k=1}^{K_0}$ be a finite atlas and let $\{x_k\}^{K_0}_{k=1}$
+    be a partition of unity subordinate to ${U_k}$. On $U_k$, define $g_k$
     \[
-    g_l(u,w) := \langle(d \phi_k)_p(v), (d \phi_k)_p (w) \rangle_{\mathbb{R}^n}, v,w \in T_pM
+    g_k(u,w) := \langle(d \phi_k)_p(v), (d \phi_k)_p (w) \rangle_{\mathbb{R}^n}, v,w \in T_pM.
     \]
-
     Then the global metric is given by:
-
     \[
     g := \sum_{k=1}^{K_0} x_k g_k
     \]
 \end{proof}
 
-
 \subsection{Isometries}
 
-\begin{definition}
-    Let $M, N$ be Riemannian manifoolds and $f: M \to N$ be a $C^{\infty}$ map
-
-    \begin{itemize}
-        \item f is locally isometric map $\logeq \langle (df)_p(v), (df)_p(w) \rangle = \langle v, w \rangle \forall v,w \in T_pM, p \in M$
-        \item An injective locally isometric map is an isometric map.
-        \item An isometric map that is also a diffeomorphism is an isometry.
-        \item $M$ and $N$ are isometric if there exists an isometry between them.
-    \end{itemize}
+\begin{definition}[Isometry]
+Let $(M,g)$ and $(N,h)$ be Riemannian manifolds and let $f : M \to N$ be a smooth map.
+\begin{itemize}
+\item The map $f$ is called \emph{locally isometric} if
+\[
+\langle (df)_p(v), (df)_p(w) \rangle_{f(p)} = \langle v, w \rangle_p
+\quad \text{for all } p \in M, \; v,w \in T_pM.
+\]
+\item The map $f$ is called an \emph{isometry} if it is a diffeomorphism and locally isometric.
+\item The manifolds $M$ and $N$ are called \emph{isometric} if there exists an isometry $f : M \to N$.
+\end{itemize}
 \end{definition}
 
-\begin{proposition}[(1)]
-    $f: L \to M, h : M \to N$ are (local) isometric maps $\implies h \circ f$ is a (local) isometric map.
-
-    [(2)] $f$ is isometry $\implies f^{-1}$ is isometry.
-    
-    hus, the relation "Isometric" is an equivalence relation.
+\begin{proposition}
+\begin{enumerate}[label=(\arabic*)]
+\item $f: L \to M, h : M \to N$ are (local) isometric maps $\implies h \circ f$ is a (local) isometric map.
+\item $f$ is isometry $\implies f^{-1}$ is isometry.
+\end{enumerate}
+Thus, the relation "Isometric" is an equivalence relation.
 \end{proposition}
 
 \subsection{Riemannian submanifold}
 
-\begin{definition}
-    $M:$ Riemannian manifold, $N \subset M$ is a submanifold.
-
-    $N$ is a Riemannian submanifold if the metric is defined by $\langle v, w \rangle_N := \langle v, w \rangle_M$ for all $v, w \in T_pN$.
+\begin{definition}[Riemannian submanifold]
+Assume $M$ is a Riemannian manifold and $N \subset M$ is a submanifold.
+$N$ is a \emph{Riemannian submanifold} if the metric is defined by $\langle v, w \rangle_N := \langle v, w \rangle_M$ for all $v, w \in T_pN$.
 \end{definition}
 
 The inclusion $C : N \to M$ is always an isometric map.
