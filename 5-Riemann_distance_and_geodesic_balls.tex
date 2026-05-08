@@ -1,0 +1,178 @@
+\begin{lemma}
+$\left(U, \phi \right)$ : a chart, $D \subset \phi(U)$ a cpt set.
+$c : [a,b] \rightarrow \phi^{-1} (D)$ : a piecewise smooth regular curve, Then $\exists C = C\left( (U, \phi), g_{ij}, D \right) >0$ s.t 
+for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
+\[
+\begin{aligned}
+    C^{-1} L(\bar{c}) &\leq L(c) \leq C L(\bar{c}), \text{ where}\\
+    L(\bar{c}) &= \int_a^b \|\bar{c}'(t)\|_{\mathbb{R}^n} dt \text{ is the Euclidean length}
+\end{aligned}
+\]
+\label{lemma:length_of_curve_in_chart}
+\end{lemma}
+
+\begin{proof}
+    Define a continous function $f: \phi(u) \times \mathbb{R}^n \rightarrow \mathbb{R}$ by
+    \[
+    \begin{aligned}
+        f(x,v) &:= \sum_{i,j = 1}^n v^i v^j g_{ij} (\phi^{-1}(x))
+    \end{aligned}
+    \]
+    Since $D\times \mathbb{S}^{n-1} \subset \mathbb{R}~{2n}$ is cpt, $f|_{D \times \mathbb{S}^{n-1}}$ has max/min. Since $f>0$, the min is positive.
+    \[
+    \begin{aligned}
+        \implies \exists C>0 \text{ s.t } c^{-2} \leq f \leq C^2 \text{ on } D \times \mathbb{S}^{n-1}
+    \end{aligned}
+    \]
+    Thus, $\forall x \in D$ and $\forall v \in \mathbb{R}^n \setminus \{0\}:$
+    \[
+    \begin{aligned}
+        C^{-2} \leq f\left(x, \frac{v}{\|v\|_{\mathbb{R}^n}} \right) \leq C^2
+    \end{aligned}
+    \]
+    Multiplying $\|v\|^2_{\mathbb{R}^n}$
+    \[
+    \begin{aligned}
+        C^{-2} \|v\|_{\mathbb{R}^n}^2 \leq \sum^n_{i,j=1} v^i v^j g_{ij}(\phi^{-1}(x)) \leq C^2 \|v\|_{\mathbb{R}^n}^2
+    \end{aligned}
+    \]
+    Let $\bar{c} = \left(c^1(t), \dots, c^n(t)\right) \implies c'(t) = \sum^n_{i=1} \frac{dc^i}{dt} \partial_i$.
+    \[
+    \begin{aligned}
+        \bar{c}'(t) &= \left(\frac{dc^1}{dt}, \dots, \frac{dc^n}{dt} \right). \text{ Set } v := \bar{c}'(t) \\
+        &C^{-2} \| \bar{c}'(t)\|_{\mathbb{R}^n}^2 \leq \|c'(t)\|^2 \leq C^2 \|\bar{c}'(t)\|_{\mathbb{R}^n}^2
+    \end{aligned}
+    \]
+    Taking square roots and integrating with respect to $t$ yields the result.
+\end{proof}
+
+\begin{lemma}
+    Let $(U, \phi)$ be a chart of M.
+    Choose $x_0 \in \phi(U)$ and $r>0$ s.t $D := \bar{B}(x_0, 3r) \subset \phi(U)$.
+    Let $C>0$ be the constant from \autoref{lemma:length_of_curve_in_chart}. Then:
+    \begin{enumerate}
+        \item $\forall p,q \in \phi^{-1}({B}(x_0, r))$: \\
+        $C^{-1} \| \phi(p) - \phi(q) \|_{\mathbb{R}^n} \leq d(p,q) \leq C \|\phi(p) - \phi(q)\|_{\mathbb{R}^n}$.
+        \item $\forall p \in \phi^{-1}({B}(x_0, r)), \forall q \in M \setminus \phi^{-1}(D) : d(p,q) \leq 2C^{-1}r$
+    \end{enumerate}
+    \label{lemma:distance_in_chart}
+\end{lemma}
+
+
+\begin{proof}
+    (1) $p,q \in \phi^{-1}({B}(x_0, r))$. $\bar{\gamma}$ : the line segment in $\mathbb{R}^n$ connecting $\phi(p)$ and $\phi(q)$. 
+    Since $B(x_0, r)$ is convex, $\bar{gamma} \subset B(x_0, r)$. Set $\gamma := \phi^{-1} \circ \bar{\gamma}$.
+    By \autoref{lemma:length_of_curve_in_chart},
+    \[
+    \begin{aligned}
+        \|\phi(p) - \phi(q) \|_{\mathbb{R}^n} \leq L(\bar{\gamma}) \leq C^{-1} L(\gamma) \geq C^{-1} d(p,q).
+    \end{aligned}
+    \]
+    Next, take any piecewise smooth refular curve $C: [0,l] \to M$ from $p$ to $q$. 
+    If $c([0,l]) \subset \phi^{-1}(D)$, let $\bar{c} := \phi \circ c$. By \autoref{lemma:length_of_curve_in_chart},
+    \[
+    \begin{aligned}
+        L(c) \geq C^{-1} L(\bar{c}) \geq C^{-1} \|\phi(p) - \phi(q)\|_{\mathbb{R}^n}.
+    \end{aligned}
+    \]
+    If $c([0,l]) \not\subset \phi^{-1}(D)$, let
+    \[
+    \begin{aligned}
+        t_1 := sup \{t\in [0,l] | c([0,t]) \subset \phi^{-1}(D)\}
+    \end{aligned}
+    \]
+    and $c_1 := c|_{[0,t_1]}$. By \autoref{lemma:disjoint_or_equal}, $c_1(t_1) \in \phi^{-1}(\partial D)$
+    Let $\bar{c}_1 := \phi \circ c_1$. By \autoref{lemma:length_of_curve_in_chart},
+    \[
+    \begin{aligned}
+        L(c) \geq L(c_1) \geq C^{-1} L(\bar{c}_1).
+    \end{aligned}
+    \]
+    Since $\phi(p), \phi(q) \in B(x_0, r )$ and $\bar{c_1}(t_1) \in \partial B(x_0, 3r)$
+    \[
+    \begin{aligned}
+        &L(\bar{c_1}) \geq 2r > \|\phi(p)-\phi(q)\|_{\mathbb{R}^n} \\
+       \implies &L(c) > C^{-1} \|\phi(p) - \phi(q)\|_{\mathbb{R}^n} \text{ in both cases}
+    \end{aligned}\]
+    Taking inf over c (using the fact that C in \autoref{lemma:length_of_curve_in_chart} is independent of c)
+    \[
+    \begin{aligned}
+        d(p,q) \geq C^{-1} \|\phi(p) - \phi(q) \|_{\mathbb{R}^n}
+    \end{aligned}
+    \]
+    (2) Prf is similar to (1) above (omitted).
+\end{proof}
+
+\begin{proof}[Proof of \autoref{thm:distance_axioms}]
+    (1) $p=q \implies$ taking $c(t) = p$ gives $L(c) = 0 $ thus $d(p,q) =0$.
+    conversely, assume $d(p,q) = 0$.
+    Fix a xhart $(U, \phi)$ around $p$ and let $x_0 := \phi(p)$. 
+    Choose $r>0$ s.t $D_r := \bar{B}(x_0, 3r) \subset \phi(U)$. By \autoref{lemma:distance_in_chart}, 
+    \[
+    \begin{aligned}
+        \exists C_r > 0 \text{ s.t if } q \in M \setminus \phi^{-1} (D_r), \text{ then } d(p,q) \geq 2C_r^{-1} r
+    \end{aligned}
+    \]
+    Contradicting $d(p,q) = 0$. Thus $q \in \phi^{-1}(D_r)$.
+    Since $r>0$ is arbitrary, $p=q$
+
+    (2) Let $c$ be a piecewise smooth regular curve from $p$ to $q$. Reversing, the parameter yiels a curve from $q$ to $p$ with the same length. $\implies d(p,q) = d(q,p)$
+
+    (3) Let $c_{pq}$ be a curve from $p$ to $q$, and $c_qr$ from $q$ to $r$. Concatenating them yields a piecewise smooth regular curve from $p$ to $r$.
+    $d(p,r) \leq L(c_{pqr}) = L(c_{pq}) + L(c_{qr})$ Taking inf over $c_{pq}$ and $c_{qr} \implies$ triangle inequality. 
+\end{proof}
+
+\begin{remark}
+    Hausdorff property is essential for $d(p,q) = 0$. In non-Hausdorf manifolds, $d(p,q)=0$ does not necessarily imply $p=q$
+\end{remark}
+
+\begin{problem}
+    Define $L, R_+, R_- \subset \mathbb{R}^2$ as:
+    \[
+    \begin{aligned}
+        &L:= \{(x, 0) \in \mathbb{R}^2 | x<0\}\\
+        &R_+ := \{(x, 1) \in \mathbb{R}^2 | x \geq 0\}, R_- := \{(x, -1) \in \mathbb{R}^2 | x \geq 0\}
+    \end{aligned}
+    \]
+    $M:=L \cup R_+ \cup R_-$, $U:= L \cup R_+, V:= L \cup R_-$
+    Let $\pi_1 : \mathbb{R}^2 \to \mathbb{R}$ be the projectioon to the 1st component
+    and $\phi := \pi_1 |_U : U \to \mathbb{R}, \psi := \pi_1 |_V : V \to \mathbb{R}$
+    $W \subset M$ is open : $\equiv \phi(W \cap U), \psi(W \cap  V)\subset \mathbb{R}$ are open.
+    This makes $M$ a topological space s.t. $\phi, \psi$ are homeomorphisms,
+    \[
+    \begin{aligned}
+        \phi(U \cap V) = \psi(U\cap V) = (-\infty, 0), \text{ and } \psi \circ \phi^{-1} = Id_{(-\infty, 0)}
+    \end{aligned}
+    \]
+    \begin{enumerate}
+        \item Show M is not Hausdorff
+        \item Show $d \left((0,1), (0,-1)\right) = 0$ for any riemann metric on $M$
+    \end{enumerate}
+\end{problem}
+
+\begin{definition}
+    For $p\in M$, $r>0$
+    \[
+    \begin{aligned}
+        B(p,r) := \{q \in M | d(p,q) < r\}
+    \end{aligned}
+    \]
+    is called a geodesic ball of radius $r$ centered at $p$
+\end{definition}
+
+\begin{proposition}
+    For a subset $O \subset M$ the following are equivalent:
+    \begin{enumerate}
+        \item $O$ is open in $M$
+        \item $\forall p \in O, \exists \delta > 0 \text{ s.t. } B(p, \delta) \subset O$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Take a chart $(U, \phi)$ around $p$ and let $x_0 := \phi(p)$. Since $\phi(O \cap U) \subset \mathbb{R}^n$ is open,
+    $\exists \gamma > 0$ s.t. $D_i = \bar{B}(x_0, 3r) \subset \phi(O \cap U)$. For the constant $C>0$ from \autoref{lemma:distance_in_chart}, choose $\delta >0$ s.t.
+    $0 < \delta < 2 C^{-1}r$. Then $\forall q \in M \setminus \phi^{-1}(D),$
+    $d(p,q) \geq 2C^{-1}r > \delta$. Thus $q \in B(p, \delta) \implies q \in \phi^{-1}(D)$,
+    we have $B(p,\delta) \subset O$
+    Proof not finished, time 1.01.39
+\end{proof}
