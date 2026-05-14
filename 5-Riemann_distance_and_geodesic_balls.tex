@@ -166,6 +166,7 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
         \item $O$ is open in $M$
         \item $\forall p \in O, \exists \delta > 0 \text{ s.t. } B(p, \delta) \subset O$
     \end{enumerate}
+    \label{prop:open_in_manifold}
 \end{proposition}
 
 \begin{proof}
@@ -173,6 +174,43 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
     $\exists \gamma > 0$ s.t. $D_i = \bar{B}(x_0, 3r) \subset \phi(O \cap U)$. For the constant $C>0$ from \autoref{lemma:distance_in_chart}, choose $\delta >0$ s.t.
     $0 < \delta < 2 C^{-1}r$. Then $\forall q \in M \setminus \phi^{-1}(D),$
     $d(p,q) \geq 2C^{-1}r > \delta$. Thus $q \in B(p, \delta) \implies q \in \phi^{-1}(D)$,
-    we have $B(p,\delta) \subset O$
-    Proof not finished, time 1.01.39
+    we have $B(p,\delta) \subset O$.
+    $(2) \implies (1)$ : Let ${(U_{\alpha}, \phi_{\alpha})}_{\alpha \in \Lambda}$ be an atlas of $M$. Then $O = \bigcup_{\alpha \in \Lambda} (O \cap U_{\alpha})$.
+    Since each $\phi_{\alpha} : U_{\alpha} \to \phi_{\alpha} (U_{\alpha})$ is a homeo,
+    $O \cap U_{\alpha}$ is open in $U_{\alpha} \equiv \phi_{\alpha} (O \cap U_{\alpha})$ is open in $\phi_{\alpha}(U_{\alpha})$.
+    Thus it suffices to show: $\phi (O \cap U) \subset \mathbb{R}^n $ is open for any chart $(U, \phi)$
+
+    $x \in \phi(O \cap U)$, set $p := \phi^{-1}(x) \in O \cap U$. By assumption, $\exists r_1 >0 \text{ s.t. } B(p, r_1) \subset O$.
+    Since $\phi (U) \subset \mathbb{R}^n$ is open, $\exists r_2>0 \text{ s.t. } \bar{B}(x, 3 r_2) \subset \phi(U)$.
+    For $(U, \phi)$ and $D := \bar{B}(x, 3 r_2)$ let $C>0$ be the constant from \autoref{lemma:length_of_curve_in_chart}. Set $r:= min{C^{-1}r_1, r_2}$.
+    Then $B(p, C r) \subset B(p, r_1) \subset O$. For any $y \in B(x, r)$ set $q := \phi^{-1}(y) \in \phi^{-1}(B(x. r_2)) \subset U$. By \autoref{lemma:length_of_curve_in_chart}:
+    \[
+    \begin{aligned}
+        d(p,q) \leq C \| x-y \|_{\mathbb{R}^n} < C r,
+    \end{aligned}
+    \]
+    Thus $q \in B(p, Cr) \subset O$, which implies $q \in O \cap U$ and $y \in \phi(O \cap U)$. Therefore $B(x,r) \subset \phi(O \cap U)$ and $\phi(O \cap U)$ is open in $\mathbb{R}^n$
 \end{proof}
+
+\begin{problem}
+    Using \autoref{prop:open_in_manifold}, show that for any $p \in M$ and $r>0$, the geodesic ball $B(p,r)$ is an open set in $M$.
+    The following properties hold for distance functions on general metric spaces, thus proofs are omitted. $d: M \times M \to \mathbb{R}$.
+    \begin{proposition}
+        $\forall p_0 \in M$, $f(p) := d(p, p_0)$ is continous
+    \end{proposition}
+    \begin{proposition}
+        For a sequence ${p_i}_{i=1}^{\infty} \subset M$ and $p\in M$, the following are equivalent:
+        \begin{enumerate}
+            \item $p_i \to p$ as $i \to \infty$
+            \item $d(p_i, p) \to 0$ as $i \to \infty$
+        \end{enumerate}
+        Basic topological properties of geodesic balls (proofs omitted:)
+    \end{proposition}
+    \begin{proposition}
+        $\forall p \in M$ and $r>0$
+        \begin{enumerate}
+            \item $\partial B(p,r) = {q \in M | d(p,q)=r}$
+            \item $\bar{B}(p,r) := \bar(B(p,r)) = {q \in M | d(p,r) \leq r}$
+        \end{enumerate}
+    \end{proposition}
+\end{problem}
