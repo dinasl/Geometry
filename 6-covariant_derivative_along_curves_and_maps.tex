@@ -1,0 +1,108 @@
+\section{Covariant derivative along curves and maps}
+
+\subsection{Covariant derivative along curves}
+
+Let $M$ be a Riemannian manifold and $c:I\to M$ a $C^{\infty}$ curve (not necessarily regular).
+
+\begin{definition}[$C^{\infty}$ vector field along a curve]
+Let $X:\underset{\in I}{t} \mapsto \underset{\in T_{c(t)}M}{X(t)}$ be a vector field along $c$.
+Then $X$ is $C^{\infty}$ if $\forall$ charts $(U,\phi)$, the components $X^i(t)$ in
+\[
+X(t) = \sum_{i=1}^n X^i(t)(\partial_i)_{c(t)}, t \in c^{-1}(U),
+\]
+are $C^{\infty}$.
+\end{definition}
+
+Henceforth, vector fields along curves are assumed to be $C^{\infty}$, unless otherwise stated.
+
+\begin{definition}
+The \emph{covariant derivative} of a vector field $X$ along a curve $c$ is defined on a chart $(U, \phi)$ by
+\[
+(\nabla_cX)(t) := \sum_{k=1}^n \left( \frac{dX^k}{dt} + \sum_{i,j=1}^n \Gamma_{ij}^k(c(t))\frac{dc^i}{dt}X^j \right)(\partial_k)_{c(t)},
+\]
+where $\phi(c(t)) = (c^1(t), \dots, c^n(t))$ and $X(t) = \sum_{i=1}^n X^i(t)(\partial_i)_{c(t)}$.
+\end{definition}
+
+\begin{remark}
+$\nabla_cX$ is a $C^{\infty}$ vector field along $c$.
+\end{remark}
+
+\begin{lemma}
+$\nabla_cX$ is independent of the choice of chart $(U, \phi)$.
+\end{lemma}
+
+\begin{proof}
+Let $(U,\phi)$ and $(V, \psi)$ be charts such that $c(t) \in U \cap V$. 
+Let $\phi = (x^1, \dots, x^n)$, $\psi = (y^1, \dots, y^n)$, $\partial_i := \frac{\partial}{\partial x^i}$ and $\hat{\partial}_{\alpha} := \frac{\partial}{\partial y^{\alpha}}$.
+Then $\hat{\Gamma}_{\alpha\beta}^{\gamma}$ are Christoffel symbols with respect to $(V, \psi)$ and $\Gamma_{ij}^k$ are Christoffel symbols with respect to $(U, \phi)$.
+Finally, let $\phi(c(t)) = (c^1(t), \dots, c^n(t))$ and $\psi(c(t)) = (\hat{c}^1(t), \dots, \hat{c}^n(t))$ and $X(t) = \sum_{i=1}^n X^i(t)(\partial_i)_{c(t)} = \sum_{\alpha=1}^n \hat{X}^{\alpha}(t)(\hat{\partial}_{\alpha})_{c(t)}$.
+
+It suffices to show that
+\begin{align}\label{eq:6.1}
+\sum_{\gamma=1}^n \left( \frac{d\hat{X}^{\gamma}}{dt} + \sum_{\alpha, \beta=1}^n \hat{\Gamma}_{\alpha\beta}^{\gamma}\frac{d\hat{c}^{\alpha}}{dt}\hat{X}^{\beta} \right)\hat{\partial}_{\gamma}
+= \sum_{k=1}^n \left( \frac{dX^k}{dt} + \sum_{i,j=1}^n \Gamma_{ij}^k\frac{dc^i}{dt}X^j \right)\partial_k.
+\end{align}
+
+By the transformation laws: $\hat{\partial}_{\gamma} = \sum_{k=1}^n \frac{\partial x^k}{\partial y^{\gamma}}\partial_k$, $\hat{X}^{\alpha} = \sum_{i=1}^n \frac{\partial y^{\alpha}}{\partial x^i}X^i$
+Differentiating the second with respect to $t$ yields
+\[
+\begin{aligned}
+\frac{d\hat{X}^{\gamma}}{dt} &= \sum_{i=1}^n \left[ \frac{\partial y^{\gamma}}{\partial x^i}\frac{dX^i}{dt} + \left(\frac{d}{dt}\frac{\partial y^{\gamma}}{\partial x^i}\right)X^i \right] \\
+&= \sum_{i=1}^n \left( \frac{dy^{\gamma}}{dx^i}\frac{dX^i}{dt} + X^i\sum_{j=1}^n \frac{\partial^2y^{\gamma}}{\partial x^i \partial x^j}\frac{dc^j}{dt} \right).
+\end{aligned}
+\]
+Similarly,
+\[
+\frac{d\hat{c}^{\alpha}}{dt} = \sum_{i=1}^n \frac{\partial y^{\alpha}}{\partial x^i}\frac{dc^i}{dt}.
+\]
+We also have
+\begin{align}\label{eq:6.2}
+\sum_{\gamma = 1}^n \frac{\partial^2y^{\gamma}}{\partial x^i\partial x ^j}\frac{\partial x^k}{\partial y^{\gamma}} + \sum_{\alpha, \beta=1}^n \frac{\partial^2 x^k}{\partial y^{\alpha}\partial y^{\beta}}\frac{\partial y^{\alpha}}{\partial x^i}\frac{\partial y^{\beta}}{\partial x^j} = 0.
+\end{align}
+Substituting into \autoref{lemma:christoffel_symbol_transformation} and using \eqref{eq:6.2} yields \eqref{eq:6.1}.
+
+We now just have to prove \eqref{eq:6.2}.
+\[
+\begin{aligned}
+0 = \frac{\partial}{\partial y^{\beta}}\delta_{ki} 
+&= \sum_{\alpha=1}^n \frac{\partial}{\partial y^{\beta}}\left( \frac{\partial x^k}{\partial y^{\alpha}}\frac{\partial y^{\alpha}}{\partial x^i} \right) \\
+&= \sum_{\alpha=1}^n \left(\frac{\partial x^k}{\partial y^{\alpha}}\frac{\partial}{\partial y^{\beta}}\frac{\partial y^{\alpha}}{\partial x^i}  + \frac{\partial^2 x^k}{\partial y^{\alpha}\partial y^{\beta}}\frac{\partial y^{\alpha}}{\partial x^i}\right) \\
+&= \sum_{\gamma,l=1}^n \frac{\partial x^k}{\partial y^{\gamma}}\frac{\partial x^l}{\partial y^{\beta}}\frac{\partial^2 y^{\gamma}}{\partial x^i \partial x^l} + \sum_{\alpha=1}^n \frac{\partial^2 x^k}{\partial y^{\alpha}\partial y^{\beta}}\frac{\partial y^{\alpha}}{\partial x^i}.
+\end{aligned}
+\]
+Multiplying by $\frac{\partial y^{\beta}}{\partial x^j}$ and summing over $\beta$ yields \eqref{eq:6.2}.
+\end{proof}
+
+\begin{proposition}[Properties of covariant derivative along curves]
+Let $X,Y$ be vector fields along $c:I \to M$,  $f:I \to \mathbb{R}$ a $C^{\infty}$ function and $a, b \in \mathbb{R}, t \in I$. Then
+\begin{enumerate}[label=(\arabic*)]
+    \item \label{prop:covariant_derivative_linearity}$\nabla_c(aX + bY) = a\nabla_cX + b\nabla_cY$.
+    \item \label{prop:covariant_derivative_product_rule}$\nabla_c(fX) = \frac{df}{dt}X + f\nabla_cX$.
+    \item \label{prop:covariant_derivative_leibniz}$\frac{d}{dt}\langle X, Y \rangle = \langle \nabla_cX, Y \rangle + \langle X, \nabla_cY \rangle$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\autoref{prop:covariant_derivative_linearity} and \autoref{prop:covariant_derivative_product_rule} are trivial.
+
+On a chart $(U, \phi)$, with $\phi(c(t)) = (c^1(t), \dots, c^n(t))$, we have
+\[
+X(t) = \sum_{i=1}^n X^i(t)(\partial_i)_{c(t)}, Y(t) = \sum_{j=1}^n Y^j(t)(\partial_j)_{c(t)}.
+\]
+Then (by the chain and product rules),
+\[
+\begin{aligned}
+\frac{d}{dt}\langle X, Y \rangle &= \sum_{i,j=1}^n\frac{d}{dt}\left( g_{ij}(c(t))X^i(t)Y^j(t) \right) \\
+&= \sum_{i,j=1}^n \left( \frac{dX^i}{dt}Y^jg_{ij} + X^i\frac{dY^j}{dt}g_{ij} + X^iY^j\sum_{k=1}^n \frac{\partial g_{ij}}{\partial x^k}\frac{dc^k}{dt} \right).
+\end{aligned}
+\]
+On the other hand,
+\[
+\begin{aligned}
+\langle \nabla_cX, Y \rangle &= \left\langle \sum_{i=1}\left(\frac{dX^i}{dt} + \sum_{k,l=1}^n \Gamma_{kl}^i\frac{dc^k}{dt}X^l\right)\partial_i, \sum_{l=1}^n Y^l\partial_l \right\rangle \\
+&= \sum_{i,j=1}^n \left( \frac{dX^i}{dt}Y^jg_{ij} + \sum_{k,l=1}^n \Gamma_{kl}^i\frac{dc^k}{dt}X^lY^jg_{ij} \right).
+\langle X, \nabla_cY \rangle &= \sum_{i,j=1}^n \left( X^i\frac{dY^j}{dt}g_{ij} + \sum_{k,l=1}^n \Gamma_{kl}^j\frac{dc^k}{dt}X^iY^lg_{ij} \right).
+\end{aligned}
+\]
+Combining these with \autoref{prop:christoffel_symbols} \autoref{item:christoffel_3} yields \autoref{prop:covariant_derivative_leibniz}.
+\end{proof}

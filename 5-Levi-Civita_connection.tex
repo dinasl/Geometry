@@ -1,0 +1,140 @@
+\section{Levi-Civita connection}
+
+Assume $M$ is a Riemannian manifold.
+
+\begin{definition}[Levi-Civita connection]\label{def:levi-civita_connection}
+\[
+\nabla : \underset{\in (X,Y)}{\mathcal{\mathfrak{X}(M)}\times\mathfrak{X}(M)} \to \underset{\in \nabla \times Y}{\mathfrak(M)}
+\]
+is called the \emph{covariant derivative} or \emph{Levi-Civita connection} if
+$\forall X, Y, Z \in \mathfrak{X}(M)$ and $\forall f \in C^{\infty}(M)$:
+\begin{enumerate}[label=(\arabic*)]
+    \item \label{item:levi-civita-1} $\nabla_{X+Y}Z = \nabla_X Z + \nabla_Y Z$
+    \item \label{item:levi-civita-2} $\nabla_{fX}Y = f\nabla_X Y$
+    \item \label{item:levi-civita-3} $\nabla_X(Y+Z) = \nabla_X Y + \nabla_X Z$
+    \item \label{item:levi-civita-4} $\nabla_X(fY) = X(f)Y + f\nabla_X Y$
+    \item \label{item:levi-civita-5} $\nabla_X Y - \nabla_Y X = [X,Y]$ (torsion-free)
+    \item \label{item:levi-civita-6} $X\langle Y, Z \rangle = \langle \nabla_X Y, Z \rangle + \langle Y, \nabla_X Z \rangle$ (metric compatibility)
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Fundamental theorem of Riemannian geometry]
+There exists a unique ($\exists !$) Levici-Civita connection $\nabla$ on a Riemannian manifold $M$.
+\end{theorem}
+
+\begin{proof}\label{proof:fundamental_theorem_of_riemannian_geometry}
+We start by showing uniqueness. By \autoref{item:levi-civita-6}:
+\[
+\begin{aligned}
+    X\langle Y, Z \rangle &= \langle \nabla_X Y, Z \rangle + \langle Y, \nabla_X Z \rangle\\
+    Y \langle Z, X \rangle &= \langle \nabla_Y Z, X \rangle + \langle Z, \nabla_Y X \rangle\\
+    - Z \langle X, Y \rangle &= - \langle \nabla_Z X, Y \rangle - \langle X, \nabla_Z Y \rangle
+\end{aligned}
+\]
+Summing over these and applying \autoref{item:levi-civita-5}:
+\begin{align}\label{eq:levi-civita_uniqueness}
+\langle \nabla_XY, Z\rangle &= \frac12 \{X\langle Y, Z \rangle + Y \langle Z, X \rangle - Z \langle X, Y \rangle + \langle [X,Y], Z \rangle \notag \\
+& - \langle [Y,Z], X \rangle + \langle [Z,X], Y \rangle\}
+\end{align}
+This shows uniqueness.
+
+We now show existence. Let the right-hand side of \eqref{eq:levi-civita_uniqueness} be $F_{X,Y}(Z)$.
+Then $\forall f_1, f_2 \in C^{\infty}(M)$ and $\forall Z_1, Z_2 \in \mathfrak{X}(M)$:
+\[
+F_{X, Y}(f_1 Z_1 + f_2Z_2) = f_1F_{X,Y}(Z_1) + f_2F_{X,Y}(Z_2),
+\]
+is easily verified. For a chart $(U, \phi)$, we can define
+\[
+\nabla_X^{(U,\phi)}Y := \sum_{i, j = 1}^{n}F_{X,Y}(\partial_i)g^{ij}\partial_j,
+\]
+where $(g^{ij})=(g_{ij})^{-1}$. For $Z = \sum_{k=1}^n Z^k\partial_k$, using that $\sum_{j=1}^n g^{ij}g_{jk}=\delta^i_k$, we have
+\[
+\begin{aligned}
+\langle \nabla_X^{(U,\phi)}Y, Z \rangle &= \sum_{i,j,k = 1}^n F_{X,Y}(\partial_i)g^{ij}Z^k g_{jk} \\
+&= \sum_{i=1}^n F_{X,Y}(\partial_i)Z^i = F_{X,Y}(Z).
+\end{aligned}
+\]
+Note that this is independent of the choice of chart $(U,\phi)$! This implies that for any other chart $(V, \psi)$ such that $U \cap V \neq \emptyset$, $\nabla_X^{U,\phi} = \nabla_X^{(V,\psi)}Y$.
+Thus $\nabla_X Y := \nabla_X^{(U, \phi)}Y$ yields a globally defined vector field. Direct calculation verifies all axioms \autoref{item:levi-civita-1}--\autoref{item:levi-civita-6} of \autoref{def:levi-civita_connection}.
+\end{proof}
+
+\begin{problem}
+Verify axioms \autoref{item:levi-civita-1}--\autoref{item:levi-civita-6} of \autoref{def:levi-civita_connection} for the Levi-Civita connection $\nabla$ constructed in \autoref{proof:fundamental_theorem_of_riemannian_geometry}.
+\end{problem}
+
+\begin{definition}[Christoffel symbols]\label{def:christoffel_symbols}
+For a chart $(U,\phi)$, we define functions $\Gamma_{ij}^k$ by
+\[
+\nabla_{\partial_i}\partial_j = \sum_{k=1}^n \Gamma_{ij}^k \partial_k
+\]
+called \emph{Christoffel symbols}.
+\end{definition}
+
+\begin{remark}
+$\nabla$ is NOT a tensor field, implying that $\Gamma_{ij}^k$ are not the components of a tensor.
+\end{remark}
+
+\begin{proposition}\label{prop:christoffel_symbols}
+$\forall i, j, k = 1, \dots, n$:
+\begin{enumerate}[label=(\arabic*)]
+    \item \label{item:christoffel_1} $\Gamma_{ij}^k = \sum_{l=1}^n \langle \nabla_{\partial_i}\partial_j, \partial_l\rangle g^{lk} = \frac12 \sum_{l=1}^n g^{kl}(\partial_ig_{jl}+\partial_jg_{il}- \partial_lg_{ij})$.
+    \item \label{item:christoffel_2} $\Gamma_{ij}^k = \Gamma_{ji}^k$.
+    \item \label{item:christoffel_3} $\partial_kg_{ij} = \frac{\partial g_{ij}}{\partial x^k} = \sum_{l=1}^n (\Gamma_{ik}^lg_{lj} + \Gamma_{jk}^lg_{li})$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+By \autoref{def:christoffel_symbols}: $\langle \nabla_{\partial_i}\partial_j, \partial_l \rangle = \Gamma_{ij}^k g_{kl}$.
+Multiplying by $g^{lm}$ and summing over $l$ yields the first equality \autoref{item:christoffel_1}.
+The second equality follows from \autoref{def:levi-civita_connection} with
+$X = \partial_i$, $Y = \partial_j$, $Z = \partial_l$ and $[\partial_i, \partial_j]$.
+
+\autoref{item:christoffel_2} follows from \autoref{item:christoffel_1} and the symmetry of $g_{ij}$.
+
+\autoref{item:christoffel_3} follows from \autoref{def:levi-civita_connection} with $X = \partial_k$, $Y = \partial_i$, $Z = \partial_j$ and \autoref{item:christoffel_2}.
+\end{proof}
+
+For local expressions $X = \sum_{i=1}^nX^i\partial_i$ and $Y = \sum_{j=1}Y^j\partial_j$, calculation using \autoref{def:levi-civita_connection} \autoref{item:levi-civita-1}--\autoref{item:levi-civita-4} yields
+\[
+\begin{aligned}
+\nabla_XY &= \sum_{i=1}^nX^i\nabla_{\partial_i}\left(\sum_{j=1}^nY^j\partial_j\right) \\
+&= \sum_{i=1}^nX^i\left(\sum_{j=1}^n(\partial_iY^j \partial_j + Y^j\sum_{k=1}^n\Gamma_{ij}^k\partial_k)\right) \\
+&= \sum_{k=1}^n \left\{X(Y^k) + \sum_{i,j=1}^n \Gamma_{ij}^kX^iY^j\right\}\partial_k.
+\end{aligned}
+\]
+A key fact is that $(\nabla_XY)_p$ depends only on $X_p$ and the behaviour of $Y$ along $X_p$ direction at $p$.
+Thus, for $v \in T_pM$, we define
+\[
+\nabla_vY := (\nabla_XY)_p \text{ such that } X_p = v,
+\]
+which is well-defined and independent of the extension $X$.
+
+\begin{lemma}\label{lemma:christoffel_symbol_transformation}
+Let $(U,\phi)$ and $(V, \psi)$ be charts such that $U \cap V \neq \emptyset$.
+Let $\phi = (x^1, \dots, x^n)$ and $\psi = (y^1, \dots, y^n)$ and $\Gamma_{ij}^k, \hat{\Gamma}_{ij}^k$
+be Chistoffel symbols with respect to each chart. Then $\forall \alpha, \beta, \gamma = 1, \dots, n$:
+\[
+\hat{\Gamma}_{\alpha\beta}^{\gamma} = \sum_{k=1}^n \left( \frac{\partial^2x^k}{\partial y^{\alpha}\partial y^{\beta}} + \sum_{i,j=1}^n \frac{\partial x^i}{\partial y^{\alpha}}\frac{\partial x^j}{\partial y^{\beta}}\Gamma_{ij}^k \right)\frac{\partial y^{\gamma}}{\partial x^k}.
+\]
+\end{lemma}
+
+\begin{proof}
+By the transformation law $\frac{\partial}{\partial y^{\alpha}} = \sum_{i=1}^n \frac{\partial x^i}{\partial y^{\alpha}}\frac{\partial}{\partial x^i}$:
+\[
+\nabla_{\frac{\partial}{\partial y^{\alpha}}} \frac{\partial}{\partial y^{\beta}} = \sum_{i,j=1}^n \left( \frac{\partial x^i}{\partial y^{\alpha}} \left(\frac{\partial}{\partial x^i}\frac{\partial x^j}{\partial y^{\beta}}\right) \frac{\partial}{\partial x^j} + \frac{\partial x^i}{\partial y^{\alpha}}\frac{\partial x^j}{\partial y^{\beta}}\sum_{k=1}^n\Gamma_{ij}^k\frac{\partial}{\partial x^k}\right).
+\]
+Using $\frac{\partial}{\partial x^i} = \sum_{\gamma = 1}^n \frac{\partial y^{\gamma}}{\partial x^i}\frac{\partial}{\partial y^{\gamma}}$:
+\[
+\sum_{i=1}^n \frac{\partial x^i}{\partial y^{\alpha}}\left(\frac{\partial}{\partial x^i}\frac{\partial x^j}{\partial y^{\beta}}\right) = \sum_{i,\gamma=1}^n \frac{\partial x^i}{\partial y^{\alpha}}\frac{\partial y^{\gamma}}{\partial x^i}\frac{\partial^2x^j}{\partial y^{\gamma}\partial y^{\beta}} = \frac{\partial^2x^j}{\partial y^{\alpha}\partial y^{\beta}}.
+\]
+Note that $\frac{\partial}{\partial x^i}\frac{\partial x^j}{\partial y^{\beta}} = \frac{\partial}{\partial y^{\beta}}\left(\frac{\partial x^j}{\partial x^i}\right) = \frac{\partial}{\partial y^{\beta}}\delta_i^j = 0$.
+Thus,
+\[
+\begin{aligned}
+\sum_{\gamma = 1}^n \hat{\Gamma}_{\alpha\beta}^{\gamma}\frac{\partial}{\partial y^{\gamma}}
+&= \nabla_{\frac{\partial}{\partial y^{\alpha}}} \frac{\partial}{\partial y^{\beta}} \\
+&= \sum_{k=1}^n \left(\frac{\partial^2x^k}{\partial y^{\alpha}\partial y^{\beta}} + \sum_{i,j=1}^n \frac{\partial x^i}{\partial y^{\alpha}}\frac{\partial x^j}{\partial y^{\beta}}\Gamma_{ij}^k \right)\frac{\partial}{\partial x^k} \\
+&= \sum_{\gamma=1}^n\sum_{k=1}^n \left(\frac{\partial^2x^k}{\partial y^{\alpha}\partial y^{\beta}} + \sum_{i,j=1}^n \frac{\partial x^i}{\partial y^{\alpha}}\frac{\partial x^j}{\partial y^{\beta}}\Gamma_{ij}^k \right)\frac{\partial y^{\gamma}}{\partial x^k}\frac{\partial}{\partial y^{\gamma}}.
+\end{aligned}
+\]
+\end{proof}
