@@ -1,0 +1,107 @@
+\begin{definition}
+    A vector field $X$ along $C:I \to M$ is parallel if $\nabla_C X = 0$ $(\forall t \in I)$.
+\end{definition}
+
+\begin{lemma}
+    $X,Y$ are parallel vector fields along $C$ $\implies$ $\langle X(t), Y(t) \rangle$ is independent of $t \in I$.
+    \label{lemma:parallel_vector_fields_inner_product_constant}
+\end{lemma}
+\begin{proof}
+\autoref{prop:covariant_derivative_leibniz}:
+\[
+\begin{aligned}
+\frac{d}{dt} \langle X(t), Y(t) \rangle &= \langle \nabla_C X(t), Y(t) \rangle + \langle X(t), \nabla_C Y(t) \rangle \\
+\end{aligned}
+\]
+\end{proof}
+
+\begin{proposition}
+    $\forall t_0 \in I$ and $\forall v \in T_{C(t_0)}M$, $\exists!$ parallel vector field $X$ along $C$ such that $X(t_0) = v$.
+\end{proposition}
+\begin{proof}
+    On a chart $(U, \phi)$, let
+    \[
+    \begin{aligned}
+        \phi(c(t)) &= (c^1(t), \dots, c^n (t)), X(t) = \sum^n_{i=1} X^i (t)(\partial_i)_{c(t)}
+    \end{aligned}
+    \]
+    Local expression of $\nabla_C X = 0$:
+    \[\begin{aligned}
+        \frac{dX^k}{dt}& + \sum^n_{i,j=1} \Gamma_{ij}^k \frac{dc^i}{dt} X^j = 0, k =1, \dots, n
+    \end{aligned}\]
+    this is a First-order linear ODE system.
+    By existence and uniqueness of ODEs, given $v = \sum X^k(t_0)(\partial_k)$, a unique solution exists locally.
+    Since the equation $\nabla_C X = 0$ is independent of coordinates, local solutions patch together to yield $X(t)$ $\forall t \in I$.
+\end{proof}
+
+\begin{definition}
+    $\forall t_0, t \in I$ and $\forall v \in T_{c(t_0)}M$, Let $X$ be the parallel vector field along $c$ such that $X(t_0) = v$.
+    Define $P_{c(t)}v:= X(t)$ the map 
+    \[\begin{aligned}
+        P_{c(t)} : T_{c(t_0)}M \to T_{c(t)}M
+    \end{aligned}\]
+    Is the parallel transport along $c$.
+\end{definition}
+\begin{proposition}
+    $\forall t_0,t \in I$, the parallel transport $P_{c(t)}: T_{c(t_0)}M \to T_{c(t)}M$ is a linear isometry.
+    \label{prop:parallel_transport_isometry}
+\end{proposition}
+\begin{proof}
+    Let $a,b \in \mathbb{R}$ and $v,w \in T_{c(t_0)}M$. Let $X,Y$ be parallel vector fields along $c$ such that $X(t_0) = v$ and $Y(t_0) = w$. 
+    \[
+    \begin{aligned}
+        \implies X(t) = P_{c(t)}v, Y(t) = P_{c(t)}w.
+    \end{aligned}
+    \]
+    By \autoref{prop:covariant_derivative_linearity} $\nabla_c(aX + bY) = a\nabla_cX + b\nabla_cY = 0$.
+    $aX+bY$ is parallel along $c$ with $(aX+bY)(t_0) = av + bw$.
+    Thus, $P_{c(t)}(av + bw) = (aX + bY)(t) = aP_{c(t)}v + bP_{c(t)}w$. $P_{c(t)}$ is linear.
+    Isometry follows from \autoref{lemma:parallel_vector_fields_inner_product_constant}.
+    $\langle P_{c(t)}v, P_{c(t)}w \rangle = \langle X(t), Y(t) \rangle = \langle X(t_0), Y(t_0) \rangle = \langle v, w \rangle$.
+\end{proof}
+
+\begin{proposition}
+    For any $t \in I$ and a $C^{\infty}$ vector field $Y$ along $c$:
+    \[\begin{aligned}
+        (\nabla_c Y)(t) = \lim_{h \to 0} \frac{P_{c(t)} Y(t+h) - Y(t)}{h}
+    \end{aligned}\]
+    where the limit is with respect to the standard top. on $T_{c(t)}M$.
+\end{proposition}
+\begin{proof}
+    Fix $t\in I$ and let ${e_i}_{i=1}^{\infty}$ be a basis of $T_{c(t)}M$.
+    Let $E_i(t) = e_i \implies P_{c(t')}e_i = E_i(t')$ $\forall t' \in I$.
+    By \autoref{prop:parallel_transport_isometry}, $\{E_i(t')\}_{i=1}^{n}$ is a basis of $T_{c(t')}M$.
+    Express $Y$ as $Y(t') = \sum_{i=1}^n Y^i(t')E_i(t')$.
+    Since $\nabla_c E_i = 0$,
+    \[\begin{aligned}
+        \nabla_c Y = \sum^n_{i=1} \left( \frac{dY^i}{dt}E_i + Y^i \nabla_c E_i\right) = \sum_{i=1}^n \frac{dY^i}{dt} E_i 
+    \end{aligned}\]
+    Conversely, by uniqueness of parallel transport $P_{c(t)}E_i (t+h) = E_i(t)$:
+    \[\begin{aligned}
+        P_{c(t)} Y(t+h) &= \sum_{i=1}^n Y^i(t+h) P_{c(t)} E_i(t+h) \\
+        &= \sum_{i=1}^n Y^i(t+h) E_i(t).
+    \end{aligned}\]
+    Thus 
+    \[\begin{aligned}
+        \lim_{h \to 0} &\frac{P_{c(t)}Y(t+h)-Y(t)}{h} = \lim_{h \to 0} \sum^n_{i=1} \frac{Y^i(t+h)-Y(t)}{h} E_i (t) \\
+        &= \sum_{i=1}^n \frac{dY^i}{dt}(t)E_i (t)
+    \end{aligned}\]
+\end{proof}
+
+\subsection{Covariant derivative along maps}
+Let $M$ be an n-dimensional Riemannian manifold, $N$ a differentiable manifold, $\xi:N \to M$ a $C^{\infty}$ map.
+\begin{definition}
+    A map $X: N \owns p \to X_p \in T_{\xi(p)}M$ is a  vector field along $\xi$, $X$ is $c^{\infty}$ if $\forall$ chart $(U, \phi)$ of $M$ and $\forall (V, \psi)$ of $N$ such that $\xi(v) \subset U$,
+    the components $X^i: V \to \mathbb{R}$ in $X_p = \sum_{i=1}^n X^i(p)(\partial_i)_{\xi(p)}$, $p\in V$ are $C^{\infty}$, where 
+$\phi = (x^1, \dots, x^n)$ and $\partial_i := \frac{\partial}{\partial x^i}$.
+Henceforth, vector fields along maps are assumed $c^{\infty}$ unless otherwise noted.
+\end{definition}
+\begin{definition}
+    (1) For a vector field $X$ on $M$,
+    \[\begin{aligned}
+        X \circ \xi : N \owns p \to X_{\xi(p)} \in T_{\xi(p)}M
+    \end{aligned}\]
+    defines a vector field $X \circ \xi$ along $\xi$.
+
+    (2) For a vector field $Y$ on $N$, time 39.51
+\end{definition}
