@@ -100,7 +100,7 @@ On the other hand,
 \[
 \begin{aligned}
 \langle \nabla_cX, Y \rangle &= \left\langle \sum_{i=1}\left(\frac{dX^i}{dt} + \sum_{k,l=1}^n \Gamma_{kl}^i\frac{dc^k}{dt}X^l\right)\partial_i, \sum_{l=1}^n Y^l\partial_l \right\rangle \\
-&= \sum_{i,j=1}^n \left( \frac{dX^i}{dt}Y^jg_{ij} + \sum_{k,l=1}^n \Gamma_{kl}^i\frac{dc^k}{dt}X^lY^jg_{ij} \right).
+&= \sum_{i,j=1}^n \left( \frac{dX^i}{dt}Y^jg_{ij} + \sum_{k,l=1}^n \Gamma_{kl}^i\frac{dc^k}{dt}X^lY^jg_{ij} \right). \\
 \langle X, \nabla_cY \rangle &= \sum_{i,j=1}^n \left( X^i\frac{dY^j}{dt}g_{ij} + \sum_{k,l=1}^n \Gamma_{kl}^j\frac{dc^k}{dt}X^iY^lg_{ij} \right).
 \end{aligned}
 \]
@@ -170,13 +170,14 @@ Combining these with \autoref{prop:christoffel_symbols} \autoref{item:christoffe
     $\langle P_{c(t)}v, P_{c(t)}w \rangle = \langle X(t), Y(t) \rangle = \langle X(t_0), Y(t_0) \rangle = \langle v, w \rangle$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:covariant_derivative_along_curves_limit}
     For any $t \in I$ and a $C^{\infty}$ vector field $Y$ along $c$:
     \[\begin{aligned}
         (\nabla_c Y)(t) = \lim_{h \to 0} \frac{P_{c(t)} Y(t+h) - Y(t)}{h}
     \end{aligned}\]
     where the limit is with respect to the standard top. on $T_{c(t)}M$.
 \end{proposition}
+
 \begin{proof}
     Fix $t\in I$ and let ${e_i}_{i=1}^{\infty}$ be a basis of $T_{c(t)}M$.
     Let $E_i(t) = e_i \implies P_{c(t')}e_i = E_i(t')$ $\forall t' \in I$.
