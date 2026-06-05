@@ -1,2 +1,143 @@
 \section{First Variation Formular and Geodesics}
-Consider a variation of a $C^{\infty}$ curve $c : [0, l] -to M$ on a Riemannian manifold $M$.
+Consider a variation of a $C^{\infty}$ curve $c : [0, l] \to M$ on a Riemannian manifold $M$.
+
+\begin{proposition}
+Assumption Let $\epsilon > 0 $ and $C: (-\epsilon, \epsilon) \times [0,l] \to M$
+be a $C^{\infty}$ map.
+Set 
+\[
+\begin{aligned}
+    c_{s(t)} = c^t(s) := c(s,t), \quad (s,t) -in (-\epsilon, \epsilon) \times [0,l], \\
+\end{aligned}
+\]
+Assume $c_0 (t)$ has constant speed at $s=0$, $\|c_0'(t)\| = \|c_0'(0)\|$, $t\in [0,l]$.
+Define the variation vector field $X(t)$ and tangent field $T(s,t)$ by
+\[
+\begin{aligned}
+    X(t) := (c^t)'(0), \quad t \in [0,l] \\
+    T(s,t) := c'_{s(t)}, \quad (s,t) \in (-\epsilon, \epsilon) \times [0,l].
+\end{aligned}
+\]
+Note: By definition, $X(t) = dc (\frac{\partial}{\partial s})|_{s=0} \quad T(s,t) = dc(\frac{\partial}{\partial t})$
+\end{proposition}
+
+\begin{problem}
+    Let $c:[0,l] \to M$ be a $C^{\infty}$ curve and $X(t)$
+    a vector field along $c$. Show $\exists$ a variation $\{c_s\}_{s \in (-\epsilon, \epsilon)}$
+    such that $c_0 = c $ with variation vector field $X(t)$.
+    \label{prob:10}
+\end{problem}
+
+\begin{theorem}[First Variation Formula]
+    For a variation $\{c_s\}$ of $c_0$ with variation vector field $X$:
+    \[
+    \begin{aligned}
+        \frac{d}{ds} L(c_s)|_{s=0} = \frac{1}{\|c_0'(0)\|} \left( [\langle c_0', C \rangle_{t=0}^{t=l}]- \int_0^l \langle \nabla_{c_0}c_0', X \rangle dt \right)
+    \end{aligned}
+    \]
+\end{theorem}
+
+\begin{proof}
+    \[
+    \begin{aligned}
+        \frac{d}{ds} L(c_s) |_{s=0} = \int_0^l \frac{d}{ds} \frac{d}{ds} \langle c_s'(t),c_s'(t) \rangle^{1/2}|_{s=0} dt \\
+        = \frac{1}{2 \|c_0'(0)\|} \int_0^l \frac{d}{ds} \langle c_s'(t), c_s'(t) \rangle |_{s=0} dt \\
+    \end{aligned}
+    \]
+    By \autoref{prop:cov_deriv_linearity_first_arg} $\frac{1}{2} \frac{d}{ds} \langle c_s', c_s' \rangle = \langle \nabla_{c_s'} c_s'(t), c_s'(t) \rangle|_{s=0} = \langle \nabla_{c^t}T, T \rangle |_{s=0}$
+    Since $[\frac{\partial}{\partial s}, \frac{\partial}{\partial t}] = 0$, \autoref{prop:cov_deriv_linearity_first_arg} implies
+    \[
+    \begin{aligned}
+        \nabla_{c^t}T = \nabla^c_{\partial / \partial s} dc (\frac{\partial}{\partial s}) = \nabla_{c_0}X
+    \end{aligned}
+    \]
+    Using \autoref{prop:covariant_derivative_leibniz} again,
+    \[
+    \begin{aligned}
+        \langle \nabla_{c_0} X, T \rangle &= \frac{d}{dt} \langle T, X \rangle |_{s=0} - \langle \nabla_{c_0}T, X \rangle \\
+        &= \frac{d}{dt} \langle c_0'(t), X \rangle - \langle \nabla_{c_0}, X \rangle
+    \end{aligned}
+    \]
+    Thus
+    \[
+    \begin{aligned}
+        \frac{d}{ds} L(c_s)|_{s=0} &= \frac{1}{\|c_0'(0)\|} \int_0^l \left( \frac{d}{dt} \langle c_0'(t),X \rangle - \langle \nabla_{c_0}c_0', X \rangle\right)dt \\
+        &= \frac{1}{\|c_0'(0)\|} \left( [c_0', X]_{t=0}^{t=l} - \int_0^l \langle \nabla_{c_0}c_0', X \rangle dt\right)
+    \end{aligned}
+    \]
+\end{proof}
+
+\begin{proposition}
+    If $c$ is a geodisc, it has constant spees, in other word $\|c_{c(t)'}\|$ is independent of $t$.
+\end{proposition}
+
+\begin{proof}
+    Apply \autoref{lemma:parallel_vector_fields_inner_product_constant} with $X(t) = Y(t) = c'(t)$
+\end{proof}
+
+\begin{theorem}
+    If a constand speed $C^{\infty}$ curve $c : [0,l] \to M$
+    is the shortest among all $C^{\infty}$ curves connecting $p = c(0)$
+    and $g = c(l)$, then $c$ is a geodesic.
+    \label{thm:7.5}
+\end{theorem}
+
+\begin{proof}
+    Assume that $c$ is the shortest curve but not a geodesic. Then $\exists t_0 \in (0,l)$ such that $(\nabla_c c')(t_0) \neq 0$.
+    Take a local coordinate. nhd $(v, \phi)$ such that $c(t_0) \in U$.
+    By continuite, $\exists \delta > 0$ such that $(\nabla_c c')(t) \neq 0$ for $|t-t_0|< \delta$.
+    Let $f: [0,l] -to \mathbb{R}$ be a $C^{\infty}$-function such that $f(t)>0$ for $|t-t_0|< \delta$ and $f(t) = 0$ otherwise.
+    By \autoref{prob:10}, $\exists$ variation $\{c_s\}$ with variation vector field
+    $X(t) := f(t) \cdot \nabla_c c'(t)$. Then :
+    $\langle (\nabla_c c')(t), X(t) \rangle = f(t) \| \nabla_c c'(t) \|^2$
+    which is positive for $|t-t_0|< \delta$ and zero otherwise.
+    By the First Variation Formula:
+    \[
+    \begin{aligned}
+        \frac{d}{dt} L(c_s)|_{t=0} = - \frac{1}{\|c'(0)\|} \int_{t_0-\delta}^{t_0 + \delta} f(t) \|(\nabla_c c')(t)\|^2 dt <0
+    \end{aligned}
+    \]
+    This contradicts the minimality of $L(c_0)$
+\end{proof}
+For a coordinate chart $(U, \phi)$ of $M$, Let
+$\phi(c(t)) = (c^1(t), \dots, c^n(t))$. Then $\nabla_c c' = 0$ is:
+\[
+\begin{aligned}
+    \frac{d^2c^k}{dt^2} + \sum_{ij=1}^n \Gamma_{ij}^k \frac{dc^i}{dt} \cdot \frac{dc^j}{dt} = 0, \quad k = 1, \dots, n
+\end{aligned}
+\]
+Rewriting with $X^k = \frac{dc^k}{dt}$, we have
+\[
+\begin{aligned}
+    \frac{d X^k}{dt} + \sum_{ij = 1}^n \Gamma_{ij}^k X^i (t) X^j (t) = 0
+\end{aligned}
+\]
+This is a first order nonliner ordiner differential equation.
+
+\begin{proposition}
+    $\forall p \in M$ and $\forall v \in T_p M$, $\exists \delta>0$ and a unique geodesic
+    $c: (-\delta, \delta) \to M$ such that $c(0) = p$ and $c'(0) = v$.
+    \label{prop:7.6}
+\end{proposition}
+
+\begin{proposition}
+    Let $a<0<b$. If two geodesics $\sigma, \tau : (a,b) \to M$ satisfy $\sigma(0) = \tau(0)$ and $\sigma'(0) = \tau'(0)$, then $\sigma(t) = \tau(t) \quad \forall t \in (a,b)$.
+    \label{prop:7.7}
+\end{proposition}
+
+\begin{proof}
+    Show $\sigma(t) = \tau(t)$ for $t \in [0,b)$.
+    Let
+    \[
+    \begin{aligned}
+        t_0 : \sup \{s \in [0,b) | \sigma(t) = \tau(t) \forall t \in [0,s)\}
+    \end{aligned}
+    \]
+    By \autoref{prop:7.6}, $t_0>0$. Assume $t_0 <b$.
+    Let $t_i := t_0 - \frac{1}{i} \quad(i >> 0)$
+    Since $\sigma,\tau$ are continous and $\sigma(t_i) = \tau(t_i)$, then $\sigma(t_0) = \tau(t_0)$.
+    $\sigma = \tau$ on $[0, t_0] \implies \sigma'(t_0)=\tau'(t_0)$ 
+    By \autoref{prop:7.6}, $\sigma= \tau$ in a nhd of $t_0$, contradicting the definition of $t_0$
+\end{proof}
+
+Time 49.27
