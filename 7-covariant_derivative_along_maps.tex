@@ -103,5 +103,114 @@ Henceforth, vector fields along maps are assumed $c^{\infty}$ unless otherwise n
     \end{aligned}\]
     defines a vector field $X \circ \xi$ along $\xi$.
 
-    (2) For a vector field $Y$ on $N$, time 39.51
+    (2) For a vector field $Y$ on $N$
+    $d \xi(Y) : N \owns p \to d \xi_p(Y_p) \in T_{\xi(p)}M$, defines a vector field $d \xi(Y)$ along $\xi$.
 \end{definition}
+
+\begin{definition}
+    Let $X$ be a vector field along a $C^{\infty}$ map $\xi:N \to M$
+    and $v \in T_p N (p\in N)$. Let $c:I \to N$ be a $C^{\infty}$ curve such that
+    $c(0) = p, c'(0) = v$. Define the covariant derivative $\nabla_v^{\xi}X$ of $X$ in the direction $v$ ad
+    \[
+    \begin{aligned}
+        \nabla_v^{\xi} := \left(\nabla_{\xi \circ c} X \circ c  \right)(0) \in T_{\xi(p)}M
+    \end{aligned}
+    \]
+    where the right hand side is the covariant derivative of the vector field $X \circ c$ along the curve $\xi \circ : I \to M$
+\end{definition}
+
+\begin{lemma}
+    Let $X$ be a vector field along $\xi$ locally expressed as $X_p = \sum_{i=1}^n X^i(p)(\partial_i)_{\xi(p)}$ on any chart of $M$.
+    Then $\nabla_v^{\xi}X = \sum_{i=1}^n\{(v X^i)(\partial_i)_{\xi(p)}+ X^i(p) \nabla_{d \xi_p(v)}\partial_i\}$
+    In particular, $\nabla_v^{\xi}X$ is well-defined (independent of c)
+    \label{lemma:independence_of_nabla}
+\end{lemma}
+
+\begin{proof}
+    Using parallel transport
+    \[
+    \begin{aligned}
+        P_{\xi \circ c(0)}& : T_{\xi \circ c(t)}M \to T_{\xi(p)}M \text{ along } \xi \circ c \\
+        & P_{\xi \circ c(0)} X_{c(t)} -X_p\\
+        &= \sum_{i=1}^n \{X^i (c(t)) P_{\xi \circ c(0) }(\partial_i)_{\xi \circ c(t)} - X^i(p) (\partial_i)_{\xi(p)}\} \\
+        &= \sum_{i=1}^n [\{X^i(c(t)) - X^i(p)\}P_{\xi \circ c(0)}(\partial_i)_{\xi \circ c(t)} + X^i(p)\{P_{\xi \circ c(0)}(\partial_i)_{\xi \circ c(t)} - (\partial_i)_{\xi(p)}\}]
+    \end{aligned}
+    \]
+    Dividing by $t$, taking $t \to 0$, and applying \autoref{prop:parallel_transport_isometry}
+    \[
+    \begin{aligned}
+        \nabla_v^{\xi}X &= (\nabla_{\xi \circ c} X \circ c)( 0) &= \sum_{i=1}^n \{(v X^i)(\partial_i)_{\xi(p)} + X^i(p) \lim_{t \to 0} \frac{P_{\xi \circ c(0)}(\partial_i)_{\xi \circ c(t)} - (\partial_i)_{\xi(p)}}{t}\} 
+    \end{aligned}
+    \]
+    Since $(\xi \circ c)'(0) = d \xi_p(c'(0)) = d \xi_p(v)$, we have $(\nabla_{\xi \circ c} \partial_i)(0) = \nabla_{d \xi_p(v)} \partial_i$.
+\end{proof}
+
+\begin{proposition}
+    Let $v,w \in T_p N (p \in N)$, $X,Y$ be vector fields along $\xi, f:N \to \mathbb{R}$ be a $C^{\infty}$ function. 
+    and $a,b \in \mathbb{R}$. Then
+    \begin{enumerate}
+        \item \label{prop:cov_deriv_linearity_first_arg} $\nabla_{av + bw}^{\xi}X = a \nabla_v^{\xi}X + b \nabla_w^{\xi}X$.
+        \item \label{prop:cov_deriv_linearity_second_arg} $\nabla_v^{\xi}(aX + bY) = a \nabla_v^{\xi}X + b \nabla_v^{\xi}Y$.
+        \item \label{prop:cov_deriv_leibniz} $\nabla_v^{\xi}(fX) = (vf) X_p + f(p) \nabla_v^{\xi}X$.
+        \item \label{prop:cov_deriv_pullback_vector_field} For a vector field $Z$ on $M$, $\nabla_v^{\xi}(Z \circ \xi) = \nabla_{d \xi_p(v)} Z$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    (1) For a vector field $X,Y$ on $N$,
+    \[
+    \begin{aligned}
+        \nabla_x^{\xi} (d \xi (Y)) - \nabla_Y^{\xi}(d \xi (X)) = d \xi([X,Y])
+    \end{aligned}
+    \]
+    (2) For $v \in T_p N \quad (p \in N)$ and vector field $X,Y$ along $\xi$ 
+    $v \langle X, Y \rangle = \langle \nabla_v^{\xi}X, Y_p \rangle + \langle X_p, \nabla_v^{\xi}Y \rangle$. 
+\end{proposition}
+
+\begin{proof}
+    (1) On a chart around $\xi(p)$, locally exepress
+    \[
+    \begin{aligned}
+        &d \xi(X)_p = \sum_{i=1}^n X^i(p)(\partial_i)_{\xi(p)} \\
+        &d \xi(Y)_p = \sum_{i=1}^n Y^i(p)(\partial_i)_{\xi(p)}
+    \end{aligned}
+    \]
+By \autoref{lemma:independence_of_nabla} and $\Gamma_{ij}^k = \Gamma_{ji}^k$,
+\[
+\begin{aligned}
+    \nabla_X^{\xi} = \sum_{k=1}^i \{XY^k+ \sum_{i,j=1}^n \Gamma_{ij}^k X^i x^j\} \partial_k \\
+    \nabla_Y^{\xi} = \sum_{k=1}^i \{YX^k+ \sum_{i,j=1}^n \Gamma_{ij}^k X^i x^j\} \partial_k
+\end{aligned}
+\]
+$\nabla_X^{\xi} (d \xi(Y)) - \nabla_Y^{\xi}(d \xi(X)) = \sum_{k=1}^n (XY^k - YX^k) \partial_k$.
+Let $x^k$ be coordinate components
+\[
+\begin{aligned}
+    d \xi&([X,Y])(x^k) = [X,Y](x^k \circ \xi) \\
+    &= X(Y(x^k \circ \xi)) - Y(X(x^k \circ \xi)) \\
+    &= X(d \xi (Y)x^k) - Y(d \xi (X)x^k) \\
+    &= XY^k - YX^k
+\end{aligned}
+\]
+Hence $d \xi([X,Y]) = \sum_{k=1}^n d \xi([X,Y])(x^k) \partial_k = \sum_{k=1}^n (XY^k - YX^k) \partial_k$.
+
+(2) Let $C:I \to N$ be a $C^{\infty}$ curve such that $C(0) = p, C'(0) = v$. Set $X(t) = X_{C(t)}, Y(t) = Y_{C(t)}$.
+(Vector field along $\xi \circ C$). Parallel transports
+\[
+\begin{aligned}
+    &P_{\xi \circ c(t)} : T_{\xi \circ c(0)}M \to T_{\xi \circ c(t)}M \\
+    &P_{\xi \circ c(0)} : T_{\xi \circ c(t)}M \to T_{\xi \circ c(0)}M
+\end{aligned}
+\]
+are inverse isometries to eachother. (cf. \autoref{prop:parallel_transport_isometry})
+Thus 
+\[
+\begin{aligned}
+    &\langle X(t), Y(t) \rangle - \langle X(0), Y(0) \rangle \\
+    &= \langle X(t), Y(t) \rangle - \langle X(0), Y(0) \rangle - \langle P_{\xi \circ c(0)} X(t), Y(t) \rangle + \langle X(0), P_{\xi \circ c(0)} Y(t) \rangle \\
+    &= \langle X(t) - P_{\xi \circ c(0)} X(t), Y(t) \rangle + \langle X(0), P_{\xi \circ c(0)} Y(t) - Y(0) \rangle \\
+    &= \langle P_{\xi \circ c(0) X(t) - X(0)}, P_{\xi \circ c(0)} Y(t) \rangle + \langle X(0), P_{\xi \circ c(0)} Y(t) - Y(0) \rangle
+\end{aligned}
+\]
+Divide by $t$, let $t \to 0$, and apply \autoref{prop:parallel_transport_isometry}
+\end{proof}
