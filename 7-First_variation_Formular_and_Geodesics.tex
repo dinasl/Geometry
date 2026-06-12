@@ -140,4 +140,83 @@ This is a first order nonliner ordiner differential equation.
     By \autoref{prop:7.6}, $\sigma= \tau$ in a nhd of $t_0$, contradicting the definition of $t_0$
 \end{proof}
 
-Time 49.27
+\begin{definition}
+    A geodesic $c(t)$ extended to its maximal possible somain in both directions is a maximal geodesic.
+    \label{def:7.8}
+\end{definition}
+
+For $p \in M$, $v \in T_p M$ ,let $\gamma_v : J_v \to M$ be the maximal geodesic such thath 
+$\gamma_v(0) = p$, $\gamma_v'(0) = v$. Note:
+
+\begin{enumerate}
+    \item $J_v \subset \mathbb{R}$ is an open interval containing $0$.
+    \item $\forall a,t \in \mathbb{R}$, $\forall v \in TM$ \\
+    $t\in J_{av} \equiv at \in J_v$ and $\gamma_{av}(t) = \gamma_v(at)$
+    \item $\|\gamma_v'(t)\| = const$ $\implies$ solution of the geodesic equation do not explode within coordinate charts and extend to the boundary.
+\end{enumerate}
+
+\begin{proposition}
+    For $\{t_i\}_{i=1}^{\infty} \subset J_v$, if $t_i \to \sup{J_v}$ (or $\inf{J_v}$), 
+    then  $\{\gamma_v(t_i)\}_{i=1}^{\infty}$ does not converge in $M$.
+    \label{prop:7.9}
+\end{proposition}
+
+\begin{proposition}
+    $\forall p \in M,\quad v \in T_pM, \quad t_0 \in J_V$,
+    $\exists O \subset TM : \text{neighbourhood of } v$ such that $\forall w \in O, t_0 \in J_w$.
+    Moreover, 
+    \[
+    \begin{aligned}
+        TM &\to M \text{ is } C^{\infty} \\
+        v &\to \gamma_v(t_0)
+    \end{aligned}
+    \]
+    \label{prop:7.10}
+\end{proposition}
+
+\begin{problem}
+    Let $(\bar{M}, \bar{g})$ be a Riemannian manifold, $M \subset \bar{M}$ a submanifold,
+    and $\bar{\nabla}, \nabla$ be the respective Levi-Cevita connections.
+    $\forall p \in M$, let $\pi: T_p \bar{M} \to T_pM$ be the orthogonal projection.
+    \textbf{Show}: $(\nabla_X Y)_p = \pi ((\bar{\nabla}_X Y)), \quad X,Y \in \mathbb{X}(M)$
+    \label{prob:11}
+\end{problem}
+
+\begin{example}
+    Find the geodesic of $\gamma$ with arc-lenght parameter in the 2-dimensional unit sphere 
+    $\mathbb{S}^2 \subset \mathbb{R}^3$. By \autoref{prob:11}.
+    \[
+    \begin{aligned}
+        \nabla_{\gamma} \gamma' = \pi (\gamma''(t)) = 0,
+    \end{aligned}
+    \]
+    here, $\pi : \mathbb{R}^3 \to T_p \mathbb{S}^2, \quad (p \in \mathbb{S}^2)$ is the orthogonal projection.
+    This implies that $\gamma''(t)$ is parallel to the line segment connecting $O$ with $\gamma(t)$. Thus $\exists f(t)$ such that
+    $\gamma''(t) = f(t) \cdot \gamma(t)$.
+    Differentiating $\|\gamma(t)\|^2_{\mathbb{R}^3} = 1$ twice,
+    \[
+    \begin{aligned}
+        0 =& \frac{d}{dt} \langle \gamma(t), \gamma(t) \rangle_{\mathbb{R}^3} = 2 \langle \gamma'(t), \gamma(t) \rangle_{\mathbb{R}^3} \\
+        &f(t) = \langle \gamma''(t), \gamma(t) \rangle_{\mathbb{R}^3} = - \langle \gamma'(t), \gamma'(t) \rangle_{\mathbb{R}^3} = -1
+    \end{aligned}
+    \]
+    We obtain $\gamma''(t) + \gamma(t) = 0$. 
+
+    $\gamma(t) = cos(t) \gamma(0) + sin(t) \gamma'(0)$ which represents a great circle.
+\end{example}
+
+\begin{problem}
+    Let $H:= \{(x,y) \in \mathbb{R}^2 | y>0 \}$ be the upper half-plane.
+    The hyperbolic plane $(H,g)$ is defined by the metric $g = \frac{dx^2+ dy^2}{y^2}$.
+    Show that the geodesic equation are:
+    \[
+    \left\{
+    \begin{array}{ll}
+        &x''(t)- \frac{2 x'(t) y'(t)}{y(t)} = 0 \\
+        &y''(t)+ \frac{(x'(t))^2 - (y'(t))^2}{y(t)} = 0
+    \end{array} 
+    \right.
+    \]
+    (Note: Assuming unnit speed $\frac{(x'(t))^2 + (y'(t))^2}{y(t)^2} = 1$, the geodesic $(H,g)$ are vertical half-lines or semicircles centered on the $x$-axis.)
+     \label{prob:12}
+\end{problem}
