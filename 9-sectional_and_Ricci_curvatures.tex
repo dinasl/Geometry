@@ -1,0 +1,151 @@
+\section{Sectional and Ricci curvatures}
+
+Let $M$ be a Riemannian manifold.
+
+\begin{lemma}\label{lemma:9.1}
+$\forall p \in M$, let $\sigma \subset T_pM$ be a 2-dimensional subspace. For any basis $\{u,v\}$ of $\sigma$,
+\[
+K_{\sigma} := \frac{\langle R(u,v) u\rangle}{||u\times v||^2}
+\]
+is indendent of $\{u,v\}$, where
+\[
+||u\times v|| := \sqrt{||u||^2 ||v||^2 - \langle u,v\rangle^2}
+\]
+is the area of the parallelogram spanned by $u$, $v$.
+\end{lemma}
+
+\begin{proof}
+Fix an orthonormal basis $\{e_1, e_2\}$ of $\sigma$ $\forall \{u,v\}$ basis of $\sigma$, let
+\[
+u = u^1e_1 + u^2 e_2, \quad v = v^1 e_1 + v^2 e_2.
+\]
+Then
+\[
+\begin{aligned}
+\langle R(u,v)v, u\rangle &= \sum_{i,j,k,l=1,2}u^iv^ju^ku^l\langle R(e_i, e_j)e_k,e_l\rangle \\
+&= [(u^1v^2)^2 + (u^2v^1)^2 - 2u^1u^2v^1v^2]\langle R(e_1,e_2)e_2,e_1\rangle \\
+\Rightarrow \frac{\langle R(u,v)v, u\rangle}{||u\times v||^2} &= \langle R(e_1, e_2)e_2, e_1\rangle.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{definition}[Sectional curvature]
+$\forall o \in M$, $\forall \sigma \subset T_pM$ a 2-dimensional subspace and
+$K_{\sigma}$ defined as in \autoref{lemma:9.1} is the \emph{sectional curvature}.
+\end{definition}
+
+\begin{remark}
+The sectional curvature is undefined if $\dim M =1$. If $\dim M = 2$, $\sigma = T_pM$ $\Rightarrow K_{\sigma}$ is a function on $M$.
+\end{remark}
+
+\begin{theorem}[Sectional curvatures determine the Riemann curvature tensor]\label{theorem:9.3}
+At each $p\in M$, the sectional curvatures
+\[
+\{K_{\sigma}|\sigma \subset T_pM \text{ is 2-dimensional}\}
+\]
+determine the Riemann curvature tensor $R$ at $p$.
+\end{theorem}
+
+\begin{proof}
+$\forall u,v,w\in T_pM$, define 
+\[
+K(u,v) := \langle R(u,v)v,u\rangle, \quad R_w(u,v) := \langle R(u,w)w, v\rangle.
+\]
+If $\{u,v\}$ is linearly independednt $\Rightarrow K(u,v) = K_{\sigma} ||u\times v||^2$ for $\sigma = \operatorname{Span}_{\mathbb{R}}\{u,v\}$.
+If $\{u,v\}$ is linearly dependent $\Rightarrow K(u,v) = 0$ by \autoref{prob:14}. 
+Thus, sectional curvatures determine $K$.
+
+$F_w$ is a symmetric bilinear form
+\[
+\begin{aligned}
+F_w(u,v) &= \langle R(u,w)w, v\rangle\\
+&= \langle R(w,v)u, w\rangle  \qquad\qquad {\text{\autoref{prob:14} (4)}}\\
+&= -\langle R(v, w)u, w\rangle \qquad\qquad {\text{\autoref{prob:14} (1)}}\\ 
+&= \langle R(v, w)w, u\rangle \qquad\qquad {\text{\autoref{prob:14} (3)}}\\
+&= F_w(v,w).
+\end{aligned}
+\]
+Polarization yields
+\[
+\begin{aligned}
+2F_w(u,v) &= F_w(u+v, u+v) - F_w(u, u) - F_w(v,v) \\
+&= K(u+v, w) - K(u, w) - K(v, w).
+\end{aligned}
+\]
+$K$ determines $F_W$. Expanding $R$ yields
+\[
+\begin{aligned}
+R(u, v+w)(v + w) &= R(u, v)v + R(u, v)w + R(u, w)v + R(u, w)w \\
+R(u+w, v)(u+w) &= R(u,v)u + R(u, v)w + R(w, u)u + R(w, v)w \\
+&= R(u,v)w + R(v,u)w \\
+R(u, v+w) - R(v,u+w)(u + w) &= 3R(u, v)w + R(u,v)v - R(v, u)u + R(u,w)w -R(v,w)w.
+\end{aligned}
+\]
+Taking the inner product with $x \in T_pM$ and solving for $\langle R(u,v)w,x\rangle$:
+\[
+\begin{aligned}
+\langle R(u,v)w, x\rangle &= \frac13\{F_{v+w}(u,x) + F_{u + w}(v,x) \\
+& \qquad F_v(u,x) + F_u(u,x) \\
+& \qquad - F_w(u,x) - F_w(v,x) \}.
+\end{aligned}
+\]
+Thus, $R$ is uniquely determined by $K_{\sigma}$.
+\end{proof}
+
+\begin{corollary}\label{corollary:9.4}
+$\forall p \in M$, the following are equivalent:
+\begin{enumerate}[label=(\arabic*)]
+\item $R(u,v)w = 0 \quad \forall u,v,w \in T_pM$.
+\item $K_{\sigma} = 0 \quad \forall \text{ 2-dimensional } \sigma \subset T_pM$.
+\end{enumerate}
+\end{corollary}
+
+\begin{definition}[Trace of a bilinear form]\label{def:9.5}
+Let $V$ be an n-dimensional inner product space and $f:V\times V \to \mathbb{R}$ a bilinear form.
+The \emph{trace} of $f$ is 
+\[
+\operatorname{tr} f := \sum_{i=1}^n f(e_i, e_i)
+\]
+where $\{e_1, \ldots, e_n\}$ is any orthonormal basis of $V$.
+\end{definition}
+
+\begin{remark}
+Well-definedness (independence of $\{e_i\}_{i=1}^n$) is left as an exercise to the reader.
+\end{remark}
+
+\begin{definition}[Ricci and scalar curvature]\label{def:9.6}
+$\forall p \in M$, $\forall v,w \in T_pM$, $\operatorname{Ric}(v,w)$ is the trace of the bilinear form
+\[
+\begin{aligned}
+T_pM \times T_pM &\to \mathbb{R}, \\
+(x,y) &\mapsto \langle R(x,v)w, y\rangle.
+\end{aligned}
+\]
+For an orthonormal basis $\{e_1, \ldots, e_n\}$ of $T_pM$,
+\[
+\operatorname{Ric}(v,w) = \sum_{i=1}^n \langle R(e_i, v)w, e_i\rangle.
+\]
+The symmetric $(0,2)$-tensor $\operatorname{Ric}$ is the \emph{Ricci curvature tensor}.
+
+For $v \in T_pM$ with $||v||=1$, $\operatorname{Ric}(v,v)$ is the \emph{Ricci curvature} 
+in direction $v$. The trace of the Ricci tensor,
+\[
+\operatorname{Scal}(p) := \sum_{i=1}^n \operatorname{Ric}(e_i, e_i),
+\]
+is the \emph{scalar curvature} at $p$.
+\end{definition}
+
+\begin{proposition}
+\label{prop:9.7}
+$\forall v \in T_pM$ with $||v|| = 1$, let $\{e_1, \dots, e_n=v\}$ be an orthonormal basis of $T_pM$. 
+Furthermore, let $\sigma_i \subset T_pM$ ($i = 1, \dots, n-1$) be the 2-dimensional subspace spanned by $\{e_i, v\}$ for $i=1, \ldots, n-1$. Then,
+\[
+\operatorname{Ric}(v,v) = \sum_{i=1}^{n-1} K_{\sigma_i}.
+\]
+\end{proposition}
+
+\begin{remark}
+If $\exists c \in \mathbb{R}$ such that $K_{\sigma} \geq c$ $\forall \sigma \text{ 2-dimensional subspace }\subset T_pM$ 2-dimensional $\Rightarrow \operatorname{Ric}(v,v) \geq (n-1)c$ $\forall \text{ unit vector } v \in T_pM$ (with $||v||=1$).
+This is conventionally denoted as $\operatorname{Ric} \geq (n-1)c$.
+\end{remark}
+
