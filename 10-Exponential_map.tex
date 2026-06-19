@@ -1,0 +1,166 @@
+\section{Exponential Map}
+Let $M$ be a Riemannian manifold for $p \in M$ and $v \in T_p M$, let $\gamma_v : J_v \to M$ be the maximal geodesic satisfying
+$\gamma_v(0)  =p$ and $\gamma_v'(0) = v$, where $J_v$ is an open interval containing $0$.
+
+\begin{definition}
+    For $v \in TM$ if $1 \in J_v$, define $exp v := \gamma_v(1)$
+    Let $D:= {v \in TM | 1 \in J_v}$
+    The map $exp : D \to M$ is the exponential map.
+    For $p \in M$, let $D_p := D \cap T_pM$ and $exp_p := exp|_{D_p}$.
+    The map $exp_p : D_p \to M$ is the exponential map at $p$.
+    $exp_p v \quad (v \in T_pM)$ is the point reached by traveling along the geodesic from $p$ in direction $v$ for the distance $\|v\|$.
+    $\forall v \in D_p$ and $0 \leq \forall t \leq 1$ $1 \in J_v = t J_{tv} \subset J_{tv} \implies tv \in D_p$.
+    Thus, $D_p$ is a star shaped domain.
+\end{definition}
+
+By \autoref{prop:7.10},
+
+\begin{proposition}
+    $D \subset TM$ and $D_p \subset T_p M$ are open.
+    Both $exp$ and $exp_p$ are $C^{\infty}$
+    \label{prop:10.2}
+\end{proposition}
+
+Let $0_p$ denote the zero vector in $T_p M$.
+\begin{proposition}[The differential map]
+    $d(exp_p)_{0_p} : T_{0_p} T_p M \approx T_p M \to T_p M$ is the identity.
+    \label{prop:10.3}
+\end{proposition}
+
+\begin{proof}
+    For $v \in T_p M$, let $c(t) := tv$. Then $(exp_p \circ c)(t) = exp_p(tv) = \gamma_v(t)$.
+    This shows that: 
+    \[
+    \begin{aligned}
+        d exp_p(v) &= d exp_p (c'(0))= (exp_p \circ c)'(0) \\
+        &= \gamma_v'(0) = v 
+    \end{aligned}
+    \]
+\end{proof}
+
+Let $\pi : TM \to M$ be the natural projection.
+
+\begin{lemma}
+    Define $f: D \to M \times M$ by
+    \[
+    \begin{aligned}
+        f(v) := \left( \pi(v), exp v\right), v \in D
+    \end{aligned}
+    \]
+    $\forall p_0 \in M$, $\exists$ open neighbourhood $0_{p_0} \subset TM$ of $0_{p_0}$ such that
+    \begin{enumerate}
+        \item $0_{p_0} \subset D$
+        \item $f(0_{p_0})$ is open in $M \times M$
+        \item $f : 0_{p_0} \to f(0_{p_0})$ is a diffeo.
+    \end{enumerate}
+    \label{lemma:10.4}
+\end{lemma}
+
+\begin{proof}
+    Fix chart $(U, \phi)$ aroun $p_0$ $\implies$ induced chart $(TU,\tilde{\phi})$ for $TM$. let:
+    $\tilde{\phi}(v) = (x^1, \dots, x^n, v^1, \dots, v^n)$.
+    $\phi(exp v) = (y^1, \dots, y^n)$.
+    Local expression $\bar{f} := (\phi \times \phi) \circ f \circ \tilde{\phi}^{-1}$ is:
+    \[
+    (f^1, \dots, f^{2n}) := \bar{f}(x^1, \dots, x^n, v^1, \dots, v^n) = (x^1, \dots, x^n, y^1, \dots, y^n)
+    \]
+    Jacobian of $\bar{f}$ at $(\phi(p_0),0)$ is non-singular.
+    By Inverse Function Theorem, $\exists$ open $0 \subset \mathbb{R}^{2n}$ such that
+    $\bar{f}|_0$ is a diffeo and $\bar{f}(0)$ is open/
+    Set $0_{p_0} := \tilde{\phi}^{-1}(0)$
+\end{proof}
+
+\begin{problem}
+    Provide details for Proof of \autoref{lemma:10.4}.
+    Specifically, show non-singularity of Jacobian of $\bar{f}$ at 
+    $(x^1, \dots, x^nm v^1, \dots, v^n) = (\phi(p_0),0. \dots,0)$. 
+    \label{problem:10.5}
+\end{problem}
+
+\begin{lemma}
+    $\forall p_0 \in M$, $\exists$ open neighbourhood $0$ of $p_0, \quad \exists r >0$ such that $\forall p \in 0$:
+    \begin{enumerate}
+        \item $B(0_p,r) \subset D_p$
+        \item $exp_p (B(0_p,r))$ is open in $M$
+        \item $exp_p : B(0_p,r) \to exp_p(B(0_p,r))$ is a diffeo.
+    \end{enumerate}
+    Here $B(0_p,r) \subset T_p M$ is the open ball of radius $r$ centered at $0_p$.
+    \label{lemma:10.6}
+\end{lemma}
+\begin{proof}
+    Let $f: 0_{p_0} \to f(0_{p_0})$ be the diffeo from \autoref{lemma:10.4}, since $0_{p_0}$ is an open neighbourhood of $0_{p_0}$,
+    $\exists O \subset M$: open around $p_0$ such that $r>0$ such that
+    $$
+    TO(r) := {v \in TM | \pi(v) \in O, |v| <r} \subset 0_{p_0}
+    $$ 
+    $\forall p \in O$, $B(0_p,r) \subset TO(r) \subset 0_{p_0} \subset D \implies (1)$ holds.
+    Define $Q_P := {q \in M| (p,q) \in f(0_{p_0})}$
+    Since $f(0_{p_0}) \subset M \times M$ is open, $Q_p$ is also open.
+
+    $$
+\left(
+\begin{array}{c@{\;}c@{\;}c@{\;}c}
+    h \colon & M & \to & M \times M \\
+    & \rotatebox[origin=c]{90}{$\in$} & & \rotatebox[origin=c]{90}{$\in$} \\
+    & q & \mapsto & (p, q)
+\end{array}
+\text{ is continuous and } Q_p = h^{-1}(f(O_{p_0})).
+\right)
+$$
+The inverse
+$$
+f^{-1}(p,q)  = \exp_p^{-1}(q), \quad (p,q) \in f(0_{p_0})
+$$
+is $C^{\infty}$, so $exp_p^{-1}\|_{Q_p} : Q_p \to T_p M \cap 0_{p_0}$ is $C^{\infty}$ for fixed $p$.
+Thus $exp_p: T_p M \cap 0_{p_0} \to Q_p$ is a diffeo. Since $B(0_p,r) \subset 0_{p_0}$, (2) and (3) follow.
+\end{proof}
+
+\begin{theorem}[Gauss Lemma]
+    $\forall p \in M$ and $\forall v,w \in T_pM$, the following hold:
+    \begin{enumerate}
+        \item $d(exp_p)_v v = \gamma_v'(1)$
+        \item $\langle \gamma_v'(1), d(exp_p)_v w \rangle = \langle v, w \rangle$.
+    \end{enumerate}
+    Here, $w$ is identified with a vector at $v \in T_pM$ via $T_pM \approx T_v T_pM$
+    \label{theorem:10.6}
+\end{theorem}
+
+\begin{proof}
+    (1) follows from $\gamma_v'(1) = \frac{d}{dt} exp_p (tv) |_{t=1}= d(exp_p)_v v$.
+    
+    (2) Let $ p \in M$ and $v,w \in T_pM$. Case $v=0_p$ is trivial.
+    Assume $ v \neq 0_p$. consider variation:
+    \[
+    \begin{aligned}
+        &c_s (t) := c(s,t) := exp_p (t(v+sw)), \quad s \in (- \epsilon, \epsilon), 0 \leq t \leq 1. \\
+        &c_0(t) = exp_p (tv) = \gamma_v (t) \text{ is a geodesic}
+    \end{aligned}
+    \]
+    $\implies \nabla_{c_0} = 0$. Variation field $X(t) = d(exp_p)$.
+    By 1st variation formula (cf. \autoref{theorem:7.2})
+    \[
+    \begin{aligned}
+        \frac{d}{ds} L(C_s)|_{s=0} &= \frac{1}{|c_0'(0)|} \left( \langle c_0'(1, X(1)) \rangle - \langle c_0'(0), X(0) (=0) \rangle \right) \\
+        &= \frac{1}{|v|} \langle \gamma_v'(1), d(exp_p)_v(w) \rangle
+    \end{aligned}
+    \]
+    Alternativly, $L(Cs) = |v+sw| = \langle v+sw, v +sw \rangle^{1/2}$
+    $$
+    \frac{d}{ds} L(Cs) |_{s=0} = \frac{\langle \frac{d}{ds}(v+sw), v +sw \rangle|_{s=0}}{|v|} = \frac{\langle v,w \rangle}{|v|}
+    $$
+\end{proof}
+
+\begin{remark}
+    Combining (1) and (2) yields:
+    $$
+    \langle d(exp_p)_v v, d(exp_p)_v w \rangle = \langle v,w \rangle
+    $$
+    Thus, Gauss Lemma is weaker than $d(exp_p)v$ being isometric.
+    If ${v,w}$ is linearly dependent $|d(exp_p)_v w | = |w|$.
+    In general $d(exp_p)_v$ is not isometric.
+    For example, $M = \mathbb{S}^2 \subset \mathbb{R}^3, \quad v \in T_pM; \|v\|=\pi$.
+    $d(exp_p)_v$ is an isometry $\implies$ it is injective.
+    By the inverse function theorem, $exp_p$ is a diffeo on a neighbourhood of $v$. However, this is impossible since for $\forall v' \in T_pM$ satisfying 
+    $\|v'\| = \pi, \quad exp_p v'$ coincides with the antipodal point of $p$.
+    \label{remark:10.7}
+\end{remark}
