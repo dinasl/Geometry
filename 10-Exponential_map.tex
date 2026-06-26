@@ -89,7 +89,7 @@ Let $\pi : TM \to M$ be the natural projection.
     \label{problem:10.5}
 \end{problem}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:10.5}
     $\forall p_0 \in M$, $\exists$ open neighbourhood $0$ of $p_0, \quad \exists r >0$ such that $\forall p \in 0$:
     \begin{enumerate}
         \item $B(0_p,r) \subset D_p$
@@ -97,7 +97,6 @@ Let $\pi : TM \to M$ be the natural projection.
         \item $\exp_p : B(0_p,r) \to \exp_p(B(0_p,r))$ is a diffeo.
     \end{enumerate}
     Here $B(0_p,r) \subset T_p M$ is the open ball of radius $r$ centered at $0_p$.
-    \label{lemma:10.6}
 \end{lemma}
 \begin{proof}
     Let $f: 0_{p_0} \to f(0_{p_0})$ be the diffeo from \autoref{lemma:10.4}, since $0_{p_0}$ is an open neighbourhood of $0_{p_0}$,
@@ -177,4 +176,194 @@ Alternativly, $L(Cs) = |v+sw| = \langle v+sw, v +sw \rangle^{1/2}$
     By the inverse function theorem, $\exp_p$ is a diffeo on a neighbourhood of $v$. However, this is impossible since for $\forall v' \in T_pM$ satisfying 
     $\|v'\| = \pi, \quad \exp_p v'$ coincides with the antipodal point of $p$.
     \label{remark:10.7}
+\end{remark}
+
+\begin{lemma}\label{lemma:10.8}
+$\forall p \in M$, $\forall v \in T_pM$, let $\sigma : [0,l]\to D_p$ be a piecewise smooth regular curve s.t. $\sigma(0)  0_p$ and
+$\sigma(l)= v$. Then
+\[
+L(\exp_p \odot sigma) \geq ||v||.
+\]
+furthemore, if $d(\exp_p)_{\sigma(t)}$ is non-singular $\forall t \in [0,l]$, then
+for every monotonically increasing function $f:[0,l] \to [0,1]$ with $f(0) = 0, f(l) = 1$,
+\[
+\sigma(t) = f(t)v.
+\]
+\end{lemma}
+
+\begin{proof}
+Assume $v \neq 0$. Let 
+\[
+t_0 := \sup\{t \in [0,l] : \sigma(t) = 0_p\}.
+\]
+$\forall t \in (t_0, l)$, let $r(t) := ||\sigma(t)|| >0$ and $e(t) \in t_pM$ be the unit vector s.t. $\sigma(t) = r(t)e(t)$.
+Let also $c(t):= \exp_p \odot \sigma(t)$. Since $\sigma'(t) = r'(t)e(t) + r(t)e'(t)$, 
+\[
+\begin{aligned}
+c'(t) &= d(\exp_p)_{\sigma(t)}\sigma'(t) \\
+&= r'(t) d(\exp_p)_{\sigma(t)}e(t) + r(t)d(\exp_p)_{\sigma(t)}e'(t) \\
+&= \frac{r'(t)}{r(t)}\gamma'_{\sigma(t)}(1) + r(t)d(\exp_p)_{\sigma(t)}e'(t).
+\end{aligned}
+\]
+By Gauss' lemma,
+\[
+\begin{aligned}
+\langle \gamma'_{\sigma(t)}(1),d(\exp_p)_{\sigma(t)}e'(t)\rangle &= r(t) \langle e(t), e'(t)\rangle \\
+&= \frac{r(t)}{2} \frac{d}{dt} \langle e(t), e(t) \rangle = 0.
+\end{aligned}
+\]
+Thus the decomposition of $c'(t)$ above is an orthogonal decomposition.
+Since $|\gamma'_{\sigma(t)}(1)| = ||\sigma(t)|| = r(t)$, we have
+\[
+|c'(t)| = \sqrt{|r'(t)|^2 + ||r(t)d(\exp_p)_{\sigma(t)}e'(t)||^2} \geq |r'(t)| \geq r'(t).
+\]
+Integrating gives
+\[
+\begin{aligned}
+L(c|_{[t_0,l]}) &= \int_{t_0}^l|c'(t)|dt \geq \int_{t_0}^lr'(t)dt \\
+&= ||\sigma(l)|| - ||\sigma(t_0)|| = ||\sigma(l)|| = ||v||.
+\end{aligned}
+\]
+This proves $L(\exp_p\odot\sigma) \geq ||v||$.
+
+Now assume $d(\exp_p\odot\sigma)$ is non-singular and $L(\exp_p\odot\sigma)= ||v||$. Then the above inequality implies that 
+$L(\exp_p\odot\sigma|_{[0,t_0]}) = 0 \Rightarrow \sigma(t) = 0_p$ on $[0,t_0]$.
+This implies
+\[
+|c'(t)| = |r'(t)| = r'(t).
+\]
+Thus, the second term in the othogonal expansion of $c'(t)$ must vanish, i.e. $d(\exp_p)_{\sigma(t)}e'(t) = 0$.
+Since $d(\exp_p)_{\sigma(t)}$ is non-singular, $e'(t) = 0_p$, implying that $e(t)$ is constant. So
+\[
+e(t) = e(l) = v/||v||.
+\]
+Setting $f(t) := r(t)/||v||$ yields $\sigma(t)=f(t)v$.
+\end{proof}
+
+\begin{lemma}\label{lemma:10.9}
+Let $p \in M$, $r>0$. Assume $B(0_p,r) \subset D_p$ and $\exp_p : B(0_p,r) \to \exp_p(B(0_p,r))$ is a diffeoorphism.
+Then
+\begin{enumerate}[label=(\arabic*)]
+\item $\forall q \in \exp_p(B(0_p,r))$, $\exists ! v \in B(0_p,r)$ s.t. $q = \exp_pv$.
+Any piecewise smooth minimizing curve connecting $p$ and $q$ coincides with the geodesic $\gamma_v : [0,1] \to <$ up to
+reparametrization.
+\item $\exp_p(B(0_p,r)) = B(p,r)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+\begin{enumerate}[label=(\arabic*)]
+\item Existence and uniqueness of $v$ follows from the bijectivity of $\exp_p$.
+Let $c:[0,1] \to M$ be a piecewise smooth curve from $p$ to $q$. Define
+\[
+\sigma(t) := (\exp_p|_{B(0_p,r)})^{-1}\odot c(t),
+\]
+whenever $c(t) \in \exp_p(B(0_p,r))$.
+\begin{enumerate}[label=(\roman*)]
+\item If $c([0,1]) \not\subset \exp_p(B(0_p,r))$: Let $0<\rho < r$.
+Define $l := \sup\{t\in[0,1]:c([0,t)\subset\exp_p(B(0_p,\rho))\}$.
+set $U := \exp_p(B(0_p,\rho))$ and $\phi := (\exp_p|_{B(0_p,\rho)})^{-1}:U \to B(0_p,\rho)$ and
+identiy $T_pM \approx \mathbb{R}^n$. Applying \autoref{lemma:1.16} to $(U,\phi)$ it follows that
+$\sigma(l) \in \partial B(0_p,\rho)$ since $\sigma(l) \notin B0_p,\rho)$. % I think Lemma 1.16 in his notes is 1.23 in our notes.
+By \autoref{lemma:10.8}, we have 
+\[
+L(c) \geq L(c|_{[0,l]}) \geq ||\sigma(l)|| = \rho.
+\]
+Since $\rho$ was arbitrary, $L(c) \geq r$. However, $L(\gamma_v|_{[0,1]}) = ||v|| < r$. Thus,
+\[
+L(\gamma_v)_{[0,1]} < r \leq L(c).
+\]
+\item If $c([0,1])\subset\exp_p(B(0_p,r))$: $\sigma(t)$ is defined $\forall t \in [0,1]$.
+By \autoref{lemma:10.8}, $L(c) \geq ||v|| = L(\gamma_v|_{[0,1]})$.
+\end{enumerate}
+In both cases, $L(c) \geq L(\gamma_v|_{[0,1]})$, so $\gamma_v$ is a minimizing curve
+connecting $p$ and $q$. Then, $L(\gamma_v|_{[0,1]}) = L(c)$. In this case, if $c([0,1]) \not\subset\exp_p(B(0_p,r))$, then by
+(i), we have $L(\gamma_v)_{[0,1]} < L(c)$, which is a contradiction. Therefore, $c([0,1]) \subset \exp_p(B(0_p,r))$. 
+Furthermore, by the last part of \autoref{lemma:10.8}, there exists a non-decreasing function $f:[0,1]\to[0,1]$ s.t.
+\[
+f(0)=0,\quad f(1)=1, \quad \sigma(t) = f(t)v\quad \text{ for } t \in [0,1].
+\]
+Thus, by reparametrizing $c$ as $\tilde{c}(t) := (c\odot f^{-1})$, we have 
+\[
+\tilde{c}(t) = c(f^{-1}(t)) = \exp_p(f(f^{-1}(t))v) = \exp_p(tv) = \gamma_v(t).
+\]
+\item For $q \in \exp_p(B(0_p,r))$, let $q=\exp_p$.
+Since $\gamma_v$ is minimizing,
+\[
+d(p,q) = L(\gamma_v) = ||v|| < r \Rightarrow q \in B(p,r).
+\]
+Conversely, let $q \in B(p,r) \Rightarrow d(p,q) < r$. Then, there exists a curve $c$ connecting $p$ and $q$ s.t. $L(c) <r$.
+If $c([0,1]) \not\subset \exp_p(B(0_p,r))$, by (1i), $r \leq r$, a contradiction.
+Thus $c([0,1]) \subset \exp_p(B(0_p,r))$, specifically $q \in \exp_p(B(0_p,r))$.
+\end{enumerate}
+\end{proof}
+
+Combining \autoref{lemma:10.5} and \autoref{lemma:10.9}, we have the following:
+
+\begin{theorem}\label{theorem:10.10}
+$\forall p_0 \in M$, there exists an open neighbourhood $0 \subset M$ of $p_0$ and $r >0$ s.t. the following hold
+\begin{enumerate}[label=(\arabic*)]
+\item $\forall p \in 0$, $B(0_p,r) \subset D_p$ and $\exp_p:B(0_p,r)\to B(p,r)$ is a diffeomorphism.
+\item $\forall p \in 0$ and $\forall q \in B(p,r)$, there exists a unique piecewise smooth minimizing curve
+(up to renormalization) connecting $p$ and $q$. Thus curve is the geodesic $\gamma_v:[0,1]\to M$ where
+\[
+v = (\exp_p|_{B(0_p,r)})^{-1}(q) \in B(0_p,r).
+\]
+\end{enumerate}
+\end{theorem}
+A piecewise smooth regular curve $c : (a,b) \to M$ is locally minimizing if and only if $\forall t_0 \in (a,b)$,
+$\exists \delta > 0$ s.t. $[t_0 - \delta, t_0 + \delta] \subset (a,b)$ and $c|_{[t_0 - \delta, t_0 + \delta]}$
+is the minimizing curve between $c(t_0 - \delta)$ and $c(t_0 + \delta)$.
+Sub-arcs of minimizing curves are themselves minimizing, in particular every minimizing curve is locally minimizing (verify this yourself).
+
+\begin{theorem}\label{theorem:10.11}
+Let $\gamma:(a,b) \to M$ be a piecewise smooth regular curve. Then
+\[
+\gamma \text{ is a geodesic} \Leftrightarrow \gamma \text{ is locally minimizing}.
+\]
+\end{theorem}
+
+\begin{proof}
+($\Rightarrow$): $\forall t_0 \in (a,b)$, let $p_0:=\gamma(t_0)$. Apply \autoref{theorem:10.10} to get $0$ and $r>0$.
+Choose $\delta >0$ s.t. $\gamma < r/2$, $[t_0-\delta,t_0+\delta]\subset(a,b)$ ane $\gamma(t_0-\delta) \in 0$.
+Since $L(\gamma|_{[t_0-\delta,t_0+\delta]})=2\delta < r$, $\gamma([t_0-\delta,t_0+\delta])\subset B(\gamma(t_0-\delta),r)$.
+By \autoref{theorem:10.10}, for $p:=\gamma(t_0-\delta)$ and $q := \gamma(t_0+\delta)$, the curve $\gamma|_{[t_0-\delta,t_0+\delta]}$ is minimizing.
+Thus $\gamma$ is locally minimizing.
+
+($\Leftarrow$): Let $t_0 \in (a,b)$, $\delta' >0$ s.t. $\gamma|_{[t_0-\delta',t_0+2\delta']}$ is minimizing.
+Apply \autoref{theorem:10.10} at $p_0 := \gamma(t_0)$ to get $0$ and $r>0$.
+Choose $\delta >0$ s.t. $\delta \leq \delta'$, $\delta < r/2$ and $r(t_0 - \delta) \in 0$.
+let $p:= \gamma(t_0 - \delta)$, $g := \gamma(t_0 + \delta)$. Since $\delta \leq \delta'$,
+$\gamma|_{[t_0-\delta,t_0+\delta]}$ is minimizing between $p$ and $q$. since $d(p,q) = d\delta <r$, \autoref{theorem:10.10} (2) implies that
+$\gamma|_{[t_0-\delta,t_0+\delta]}$ is a geodesic.
+Since $t_0$ was arbitrary, $\gamma$ is a geodesic.
+\end{proof}
+
+\begin{definition}[Normal neighbourhood and coordinates]
+assume $\exp_p:B(0_p,r) \to B(p,r)$ is a diffeomorphism for $p \in M$ and $r >0$. Let $\{e_i\}$ be an 
+orthonormal basis of $T_pM$. For $q \in B(p,r)$, define
+\[
+x^i := \langle (\exp_p|_{B(0_p,r)})^{-1},e_i\rangle, \qquad (i=1,\dots,n),
+\]
+so that $q = \exp_p\left(\sum_{i=1}^n x^i e_i\right)$. The coordinates $\phi(q) = (x^1,\dots,x^n)$ defines a coordinate chart $(B(p,r),\phi)$.
+this is the \emph{normal coordinate neighbourhood} at $p$ subordinated to $\{e_i\}$ and $(x^1,\dots,x^n)$ are \emph{normal coordinates}.
+\end{definition}
+
+The following is a consequence of \autoref{theorem:10.10}:
+
+\begin{corollary}
+$\forall p \in M$, normal coordinate neighbourhood exists around $p$.
+\end{corollary}
+
+Let $\{e_i\}$ be an orthonormal basis of $T_pM$, $(x^1,\dots,x^n)$, the subordinated normal coordinates at $p$ and $E_i := \partial/\partial x^i$.
+\begin{problem}\label{problem:16}
+Show that $\forall i,j,k = 1,\dots,n$:
+\begin{enumerate}[label=(\arabic*)]
+\item $(E_i)_p = e_i$,
+\item $\nabla_{e_i}E_j = 0$ and $\Gamma_{ij}^k(p) = 0$.
+\end{enumerate}
+\end{problem}
+
+\begin{remark}
+The equlities is \autoref{problem:16} hold only at a specific point $p$.
 \end{remark}
