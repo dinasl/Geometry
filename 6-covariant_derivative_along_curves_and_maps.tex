@@ -15,7 +15,7 @@ are $C^{\infty}$.
 
 Henceforth, vector fields along curves are assumed to be $C^{\infty}$, unless otherwise stated.
 
-\begin{definition}
+\begin{definition}[Covariant derivative along a curve]
 The \emph{covariant derivative} of a vector field $X$ along a curve $c$ is defined on a chart $(U, \phi)$ by
 \[
 (\nabla_cX)(t) := \sum_{k=1}^n \left( \frac{dX^k}{dt} + \sum_{i,j=1}^n \Gamma_{ij}^k(c(t))\frac{dc^i}{dt}X^j \right)(\partial_k)_{c(t)},
@@ -107,9 +107,8 @@ On the other hand,
 Combining these with \autoref{prop:christoffel_symbols} \autoref{item:christoffel_3} yields \autoref{prop:covariant_derivative_leibniz}.
 \end{proof}
 
-
-\begin{definition}
-    A vector field $X$ along $C:I \to M$ is parallel if $\nabla_C X = 0$ $(\forall t \in I)$.
+\begin{definition}[Parallel vector field]
+    A vector field $X$ along $C:I \to M$ is \emph{parallel} if $\nabla_C X = 0$ $(\forall t \in I)$.
 \end{definition}
 
 \begin{lemma}
@@ -144,13 +143,13 @@ Combining these with \autoref{prop:christoffel_symbols} \autoref{item:christoffe
     Since the equation $\nabla_C X = 0$ is independent of coordinates, local solutions patch together to yield $X(t)$ $\forall t \in I$.
 \end{proof}
 
-\begin{definition}
+\begin{definition}[Parallel transport]
     $\forall t_0, t \in I$ and $\forall v \in T_{c(t_0)}M$, Let $X$ be the parallel vector field along $c$ such that $X(t_0) = v$.
     Define $P_{c(t)}v:= X(t)$ the map 
     \[\begin{aligned}
         P_{c(t)} : T_{c(t_0)}M \to T_{c(t)}M
     \end{aligned}\]
-    Is the parallel transport along $c$.
+    Is the \emph{parallel transport} along $c$.
 \end{definition}
 \begin{proposition}
     $\forall t_0,t \in I$, the parallel transport $P_{c(t)}: T_{c(t_0)}M \to T_{c(t)}M$ is a linear isometry.
@@ -200,34 +199,41 @@ Combining these with \autoref{prop:christoffel_symbols} \autoref{item:christoffe
 \end{proof}
 
 \subsection{Covariant derivative along maps}
+
 Let $M$ be an n-dimensional Riemannian manifold, $N$ a differentiable manifold, $\xi:N \to M$ a $C^{\infty}$ map.
-\begin{definition}
-    A map $X: N \owns p \to X_p \in T_{\xi(p)}M$ is a  vector field along $\xi$, $X$ is $c^{\infty}$ if $\forall$ chart $(U, \phi)$ of $M$ and $\forall (V, \psi)$ of $N$ such that $\xi(v) \subset U$,
+
+\begin{definition}[Vector field along a map]
+    A map $X: N \owns p \to X_p \in T_{\xi(p)}M$ is a \emph{vector field along $\xi$}, $X$ is $C^{\infty}$ if $\forall$ chart $(U, \phi)$ of $M$ and $\forall (V, \psi)$ of $N$ such that $\xi(V) \subset U$,
     the components $X^i: V \to \mathbb{R}$ in $X_p = \sum_{i=1}^n X^i(p)(\partial_i)_{\xi(p)}$, $p\in V$ are $C^{\infty}$, where 
 $\phi = (x^1, \dots, x^n)$ and $\partial_i := \frac{\partial}{\partial x^i}$.
-Henceforth, vector fields along maps are assumed $c^{\infty}$ unless otherwise noted.
-\end{definition}
-\begin{definition}
-    (1) For a vector field $X$ on $M$,
-    \[\begin{aligned}
-        X \circ \xi : N \owns p \to X_{\xi(p)} \in T_{\xi(p)}M
-    \end{aligned}\]
-    defines a vector field $X \circ \xi$ along $\xi$.
-
-    (2) For a vector field $Y$ on $N$
-    $d \xi(Y) : N \owns p \to d \xi_p(Y_p) \in T_{\xi(p)}M$, defines a vector field $d \xi(Y)$ along $\xi$.
+Henceforth, vector fields along maps are assumed $C^{\infty}$ unless otherwise noted.
 \end{definition}
 
 \begin{definition}
+\begin{enumerate}[label=(\arabic*)]
+\item For a vector field $X$ on $M$,
+\[
+X \circ \xi : N \owns p \to X_{\xi(p)} \in T_{\xi(p)}M
+\]
+defines a vector field $X \circ \xi$ along $\xi$.
+\item For a vector field $Y$ on $N$
+\[
+d \xi(Y) : N \owns p \to d \xi_p(Y_p) \in T_{\xi(p)}M,
+\]
+defines a vector field $d \xi(Y)$ along $\xi$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Covariant derivative along a map]
     Let $X$ be a vector field along a $C^{\infty}$ map $\xi:N \to M$
     and $v \in T_p N (p\in N)$. Let $c:I \to N$ be a $C^{\infty}$ curve such that
-    $c(0) = p, c'(0) = v$. Define the covariant derivative $\nabla_v^{\xi}X$ of $X$ in the direction $v$ ad
+    $c(0) = p, c'(0) = v$. Define the covariant derivative $\nabla_v^{\xi}X$ of $X$ in the direction $v$ as
     \[
     \begin{aligned}
         \nabla_v^{\xi} := \left(\nabla_{\xi \circ c} X \circ c  \right)(0) \in T_{\xi(p)}M
     \end{aligned}
     \]
-    where the right hand side is the covariant derivative of the vector field $X \circ c$ along the curve $\xi \circ : I \to M$
+    where the right hand side is the \emph{covariant derivative} of the vector field $X \circ c$ along the curve $\xi \circ : I \to M$
 \end{definition}
 
 \begin{lemma}
