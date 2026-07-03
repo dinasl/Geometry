@@ -1,0 +1,156 @@
+\section{Completeness and the Hopf-Rinow Theorem}
+
+\begin{definition}[Geodesically completeness]
+    $M$ is geodesically complete $: \equiv$ the domain of every geodesic can be extended to $mathbb{R}$ (i.e. $Ju = \mathbb{R}$).
+    Alternativly, $M$ is a geodesically complete $\equiv$ $exp_p$ is defines on $T_pM$ (i.e. $D_p = T_pM$) $\forall p \in M$.
+    We will prove that if $M$ is a geodesically complete Riemannian manifold, any two points in $M$ ccan be connected by a minimizing geodesic.
+    \label{def:11.1}
+\end{definition}
+
+\begin{lemma}
+    Let $M$ be geodesically complete.
+    For $p \in M$, by \autoref{theorem:10.10}, $\exists r >0$ s.t.
+    $exp_p : B(0_p, r) \to B(p,r)$ is a diffeo and there exists a unique minimizing geodesic from $p$ to any point in $B(p,r)$.
+    For $\rho \in \mathbb{R}$ with $0<\rho<r$, any $g \in M \backslash  B(p,p)$
+    admits $\hat{p} \in \partial B(p,p)$ s.t. $\rho + d(\hat{p}, q) = d(p,q)$
+    \label{lemma:11.2}
+\end{lemma}
+
+\begin{proof}
+    $\partial B(p,p)= exp_p (\partial B(0_p,p))$ is cpt.
+    Since $f(x) := d(q,x)$ is continous (cf. \autoref{prop:open_in_manifold}),
+    $f$ attains a minimum on $\partial B(p,p)$. Let $\hat{p} \in \partial B(p,p)$
+    be the minimizer. By the triangle inequality:
+    \[
+    \begin{aligned}
+        \rho + d(\hat{p}, q) = d(p,\hat{p}) + d(\hat{p},q) \geq d(p,q)
+    \end{aligned}
+    \]
+    Conversly, let $c:[0,l] \to M$ be a piecewise smooth regular curve from $p$ to $q$. By definition: $d(p,q) = \inf_c L(c)$.
+    $h(t) := d(p, c(t))$ is continous with $h(0) =0$ and $h(l) = d(p,q) \geq p$
+    By the intermediate value theorem, $\exists t_0 \in [0,l]$ s.t. $d(p,c(t_0)) = \rho$. Then:
+    \[
+    \begin{aligned}
+        L(c) &= L(c|_{[0,t_0]}) + L(c|_{t_0,l}) \\
+        &\geq d(p,c(t_0)) + d(c(t_0),q) \geq \rho + d(\hat{p},q)
+    \end{aligned}
+    \]
+    Taking inf. over $c$: $d(p,q) \geq \rho + d(\hat{p}, q)$
+\end{proof}
+
+\begin{theorem}
+    Assume $p \in M$ and $exp_p$ is defined on the entire $T_pM$. Then, $\forall q \in M$, there exists a minimizing geodesic containing $p$ and $q$.
+    In pparticular, if $M$ is geodesically complete, any two points in $M$ can be connected by a minimizing geodesic.
+    \label{theorem:11.3}
+\end{theorem}
+
+\begin{proof}
+    fix $r>0$ and $0 < \rho <r$ for $p \in M$ as in \autoref{lemma:11.2}.
+    Assume $q \notin B(p,p)$ by taking a smaller $\rho$ if necessary.
+    By \autoref{lemma:11.2}, $\exists \hat{p} \in \partial B(p,\rho)$ such that $p+ d(\hat{p},q) = d(p,q)$.
+    By \autoref{theorem:10.10}, $\exists v \in T_pM \quad (\|v\| =1)$ such that
+    $\gamma_v (d(p,\hat{p})) = \hat{p}$ and $\gamma_v |_{[0,d(p,\hat{p})]}$ is a minimizing geodesic.
+    We show $\gamma_v |_{[o,d(p,q)]}$ is the minimzing geodesic from $p$ to $q$.
+
+    Define $T := {t \in [0,d(p,q)]|\gamma_v |_{[0,t]} \text{ is a minimizing geodesic and } t+d(\gamma_v(t),q) = d(p,q)}$
+    Then $\rho \in T$. since $T$ is a bounded closed set, it has a maximum element $t_{max}$. Assume $t_{max} < d(p,q)$.
+    For $p_1 := \gamma_v (t_{max})$, fix $r_1 > 0$ and $0<\rho_1 <r_1$ as in \autoref{lemma:11.2}, assuming $q \notin B(p_1, \rho_1)$
+    Then $\exists \hat{p}_1 \in \partial B(p_1, \rho_1)$ such that
+    \[
+    \begin{aligned}
+        \rho_1 + d(\hat{p}_1,q) = d(p_1,q).
+    \end{aligned}
+    \]
+    Since $t_{max} \in T$,
+    \[
+    \begin{aligned}
+        d(p,\rho_1) + d(\rho_1,q) = d(p,q).
+    \end{aligned}
+    \]
+    Combining these:
+    \[
+    \begin{aligned}
+        d(p,p_1) + \rho_1 + d(\hat{p}_1,q) = d(p,q)
+    \end{aligned}
+    \]
+    By the triangle inequality $d(p,q) \leq d(p, \hat{p}_1) + d(\hat{p}_1,q)$ and \autoref{def:11.1} $d(p, \hat{p}_1) \geq d(p, p_1) + \rho_1$
+    Let $\sigma$ be the minimizing geodesic from $p_1$ to $\hat{p}_1$, so $L(\sigma) = \rho_1$. Yje triangle inequality yields the reverse inequality.
+    Thus $d(p, \hat{p}_1) = d(p,p_1) + \rho_1 = L(\gamma_v|_{0,t_{max}})+L(\sigma)$.
+    The concatenated curve of $\gamma_v |_{[0, t_{max}]}$ and $\sigma$ connects $p$ and $\hat{p}_1$ with length $d(p, \hat{p}_1)$, hence it is a minimizing curve.
+    Being locally minimizing, it is a geodesic by \autoref{theorem:10.11} and coincides with $\gamma_v |_{[0,t_{max}+\rho_1]}$. With \autoref{def:11.1},
+    $t_{max} + \rho_1 \in T$, contradicting the maximality of $t_{max}$.
+    Thus $t_{max}=d(p,q)$, implying:
+    \[
+    \begin{aligned}
+        &d(p,q) + d(\gamma_v(t_{max}),q) = d(p,q) \\
+        &\implies \gamma_v (d(p,q)) =q
+    \end{aligned}
+    \]  
+\end{proof}
+ 
+\begin{problem}
+    In the proof of \autoref{theorem:11.3}, show that $T$ is a closed set.
+    In a metric space $(X,d)$, $(X,d)$ is said to be complete $: \equiv \forall$ Cauchy sequences is a convergent sequence.
+    A subset $A \subset X$ is bounded $: \equiv \sup_{p,q \in A} d(p,q) < + \infty$
+\end{problem}
+
+\begin{theorem}[Hopf-Rinow Theorem]
+    The following are equivalent:
+    \begin{enumerate}
+        \item $M$ is a geodesically complete
+        \item $\forall$ bounded closed subset of $M$ is cpt
+        \item $(M,d)$ is a complete metric space with respect to Riemannian distance $d$
+    \end{enumerate}
+    \label{theorem:11.4}
+\end{theorem}
+
+\begin{proof}
+    $(1) \implies (2)$: $\forall$ bounded closed set $C \subset M$.
+    $\exists r>0$ such that $C \subset B(,r)$. Since $\bar{B}(0_p,r)\subset T_pM$ is cpt and $exp_p: T_p M \to M$ is continous, the image
+    $\bar{B}(p,r) = exp_p (\bar{B}(0_p,r))$ is cpt.
+    Since $C$ is a closed subset of a cpt set, $C$ is cpt.
+    $(2) \implies (3):$ Let ${p_i}^{\infty}_{i=1}$ be a cauchy sequence $\exists i_1 \in \mathbb{N}$ such that $d(p_i, p_j) < 1$ $\forall i,j \geq i_1$ Setting
+    \[
+    \begin{aligned}
+        R := \max_{i=1, \dots, i_1} d(p_1,p_i) +1,
+    \end{aligned}
+    \]
+    the triangle inequality implies that $\forall i > i_1$, we have 
+    \[
+    \begin{aligned}
+        d(p_1, p_i) \leq d(p_1, p_{i1}) + d(p_{i1},p_i) < R
+    \end{aligned}
+    \]
+    thus we have $d(p_1,p_i) < R$ $\forall i \in \mathbb{N}.$
+    Hence ${p_i} \subset \bar{B}(p_1,R)$ which is cpt by $(2)$.
+    $\exists$ subsequence ${p_{j(i)}}$ such that $p:= \lim_{i \to \infty} p_{j(i)} \in \bar{B}(p_1,R)$.
+    $\forall \epsilon >0$, since ${p_i}$ is Cauchy, $\exists i_{\epsilon} \in \mathbb{N}$ such that $d(p_i, p_j) < \frac{\epsilon}{2}, \quad \forall i,j \geq i_{\epsilon}$
+    Take $i' \in \mathbb{N}$ sufficiently large so that $j(i') \geq i_{\epsilon}$ and $d(p_{j(i')},p) < \frac{\epsilon}{2}.$
+    Then $\forall i \geq i_{\epsilon}$, we obtain:
+    \[
+    \begin{aligned}
+        d(p_i,p) \leq d(p_i, p_{j(i')}) + d(p_{j(i')},p) < \epsilon
+    \end{aligned}
+    \]
+    Thus $\lim_{i \to \infty} p_i = p$.
+    $(3) \implies (1)$: Fix $p \in M$, $v \in T_p M \quad (\|v\| = 1)$
+    Suppose $t_0 := \sup {t>0 | tv \in D_p} < + \infty$
+    Since $D_p$ is open, $t_ov \notin D_p$.
+    For $t_i \to t_0$, $d(\gamma_v (t_i), \gamma_v(t_j)) \leq |t_j - t_i |$
+    implies ${\gamma_v (t_i)}$ is Cauchy. By $(3)$, $\gamma_v (t_1) \to \exists p_0 \in M$
+    as $i \to \infty$, which contradicts \autoref{prop:7.9}
+\end{proof}
+
+In the proof $(1) \implies (2)$ of \autoref{theorem:11.4} the choice of $r>0$ is determined by the bounded set $C$, and no specific
+properties of the map $exp_p : B(0_p,r) \to exp_p (B(0_p,r))$ are assumed. Consequently, (11.2) is non-trivial.
+
+\begin{problem}
+    Prove \autoref{lemma:11.2}. Furthermore, provide an example where \autoref{lemma:11.2} fails when $M$ is not geodesically complete.
+    If $M$ is geodesically copmlete ($\equiv$ the Riemannian distance is complete),
+    we simply say $M$ is complete.
+\end{problem}
+
+\begin{theorem}[Remember]
+    Geodesic completeness of $M$ does not imply that every $C^{\infty}$ vector field on $M$ is complete.
+    In fact, recall: $\forall c^{\infty}$ v.f. on $M$ is complete $\equiv$ $M$ is cpt.
+\end{theorem}
