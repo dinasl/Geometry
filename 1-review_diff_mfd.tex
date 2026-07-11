@@ -113,7 +113,7 @@ A $C^{\infty}$ transformation group $\Gamma$ on $M$ is \emph{properly discontinu
 \end{definition}
 
 Let $\Gamma$ be a properly discontinuous transformation group on $M$.
-For each $p \in M$, let $(U_p, \phi_p)$ be a chart around $p$ as in definition \ref{def:properly_disc_transf_group}.
+For each $p \in M$, let $(U_p, \phi_p)$ be a chart around $p$ as in \autoref{def:properly_disc_transf_group}.
 
 \begin{lemma}
 For all $p\in M$ and all $\gamma_i, \gamma_j \in \Gamma$ ($\gamma_i \neq \gamma_j$), we have $\gamma_i(U_p) \cap \gamma_j(U_p) = \emptyset$ or $\gamma_i(U_p) = \gamma_j(U_p)$.
@@ -121,7 +121,7 @@ For all $p\in M$ and all $\gamma_i, \gamma_j \in \Gamma$ ($\gamma_i \neq \gamma_
 \end{lemma}
 
 \begin{proof}
-    $\gamma_i \neq \gamma_j \implies \gamma_i^{-1}\circ\gamma_j\neq\operatorname{Id}_M$. Then, by defintition \ref{def:properly_disc_transf_group},
+    $\gamma_i \neq \gamma_j \implies \gamma_i^{-1}\circ\gamma_j\neq\operatorname{Id}_M$. Then, by \autoref{def:properly_disc_transf_group},
     $U_p \cap \gamma_i^{-1}\circ\gamma_j(U_p) = \emptyset \implies \gamma_i(U_p) \cap \gamma_j(U_p) = \emptyset$.
 \end{proof}
 
@@ -196,26 +196,26 @@ Thus, $f: M \to N$ is continuous at $p \in M$ if and only if $p_i \to p$ implies
 
 \begin{lemma}\label{lemma:1.16}
 Let $(U,\phi)$ be a chart, $c:(a,b) \to M$ be a $C^{\infty}$ curve and $t_0 \in (a,b)$ that satisfy 
-\begin{enumerate} 
+\begin{enumerate}
     \item The map $\phi \circ c: (a,b) \to \mathbb{R}^n$ is $C^{\infty}$.
     \item $\exists \{t_i\}_{i=1}^{\infty} \subset (a,b) : t_i \to t_0$ and $t_i \geq t_0$ and $c(t_i) \notin U$.
 \end{enumerate}
 Then
-\begin{enumerate}
-    \item $c(t_0) \notin U$.
+\begin{enumerate}[label=(\roman*), ref=Lemma \thelemma~(\roman*)]
+    \item \label{lemma:1.16:1}$c(t_0) \notin U$.
     \item $\forall \{s_i\}_{i=1}^{\infty} \subset (a,b) : s_i \to t_0$ and $s_i < t_0$, $(\phi \circ c)(s_i)$ does not converge in $\phi(U)$.
-    \label{num}
+    \label{lemma:1.16:2}
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
 (1) Assume $c(t_0) \in U$. 
 By continuity, $\exists \delta_0 > 0$ such that $c((t_0 - \delta_0, t_0 + \delta_0)) \subset U$.
-For sufficiently large $i$, we have $t_i \in (t_0, t_0 + \delta_0) \implies c(t_i) \in U$, which contradicts \ref{num}.
+For sufficiently large $i$, we have $t_i \in (t_0, t_0 + \delta_0) \implies c(t_i) \in U$, which contradicts \ref{lemma:1.16:2}.
 (2) Assume $\exists \{s_i\} \to t_0$ ($s_i < t_0$) such that $\{\phi \circ c(s_i)\}$ converges in $\phi(U)$.
 Then $(\phi \circ c)(s_i) \to x_0$ for some $x_0 \in \phi(U)$. By continuity of $\phi^{-1}$,
 $c(s_i) = (\phi^{-1} \circ \phi)(c(s_i)) \to \phi^{-1}(x_0)$ as $i \to \infty$. By the continuity of $c$, we have $c(s_i) \to c(t_0)$ as $i \to \infty$. 
-Since $M$ is Haussdorff, the limit is unique, so $\phi^{-1}(x_0) = c(t_0)$. Thus, $c(t_0) = \phi^{-1}(x_0) \in U$, which contradicts (1).
+Since $M$ is Haussdorff, the limit is unique, so $\phi^{-1}(x_0) = c(t_0)$. Thus, $c(t_0) = \phi^{-1}(x_0) \in U$, which contradicts \ref{lemma:1.16:1}.
 \end{proof}
 
 \subsection{Tangent bundle}

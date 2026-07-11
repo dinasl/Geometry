@@ -123,14 +123,13 @@ $d:M\times M \to \mathbb{R}$ is called the \emph{Riemannian distance function}.
 If there exists some function $c$ attaining the "inf", then $c$ is called a \emph{minimal curve}.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{thm:4.9}
 The function $d:M\times M \to \mathbb{R}$ is satisfies the axioms of distance. That is, for all $p,q,r \in M$,
-\begin{enumerate}[label=(\arabic*)]
+\begin{enumerate}[label=(\arabic*), ref=Theorem \thetheorem~(\arabic*)]
 \item $d(p,q) = 0$ if and only if $p=q$,
 \item $d(p,q) = d(q,p)$,
 \item $d(p,r) \leq d(p,q) + d(q,r)$.
 \end{enumerate}
-\label{thm:distance_axioms}
 \end{theorem}
 
 \begin{lemma}
@@ -143,7 +142,7 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
     L(\bar{c}) &= \int_a^b \|\bar{c}'(t)\|_{\mathbb{R}^n} dt \text{ is the Euclidean length.}
 \end{aligned}
 \]
-\label{lemma:length_of_curve_in_chart}
+\label{lemma:4.10}
 \end{lemma}
 
 \begin{proof}
@@ -181,29 +180,28 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
     Taking square roots and integrating with respect to $t$ yields the result.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{lemma:4.11}
     Let $(U, \phi)$ be a chart of M.
     Choose $x_0 \in \phi(U)$ and $r>0$ s.t $D := \bar{B}(x_0, 3r) \subset \phi(U)$.
-    Let $C>0$ be the constant from \autoref{lemma:length_of_curve_in_chart}. Then:
-    \begin{enumerate}
+    Let $C>0$ be the constant from \autoref{lemma:4.10}. Then:
+    \begin{enumerate}[label=(\roman*), ref=Lemma \thelemma~(\roman*)]
         \item $\forall p,q \in \phi^{-1}({B}(x_0, r))$: \\
         $C^{-1} \| \phi(p) - \phi(q) \|_{\mathbb{R}^n} \leq d(p,q) \leq C \|\phi(p) - \phi(q)\|_{\mathbb{R}^n}$.
         \item $\forall p \in \phi^{-1}({B}(x_0, r)), \forall q \in M \setminus \phi^{-1}(D) : d(p,q) \leq 2C^{-1}r$
     \end{enumerate}
-    \label{lemma:distance_in_chart}
 \end{lemma}
 
 \begin{proof}
     (1) $p,q \in \phi^{-1}({B}(x_0, r))$. $\bar{\gamma}$ : the line segment in $\mathbb{R}^n$ connecting $\phi(p)$ and $\phi(q)$. 
     Since $B(x_0, r)$ is convex, $\bar{gamma} \subset B(x_0, r)$. Set $\gamma := \phi^{-1} \circ \bar{\gamma}$.
-    By \autoref{lemma:length_of_curve_in_chart},
+    By \autoref{lemma:4.10},
     \[
     \begin{aligned}
         \|\phi(p) - \phi(q) \|_{\mathbb{R}^n} \leq L(\bar{\gamma}) \leq C^{-1} L(\gamma) \geq C^{-1} d(p,q).
     \end{aligned}
     \]
     Next, take any piecewise smooth refular curve $C: [0,l] \to M$ from $p$ to $q$. 
-    If $c([0,l]) \subset \phi^{-1}(D)$, let $\bar{c} := \phi \circ c$. By \autoref{lemma:length_of_curve_in_chart},
+    If $c([0,l]) \subset \phi^{-1}(D)$, let $\bar{c} := \phi \circ c$. By \autoref{lemma:4.10},
     \[
     \begin{aligned}
         L(c) \geq C^{-1} L(\bar{c}) \geq C^{-1} \|\phi(p) - \phi(q)\|_{\mathbb{R}^n}.
@@ -216,7 +214,7 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
     \end{aligned}
     \]
     and $c_1 := c|_{[0,t_1]}$. By \autoref{lemma:disjoint_or_equal}, $c_1(t_1) \in \phi^{-1}(\partial D)$
-    Let $\bar{c}_1 := \phi \circ c_1$. By \autoref{lemma:length_of_curve_in_chart},
+    Let $\bar{c}_1 := \phi \circ c_1$. By \autoref{lemma:4.10},
     \[
     \begin{aligned}
         L(c) \geq L(c_1) \geq C^{-1} L(\bar{c}_1).
@@ -228,7 +226,7 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
         &L(\bar{c_1}) \geq 2r > \|\phi(p)-\phi(q)\|_{\mathbb{R}^n} \\
        \implies &L(c) > C^{-1} \|\phi(p) - \phi(q)\|_{\mathbb{R}^n} \text{ in both cases}
     \end{aligned}\]
-    Taking inf over c (using the fact that C in \autoref{lemma:length_of_curve_in_chart} is independent of c)
+    Taking inf over c (using the fact that C in \autoref{lemma:4.10} is independent of c)
     \[
     \begin{aligned}
         d(p,q) \geq C^{-1} \|\phi(p) - \phi(q) \|_{\mathbb{R}^n}
@@ -237,11 +235,11 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
     (2) Prf is similar to (1) above (omitted).
 \end{proof}
 
-\begin{proof}[Proof of \autoref{thm:distance_axioms}]
+\begin{proof}[Proof of \autoref{thm:4.9}]
     (1) $p=q \implies$ taking $c(t) = p$ gives $L(c) = 0 $ thus $d(p,q) =0$.
     conversely, assume $d(p,q) = 0$.
     Fix a xhart $(U, \phi)$ around $p$ and let $x_0 := \phi(p)$. 
-    Choose $r>0$ s.t $D_r := \bar{B}(x_0, 3r) \subset \phi(U)$. By \autoref{lemma:distance_in_chart}, 
+    Choose $r>0$ s.t $D_r := \bar{B}(x_0, 3r) \subset \phi(U)$. By \autoref{lemma:4.11}, 
     \[
     \begin{aligned}
         \exists C_r > 0 \text{ s.t if } q \in M \setminus \phi^{-1} (D_r), \text{ then } d(p,q) \geq 2C_r^{-1} r
@@ -294,18 +292,17 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
     is called a \emph{geodesic ball} of radius $r$ centered at $p$
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop:open_in_manifold}
     For a subset $O \subset M$ the following are equivalent:
     \begin{enumerate}
         \item $O$ is open in $M$
         \item $\forall p \in O, \exists \delta > 0 \text{ s.t. } B(p, \delta) \subset O$
     \end{enumerate}
-    \label{prop:open_in_manifold}
 \end{proposition}
 
 \begin{proof}
     Take a chart $(U, \phi)$ around $p$ and let $x_0 := \phi(p)$. Since $\phi(O \cap U) \subset \mathbb{R}^n$ is open,
-    $\exists \gamma > 0$ s.t. $D_i = \bar{B}(x_0, 3r) \subset \phi(O \cap U)$. For the constant $C>0$ from \autoref{lemma:distance_in_chart}, choose $\delta >0$ s.t.
+    $\exists \gamma > 0$ s.t. $D_i = \bar{B}(x_0, 3r) \subset \phi(O \cap U)$. For the constant $C>0$ from \autoref{lemma:4.11}, choose $\delta >0$ s.t.
     $0 < \delta < 2 C^{-1}r$. Then $\forall q \in M \setminus \phi^{-1}(D),$
     $d(p,q) \geq 2C^{-1}r > \delta$. Thus $q \in B(p, \delta) \implies q \in \phi^{-1}(D)$,
     we have $B(p,\delta) \subset O$.
@@ -316,8 +313,8 @@ for $\bar{c} := \phi \circ c :[a,b] \rightarrow \mathbb{R}^n$
 
     $x \in \phi(O \cap U)$, set $p := \phi^{-1}(x) \in O \cap U$. By assumption, $\exists r_1 >0 \text{ s.t. } B(p, r_1) \subset O$.
     Since $\phi (U) \subset \mathbb{R}^n$ is open, $\exists r_2>0 \text{ s.t. } \bar{B}(x, 3 r_2) \subset \phi(U)$.
-    For $(U, \phi)$ and $D := \bar{B}(x, 3 r_2)$ let $C>0$ be the constant from \autoref{lemma:length_of_curve_in_chart}. Set $r:= min{C^{-1}r_1, r_2}$.
-    Then $B(p, C r) \subset B(p, r_1) \subset O$. For any $y \in B(x, r)$ set $q := \phi^{-1}(y) \in \phi^{-1}(B(x. r_2)) \subset U$. By \autoref{lemma:length_of_curve_in_chart}:
+    For $(U, \phi)$ and $D := \bar{B}(x, 3 r_2)$ let $C>0$ be the constant from \autoref{lemma:4.10}. Set $r:= min{C^{-1}r_1, r_2}$.
+    Then $B(p, C r) \subset B(p, r_1) \subset O$. For any $y \in B(x, r)$ set $q := \phi^{-1}(y) \in \phi^{-1}(B(x. r_2)) \subset U$. By \autoref{lemma:4.10}:
     \[
     \begin{aligned}
         d(p,q) \leq C \| x-y \|_{\mathbb{R}^n} < C r,

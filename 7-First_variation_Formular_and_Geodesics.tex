@@ -45,14 +45,14 @@ Note: By definition, $X(t) = dc (\frac{\partial}{\partial s})|_{s=0} \quad T(s,t
         = \frac{1}{2 \|c_0'(0)\|} \int_0^l \frac{d}{ds} \langle c_s'(t), c_s'(t) \rangle |_{s=0} dt \\
     \end{aligned}
     \]
-    By \autoref{prop:cov_deriv_linearity_first_arg} $\frac{1}{2} \frac{d}{ds} \langle c_s', c_s' \rangle = \langle \nabla_{c_s'} c_s'(t), c_s'(t) \rangle|_{s=0} = \langle \nabla_{c^t}T, T \rangle |_{s=0}$
-    Since $[\frac{\partial}{\partial s}, \frac{\partial}{\partial t}] = 0$, \autoref{prop:cov_deriv_linearity_first_arg} implies
+    By \autoref{prop:6.16.1} $\frac{1}{2} \frac{d}{ds} \langle c_s', c_s' \rangle = \langle \nabla_{c_s'} c_s'(t), c_s'(t) \rangle|_{s=0} = \langle \nabla_{c^t}T, T \rangle |_{s=0}$
+    Since $[\frac{\partial}{\partial s}, \frac{\partial}{\partial t}] = 0$, \autoref{prop:6.16.1} implies
     \[
     \begin{aligned}
         \nabla_{c^t}T = \nabla^c_{\partial / \partial s} dc (\frac{\partial}{\partial s}) = \nabla_{c_0}X
     \end{aligned}
     \]
-    Using \autoref{prop:covariant_derivative_leibniz} again,
+    Using \autoref{prop:6.16.3} again,
     \[
     \begin{aligned}
         \langle \nabla_{c_0} X, T \rangle &= \frac{d}{dt} \langle T, X \rangle |_{s=0} - \langle \nabla_{c_0}T, X \rangle \\

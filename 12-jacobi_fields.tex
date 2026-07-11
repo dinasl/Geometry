@@ -1,0 +1,199 @@
+\section{Jacobi fields}
+
+Let $M$ be a $n$-dimensional Riemannian maifold and $\gamma:[0,l]\to M$ a geodesic.
+
+\begin{definition}[Jacobi field and Jacobi equation]\label{def:12.1}
+A vector field $J(t)$ along $\gamma$ is a \emph{Jacobi field}
+if it satisifies
+\[
+(\nabla_{\gamma}\nabla_{\gamma}J)(t) + R(J(t),\gamma'(t))\gamma'(t) = 0, \quad t \in [0,l]
+\]
+This is called the \emph{Jacobi equation}.
+\end{definition}
+
+Fix $t_0 \in [0,l]$ and an orthonormal basis $e_1, \dots, e_n$ of $T_{\gamma(t_0)}M$.
+Let $E_i(t)$ be parallel vector field along $\gamma$ such that
+$E_i(t_0) = e_i$. Then $E_1(t), \dots E_n(t)$ is an orthonormal basis of $T_{\gamma(t)}M$ for all $t \in [0,l]$.
+For any vector field $J(t)$ along $\gamma$, let
+\[
+\begin{aligned}
+J(t) &= \sum_{i=1}^nJ^i(t) E_i(t), \\
+(\nabla_{\gamma}\nabla_{\gamma}J)(t) &= \sum_{i=1}^n(J^i)''(t)E_i(t), \\
+R(J(t), \gamma'(t))\gamma'(t) &= \sum_{j=1}^nJ^i(t) R(E_j(t), \gamma'(t))\gamma'(t) \\
+&= \sum_{j=1}^n\sum_{i=1}^nJ^j(t)\langle R(E_j(t), \gamma'(t))\gamma'(t), E_i(t)\rangle E_i(t) \\
+&= \sum_{i=1}^n\left(\sum_{j=1}^n J^i(t)R_{ij}(t)\right)E_i(t),
+\end{aligned}
+\]
+where $R_{ji}(t) = R_{ij}(t)$ has been used. Define
+\[
+\vec{J}(t) := (J^1(t), \dots, J^n(t))^T, \quad R(t) := (R_{ij}(t))_{1\le i,j\le n}.
+\]
+
+\begin{proposition}\label{prop:12.2}
+$J(t)$ is a Jacobi field if and only if
+\[
+\begin{aligned}
+&\vec{J}''(t) + \sum_{j=1}^nR_{ij}(t)J^j(t) = 0
+\Leftrightarrow &\vec{J}''(t) + R(t)\vec{J}(t) = 0, \quad t \in [0,l].
+\end{aligned}
+\]
+\end{proposition}
+
+General theory of ordinary differential equations (ODEs) implies the following:
+\begin{corollary}\label{cor:12.3}
+For all $v, w \in T_{\gamma(t_0)}M$, there exists a unique Jacobi field $J(t)$ ($t \in [0,l]$) along $\gamma$ such that $J(t_0) = v$ and $(\nabla_{\gamma}J)(t_0) = w$.
+\end{corollary}
+
+We can give the following geometric interpretation of Jacobi fields.
+Let $c : (-\epsilon, \epsilon) \times [0,l] \to M$ be a $C^{\infty}$ map.
+For $s \in (-\epsilon, \epsilon)$ and $t \in [0,l]$ define
+\[
+\begin{aligned}
+c_s(t) = c^t(s) &:= c(s,t), \\
+X(t) &:= (c^t)'(0) = dc\left(\frac{\partial }{\partial s}\right)\Big|_{s=0}, \\
+T(s,t) &:= c_s'(0) = dc\left(\frac{\partial }{\partial t}\right).
+\end{aligned}
+\]
+
+\begin{theorem}\label{thm:12.4}
+If $c_s$ is a geodesic for each $s \in (-\epsilon, \epsilon)$, then the variation vector field $X(t)$ 
+is a Jacobi field (along $\gamma = c_0$).
+\end{theorem}
+
+\begin{proof}
+Since $\left[\frac{\partial}{\partial s},\frac{\partial}{\partial t}\right] = 0$.
+\autoref{prop:6.16.1} implies that at $s=0$, $\nabla_{c_0}X = \nabla_{\partial/\partial t}^cdc(\partial/\partial s) = \nabla_{\partial/\partial s}^cdc(\partial/\partial t)$.
+Since each $c_s$ is a geodesic
+\[
+\nabla_{\partial/\partial t}^cdc\left(\frac{\partial}{\partial t}\right) = \nabla_{c_s}T = 0, \quad \forall s \in (-\epsilon, \epsilon).
+\]
+By \autoref{cor:8.6.1}, we have, at $s=0$,  
+\[
+\begin{aligned}
+\nabla_{c_0}\nabla_{c_0}X = \nabla_{\partial/\partial t}^c\nabla_{\partial /\partial s}^cdc\left(\frac{\partial}{\partial t}\right) = \nabla_{\partial/\partial s}^c\nabla_{\partial / \partial t}^cdc\left(\frac{\partial}{\partial t}\right) \\
++R(T,X)T = R(c_0', X)c_0' = -R(X, c_0') c_0'.
+\end{aligned}
+\]
+\end{proof}
+
+\begin{corollary}\label{cor:12.5}
+For all $p \in M$ and $\forall v, w \in T_pM$ the variation vector field
+$X(t) = d(\exp_p)_{tv}(tw)$ of the variation
+\[
+c(s,t) := \exp_p(t(u + sw)), \quad s\in (-\epsilon, \epsilon), \quad t\geq 0
+\]
+Conversely, all Jacobi fields along $\gamma_u(t) = \exp_p(tv)$ such that 
+$J(0) = 0$ and $(\nabla_{\gamma_v}J)(0) = w$ is given by such a variation, satisfying
+$J(t) = d(\exp_p)_{t}(tw)$.
+\end{corollary}
+
+\begin{proof}
+For each $s\in (-\epsilon, \epsilon)$, $c_s(t) = \exp_p(t(v + sw))$ is
+a geodesic, so $c(s,t)$ is a variation of geodesics.
+By \autoref{thm:12.4}, $X(t) = d(\exp_p)_{tv}(tw)$ is a Jacobi field along $\gamma_v$.
+Clearly $X(0) = 0$. Setting
+\[
+T := dc\left(\frac{\partial}{\partial t}\right) = d(\exp_p)_{t(v + sw)}(v + sw),
+\]
+\autoref{prop:6.16} and \autoref{prop:10.3} imply
+\[
+(\nabla_{\gamma_v}X)(0) = \nabla_{c_0}X|_{t=0} 0 \nabla_{c^0}T|_{s=0} = \nabla_{c^0}(v + sw)|_{s=0} = w.
+\]
+
+The second claim follows from the uniqueness of Jacobi fields with given
+initial data (\autoref{cor:12.3}).
+\end{proof}
+
+\begin{definition}[Conjugate point]\label{def:12.6}
+Let $\gamma : [0,l] \to M$ be a geodesic.
+Set $p:= \gamma(0)$ and $q:= \gamma(l)$.
+$q$ is a \emph{conjugate point} to $p$ along $\gamma$ if 
+there exists a non-identically zero Jacobi field $J$ such that
+\[
+J(0) = 0 \text{ and } J(l) = 0.
+\]
+\end{definition}
+
+\begin{problem}\label{prob:19}
+Answer the following questions:
+\begin{enumerate}[label=(\arabic*), ref=Problem \theproblem~(\arabic*)]
+\item Let $t=t(u), \quad u \in [0,\tau]$ be a reparametrization where $t: [0,\tau] \to [0,l]$ is surjective and $dt(du) > 0$.
+Show that $\gamma(t(u)), \quad u \in [0,\tau]$ is a geodesic if and only if
+\[
+t(u) = \frac{l}{\tau}u.
+\]
+\item Show that the property of being a conjugate point is independent of the parametrization of $\gamma$.
+\item Show that $q$ is a conjugate to $p$ along $\gamma(t), \quad t \in [0,l]$ if and only if
+$p$ is conjugate to $q$ alog $\gamma(l-t), \quad t\in [0,l]$.
+\end{enumerate}
+\end{problem}
+
+\begin{proposition}\label{12.7}
+Let $p,q \in M$ and $v \in T_pM$ such that $\exp_pv = q$.
+Then $q$ is conjugate to $p$ along $\gamma_v$ if and only if
+\[
+d(\exp_p)_v : T_vT_pM(\simeq T_pM) \to T_qM \text{ is singular}
+\]
+that is, not surjective.
+\end{proposition}
+
+\begin{proof}
+By \autoref{cor:12.5} any Jacobi field $J$ along $\gamma_v$ satisfying
+$J(0) = 0$ is given by $J(t) = d(\exp_p)_{tv}(tw)$ with $(\nabla_{\gamma_v}J)(0) = w$.
+Thus $q$ is a conjugate to $p$ along $\gamma_v$ if and only if
+there exists $w \in T_vT_pM(\simeq T_pM)$ such that $J(l) = d(\exp_p)_v = 0$.
+This is equivalent to $d(\exp_p)_v$ being singular.
+\end{proof}
+
+\begin{definition}[Index form]\label{def:12.8}
+For vector fields $X,Y$ along a geodesic $\gamma:[0,l] \to M$ define the \emph{index form}
+$I_{\gamma}$ along $\gamma$ as
+\[
+I_{\gamma}(X,Y) := \int_0^l\left(\langle \nabla_{\gamma}X, \nabla_{\gamma}Y\rangle - \langle R(X,\gamma')\gamma',Y\rangle\right)dt.
+\]
+$I_{\gamma}$ is a symmetric bilinear form on the vector space of vector fields along $\gamma$.
+\end{definition}
+
+Using
+\[
+\langle\nabla_{\gamma}X,\nabla_{\gamma}Y\rangle = \frac{d}{dt}\langle\nabla_{\gamma}X,Y\rangle - \langle\nabla_{\gamma}\nabla_{\gamma}X, Y\rangle,
+\]
+we obtain
+\begin{align}\label{eq:12.1}
+I_{\gamma}(X,Y) &= \int_0^l\left(\langle \nabla_{\gamma}X,Y\rangle - \langle\nabla_{\gamma}\nabla_{\gamma}X,Y\rangle - \langle R(X,\gamma')\gamma',Y\rangle\right)dt \notag \\
+&= [\langle \nabla_{\gamma}X,Y\rangle]_{t=0}^{t=l} - \int_0^l\langle\nabla_{\gamma}\nabla_{\gamma}X + R(X,\gamma')\gamma'\gamma',Y\rangle dt.
+\end{align}
+
+Thus, if $X$ is a Jacobi field,
+\begin{align}\label{eq:12.2}
+I_{\gamma}(X,Y) = [\langle\nabla_{\gamma}X,Y\rangle]_{t=0}^{t=l}
+\end{align}
+
+\begin{proposition}
+Let
+\[
+\nu_{\gamma} := \left\{X|X \text{ is a vector field along } \gamma \text{ s.t } X(0) = 0 = X(l)\right\}
+\]
+and $J$ be a vector field along $\gamma$. Then $J$ is a Jacobi field
+if and only if
+\[
+I_{\gamma}(J,X) = 0, \quad \forall X \in \nu_{\gamma}.
+\]
+\end{proposition}
+
+\begin{proof}
+If $J$ Jacobi field, \eqref{eq:12.2} implies
+\[
+I_{\gamma}(J,X) = 0 \quad \forall X \in \nu_{\gamma}.
+\]
+Conversely, assyme $I{\gamma}(J,X) = 0\quad \forall X \in \nu_{\gamma}$.
+Take a $C^{\infty}$ function $f:[0,l] \to \mathbb{R}$ such that $f(0) = f(l) = 0$ and $f(t) > 0, \quad 0< t < l$. Setting
+\[
+Y := -f(t) (\nabla_{\gamma}\nabla_{\gamma}J + R(J,\gamma')\gamma') \in \nu_{\gamma}.
+\]
+\eqref{eq:12.1} yields
+\[
+0 = I_{\gamma}(J,Y) = \int_0^l f(t) ||\nabla_{\gamma}\nabla_{\gamma}J + R(J,\gamma')\gamma'||^2 dt.
+\]
+Thus $\nabla_{\gamma}\nabla_{\gamma}J + R(J,\gamma')\gamma' = 0$, so $J$ is a Jacobi field.
+\end{proof}

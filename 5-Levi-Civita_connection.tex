@@ -2,19 +2,19 @@
 
 Assume $M$ is a Riemannian manifold.
 
-\begin{definition}[Levi-Civita connection]\label{def:levi-civita_connection}
+\begin{definition}[Levi-Civita connection]\label{def:5.1}
 \[
 \nabla : \underset{\in (X,Y)}{\mathcal{\mathfrak{X}(M)}\times\mathfrak{X}(M)} \to \underset{\in \nabla \times Y}{\mathfrak(M)}
 \]
 is called the \emph{covariant derivative} or \emph{Levi-Civita connection} if
 $\forall X, Y, Z \in \mathfrak{X}(M)$ and $\forall f \in C^{\infty}(M)$:
-\begin{enumerate}[label=(\arabic*)]
-    \item \label{item:levi-civita-1} $\nabla_{X+Y}Z = \nabla_X Z + \nabla_Y Z$
-    \item \label{item:levi-civita-2} $\nabla_{fX}Y = f\nabla_X Y$
-    \item \label{item:levi-civita-3} $\nabla_X(Y+Z) = \nabla_X Y + \nabla_X Z$
-    \item \label{item:levi-civita-4} $\nabla_X(fY) = X(f)Y + f\nabla_X Y$
-    \item \label{item:levi-civita-5} $\nabla_X Y - \nabla_Y X = [X,Y]$ (torsion-free)
-    \item \label{item:levi-civita-6} $X\langle Y, Z \rangle = \langle \nabla_X Y, Z \rangle + \langle Y, \nabla_X Z \rangle$ (metric compatibility)
+\begin{enumerate}[label=(\arabic*), ref=Definition \thedefinition~(\arabic*)]
+    \item \label{def:5.1.1} $\nabla_{X+Y}Z = \nabla_X Z + \nabla_Y Z$
+    \item \label{def:5.1.2} $\nabla_{fX}Y = f\nabla_X Y$
+    \item \label{def:5.1.3} $\nabla_X(Y+Z) = \nabla_X Y + \nabla_X Z$
+    \item \label{def:5.1.4} $\nabla_X(fY) = X(f)Y + f\nabla_X Y$
+    \item \label{def:5.1.5} $\nabla_X Y - \nabla_Y X = [X,Y]$ (torsion-free)
+    \item \label{def:5.1.6} $X\langle Y, Z \rangle = \langle \nabla_X Y, Z \rangle + \langle Y, \nabla_X Z \rangle$ (metric compatibility)
 \end{enumerate}
 \end{definition}
 
@@ -23,7 +23,7 @@ There exists a unique ($\exists !$) Levici-Civita connection $\nabla$ on a Riema
 \end{theorem}
 
 \begin{proof}\label{proof:fundamental_theorem_of_riemannian_geometry}
-We start by showing uniqueness. By \autoref{item:levi-civita-6}:
+We start by showing uniqueness. By \autoref{def:5.1.6}:
 \[
 \begin{aligned}
     X\langle Y, Z \rangle &= \langle \nabla_X Y, Z \rangle + \langle Y, \nabla_X Z \rangle\\
@@ -31,7 +31,7 @@ We start by showing uniqueness. By \autoref{item:levi-civita-6}:
     - Z \langle X, Y \rangle &= - \langle \nabla_Z X, Y \rangle - \langle X, \nabla_Z Y \rangle
 \end{aligned}
 \]
-Summing over these and applying \autoref{item:levi-civita-5}:
+Summing over these and applying \autoref{def:5.1.5}:
 \begin{align}\label{eq:levi-civita_uniqueness}
 \langle \nabla_XY, Z\rangle &= \frac12 \{X\langle Y, Z \rangle + Y \langle Z, X \rangle - Z \langle X, Y \rangle + \langle [X,Y], Z \rangle \notag \\
 & - \langle [Y,Z], X \rangle + \langle [Z,X], Y \rangle\}
@@ -55,11 +55,11 @@ where $(g^{ij})=(g_{ij})^{-1}$. For $Z = \sum_{k=1}^n Z^k\partial_k$, using that
 \end{aligned}
 \]
 Note that this is independent of the choice of chart $(U,\phi)$! This implies that for any other chart $(V, \psi)$ such that $U \cap V \neq \emptyset$, $\nabla_X^{U,\phi} = \nabla_X^{(V,\psi)}Y$.
-Thus $\nabla_X Y := \nabla_X^{(U, \phi)}Y$ yields a globally defined vector field. Direct calculation verifies all axioms \autoref{item:levi-civita-1}--\autoref{item:levi-civita-6} of \autoref{def:levi-civita_connection}.
+Thus $\nabla_X Y := \nabla_X^{(U, \phi)}Y$ yields a globally defined vector field. Direct calculation verifies all axioms \autoref{def:5.1.1}--\autoref{def:5.1.6} of \autoref{def:5.1}.
 \end{proof}
 
 \begin{problem}
-Verify axioms \autoref{item:levi-civita-1}--\autoref{item:levi-civita-6} of \autoref{def:levi-civita_connection} for the Levi-Civita connection $\nabla$ constructed in \autoref{proof:fundamental_theorem_of_riemannian_geometry}.
+Verify axioms \autoref{def:5.1.1}--\autoref{def:5.1.6} of \autoref{def:5.1} for the Levi-Civita connection $\nabla$ constructed in \autoref{proof:fundamental_theorem_of_riemannian_geometry}.
 \end{problem}
 
 \begin{definition}[Christoffel symbols]\label{def:christoffel_symbols}
@@ -76,7 +76,7 @@ $\nabla$ is NOT a tensor field, implying that $\Gamma_{ij}^k$ are not the compon
 
 \begin{proposition}\label{prop:christoffel_symbols}
 $\forall i, j, k = 1, \dots, n$:
-\begin{enumerate}[label=(\arabic*)]
+\begin{enumerate}[label=(\arabic*), ref=Proposition \theproposition~(\arabic*)]
     \item \label{item:christoffel_1} $\Gamma_{ij}^k = \sum_{l=1}^n \langle \nabla_{\partial_i}\partial_j, \partial_l\rangle g^{lk} = \frac12 \sum_{l=1}^n g^{kl}(\partial_ig_{jl}+\partial_jg_{il}- \partial_lg_{ij})$.
     \item \label{item:christoffel_2} $\Gamma_{ij}^k = \Gamma_{ji}^k$.
     \item \label{item:christoffel_3} $\partial_kg_{ij} = \frac{\partial g_{ij}}{\partial x^k} = \sum_{l=1}^n (\Gamma_{ik}^lg_{lj} + \Gamma_{jk}^lg_{li})$.
@@ -86,15 +86,15 @@ $\forall i, j, k = 1, \dots, n$:
 \begin{proof}
 By \autoref{def:christoffel_symbols}: $\langle \nabla_{\partial_i}\partial_j, \partial_l \rangle = \Gamma_{ij}^k g_{kl}$.
 Multiplying by $g^{lm}$ and summing over $l$ yields the first equality \autoref{item:christoffel_1}.
-The second equality follows from \autoref{def:levi-civita_connection} with
+The second equality follows from \autoref{def:5.1} with
 $X = \partial_i$, $Y = \partial_j$, $Z = \partial_l$ and $[\partial_i, \partial_j]$.
 
 \autoref{item:christoffel_2} follows from \autoref{item:christoffel_1} and the symmetry of $g_{ij}$.
 
-\autoref{item:christoffel_3} follows from \autoref{def:levi-civita_connection} with $X = \partial_k$, $Y = \partial_i$, $Z = \partial_j$ and \autoref{item:christoffel_2}.
+\autoref{item:christoffel_3} follows from \autoref{def:5.1} with $X = \partial_k$, $Y = \partial_i$, $Z = \partial_j$ and \autoref{item:christoffel_2}.
 \end{proof}
 
-For local expressions $X = \sum_{i=1}^nX^i\partial_i$ and $Y = \sum_{j=1}Y^j\partial_j$, calculation using \autoref{def:levi-civita_connection} \autoref{item:levi-civita-1}--\autoref{item:levi-civita-4} yields
+For local expressions $X = \sum_{i=1}^nX^i\partial_i$ and $Y = \sum_{j=1}Y^j\partial_j$, calculation using \autoref{def:5.1} \autoref{def:5.1.1}--\autoref{def:5.1.4} yields
 \[
 \begin{aligned}
 \nabla_XY &= \sum_{i=1}^nX^i\nabla_{\partial_i}\left(\sum_{j=1}^nY^j\partial_j\right) \\

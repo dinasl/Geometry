@@ -75,7 +75,7 @@ Multiplying by $\frac{\partial y^{\beta}}{\partial x^j}$ and summing over $\beta
 
 \begin{proposition}[Properties of covariant derivative along curves]
 Let $X,Y$ be vector fields along $c:I \to M$,  $f:I \to \mathbb{R}$ a $C^{\infty}$ function and $a, b \in \mathbb{R}, t \in I$. Then
-\begin{enumerate}[label=(\arabic*)]
+\begin{enumerate}[label=(\arabic*), ref=Proposition \theproposition~(\arabic*)]
     \item \label{prop:covariant_derivative_linearity}$\nabla_c(aX + bY) = a\nabla_cX + b\nabla_cY$.
     \item \label{prop:covariant_derivative_product_rule}$\nabla_c(fX) = \frac{df}{dt}X + f\nabla_cX$.
     \item \label{prop:covariant_derivative_leibniz}$\frac{d}{dt}\langle X, Y \rangle = \langle \nabla_cX, Y \rangle + \langle X, \nabla_cY \rangle$.
@@ -262,14 +262,14 @@ defines a vector field $d \xi(Y)$ along $\xi$.
     Since $(\xi \circ c)'(0) = d \xi_p(c'(0)) = d \xi_p(v)$, we have $(\nabla_{\xi \circ c} \partial_i)(0) = \nabla_{d \xi_p(v)} \partial_i$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:6.16}
     Let $v,w \in T_p N (p \in N)$, $X,Y$ be vector fields along $\xi, f:N \to \mathbb{R}$ be a $C^{\infty}$ function. 
     and $a,b \in \mathbb{R}$. Then
-    \begin{enumerate}
-        \item \label{prop:cov_deriv_linearity_first_arg} $\nabla_{av + bw}^{\xi}X = a \nabla_v^{\xi}X + b \nabla_w^{\xi}X$.
-        \item \label{prop:cov_deriv_linearity_second_arg} $\nabla_v^{\xi}(aX + bY) = a \nabla_v^{\xi}X + b \nabla_v^{\xi}Y$.
-        \item \label{prop:cov_deriv_leibniz} $\nabla_v^{\xi}(fX) = (vf) X_p + f(p) \nabla_v^{\xi}X$.
-        \item \label{prop:cov_deriv_pullback_vector_field} For a vector field $Z$ on $M$, $\nabla_v^{\xi}(Z \circ \xi) = \nabla_{d \xi_p(v)} Z$.
+    \begin{enumerate}[label=(\roman*), ref=Proposition \theproposition~(\roman*)]
+        \item \label{prop:6.16.1} $\nabla_{av + bw}^{\xi}X = a \nabla_v^{\xi}X + b \nabla_w^{\xi}X$.
+        \item \label{prop:6.16.2} $\nabla_v^{\xi}(aX + bY) = a \nabla_v^{\xi}X + b \nabla_v^{\xi}Y$.
+        \item \label{prop:6.16.3} $\nabla_v^{\xi}(fX) = (vf) X_p + f(p) \nabla_v^{\xi}X$.
+        \item \label{prop:6.16.4} For a vector field $Z$ on $M$, $\nabla_v^{\xi}(Z \circ \xi) = \nabla_{d \xi_p(v)} Z$.
     \end{enumerate}
 \end{proposition}
 

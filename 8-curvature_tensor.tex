@@ -163,13 +163,13 @@ Show that
 
 The following follows from \autoref{prob:13}.
 
-\begin{corollary}
-\begin{enumerate}[label=(\arabic*)]
-\item For $\xi, X, Y, Z$ as in \autoref{prob:13},
+\begin{corollary}\label{cor:8.6}
+\begin{enumerate}[label=(\arabic*), ref=Corollary \thecorollary~(\arabic*)]
+\item \label{cor:8.6.1} For $\xi, X, Y, Z$ as in \autoref{prob:13},
 \[
 \nabla_X^{\xi}\nabla_Y^{\xi}Z - \nabla_Y^{\xi}\nabla_X^{\xi}Z - \nabla_{[X,Y]}^{\xi}Z = R(d\xi(X),d\xi(Y))Z.
 \]
-\item For vector fields $X,Y,Z$ on $M$
+\item \label{cor:8.6.2} For vector fields $X,Y,Z$ on $M$
 \[
 R(X,Y)Z = \nabla_X\nabla_YZ - \nabla_Y\nabla_XZ - \nabla_{[X,Y]}Z.
 \]
@@ -184,13 +184,13 @@ The fundamental symmetries of the cuvrature tensor are gievn in \autoref{prob:14
 
 \begin{problem}\label{prob:14}
 Show that $\forall p \in M, \quad u, v, w, x \in P_pM$ and indices $i,j,k,l$:
-\begin{enumerate}[label=(\arabic*)]
-\item $R(u,v)w = -R(v,u)w$, $P_{jik}^l = -R_{ijk}^l$.
-\item $R(u,v) + R(v,w) + R(w,u) = 0$.
+\begin{enumerate}[label=(\arabic*), ref=Problem \theproblem~(\arabic*)]
+\item \label{prob:14.1} $R(u,v)w = -R(v,u)w$, $P_{jik}^l = -R_{ijk}^l$.
+\item \label{prob:14.2} $R(u,v) + R(v,w) + R(w,u) = 0$.
 \[
 R_{ijk}^l + R_{jki}^l + R_{kij}^l = 0 \hfill \text{(first Bianchi identity)}.
 \]
-\item $\langle R(u,v)x, w \rangle = -\langle R(v,u)w, x \rangle$, $R_{ijkl} = -R_{jikl}$.
-\item $\langle R(u,v)w, x \rangle = \langle R(x,x)u, v \rangle$, $R_{ijkl} = R_{klij}$.
+\item \label{prob:14.3} $\langle R(u,v)x, w \rangle = -\langle R(v,u)w, x \rangle$, $R_{ijkl} = -R_{jikl}$.
+\item \label{prob:14.4} $\langle R(u,v)w, x \rangle = \langle R(x,x)u, v \rangle$, $R_{ijkl} = R_{klij}$.
 \end{enumerate}
 \end{problem}

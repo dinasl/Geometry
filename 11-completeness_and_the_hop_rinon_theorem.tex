@@ -94,22 +94,21 @@
     A subset $A \subset X$ is bounded $: \equiv \sup_{p,q \in A} d(p,q) < + \infty$
 \end{problem}
 
-\begin{theorem}[Hopf-Rinow Theorem]
+\begin{theorem}[Hopf-Rinow Theorem]\label{theorem:11.4}
     The following are equivalent:
-    \begin{enumerate}
-        \item $M$ is a geodesically complete
-        \item $\forall$ bounded closed subset of $M$ is cpt
-        \item $(M,d)$ is a complete metric space with respect to Riemannian distance $d$
+    \begin{enumerate}[label=(\roman*), ref=Theorem \thetheorem~(\roman*)]
+        \item \label{thm:11.4.1} $M$ is a geodesically complete
+        \item \label{thm:11.4.2} $\forall$ bounded closed subset of $M$ is cpt
+        \item \label{thm:11.4.3} $(M,d)$ is a complete metric space with respect to Riemannian distance $d$
     \end{enumerate}
-    \label{theorem:11.4}
 \end{theorem}
 
 \begin{proof}
-    $(1) \implies (2)$: $\forall$ bounded closed set $C \subset M$.
+    \autoref{thm:11.4.1} $\implies$ \autoref{thm:11.4.2}: $\forall$ bounded closed set $C \subset M$.
     $\exists r>0$ such that $C \subset B(,r)$. Since $\bar{B}(0_p,r)\subset T_pM$ is cpt and $exp_p: T_p M \to M$ is continous, the image
     $\bar{B}(p,r) = exp_p (\bar{B}(0_p,r))$ is cpt.
     Since $C$ is a closed subset of a cpt set, $C$ is cpt.
-    $(2) \implies (3):$ Let ${p_i}^{\infty}_{i=1}$ be a cauchy sequence $\exists i_1 \in \mathbb{N}$ such that $d(p_i, p_j) < 1$ $\forall i,j \geq i_1$ Setting
+    \autoref{thm:11.4.2} $\implies$ \autoref{thm:11.4.3}: Let ${p_i}^{\infty}_{i=1}$ be a cauchy sequence $\exists i_1 \in \mathbb{N}$ such that $d(p_i, p_j) < 1$ $\forall i,j \geq i_1$ Setting
     \[
     \begin{aligned}
         R := \max_{i=1, \dots, i_1} d(p_1,p_i) +1,
@@ -122,7 +121,7 @@
     \end{aligned}
     \]
     thus we have $d(p_1,p_i) < R$ $\forall i \in \mathbb{N}.$
-    Hence ${p_i} \subset \bar{B}(p_1,R)$ which is cpt by $(2)$.
+    Hence ${p_i} \subset \bar{B}(p_1,R)$ which is cpt by \autoref{thm:11.4.2}.
     $\exists$ subsequence ${p_{j(i)}}$ such that $p:= \lim_{i \to \infty} p_{j(i)} \in \bar{B}(p_1,R)$.
     $\forall \epsilon >0$, since ${p_i}$ is Cauchy, $\exists i_{\epsilon} \in \mathbb{N}$ such that $d(p_i, p_j) < \frac{\epsilon}{2}, \quad \forall i,j \geq i_{\epsilon}$
     Take $i' \in \mathbb{N}$ sufficiently large so that $j(i') \geq i_{\epsilon}$ and $d(p_{j(i')},p) < \frac{\epsilon}{2}.$
@@ -141,7 +140,7 @@
     as $i \to \infty$, which contradicts \autoref{prop:7.9}
 \end{proof}
 
-In the proof $(1) \implies (2)$ of \autoref{theorem:11.4} the choice of $r>0$ is determined by the bounded set $C$, and no specific
+In the proof \autoref{thm:11.4.3} $\implies$ \autoref{thm:11.4.1} of \autoref{theorem:11.4} the choice of $r>0$ is determined by the bounded set $C$, and no specific
 properties of the map $exp_p : B(0_p,r) \to exp_p (B(0_p,r))$ are assumed. Consequently, (11.2) is non-trivial.
 
 \begin{problem}
