@@ -26,7 +26,7 @@ By continuity, $T(s,t) \neq 0$ for sufficiently small $s$. Thus, by replacing $\
         \frac{d}{ds} \|T\| = \frac{1}{2 \|T\|} \frac{\partial}{\partial s} \langle T, T \rangle = \frac{1}{\|T\|} \langle \nabla^c_{\frac{\partial}{\partial t}} T,T \rangle = \frac{1}{\|T\|} \langle \nabla_{\frac{\partial}{\partial t}}^c X, T \rangle.
     \end{aligned}
     \]
-    Thus 
+    Thus,
     \[
     \begin{aligned}
         \frac{\partial^2}{\partial s^2} \|T\| =& \frac{1}{\|T\|} \frac{\partial}{\partial s} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle - \frac{1}{\|T\|^2} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle \frac{\partial}{\partial s} \|T\| \\
@@ -37,11 +37,11 @@ By continuity, $T(s,t) \neq 0$ for sufficiently small $s$. Thus, by replacing $\
     \end{aligned}
     \]
     At $s=0$, $\nabla^c_{\frac{\partial}{\partial t}} X |_{s=0}= \nabla_{c_0} X$. Since $c_0$ is a geodesic,
-    $\|T\|_{s=0} = \|c_0'(0)\|$ and $\nabla_{c_0}T=0$. Thus:
+    $\|T\|_{s=0} = \|c_0'(0)\|$ and $\nabla_{c_0}T=0$. Thus,
     \[
     \begin{aligned}
-        \frac{d^2}{ds^2} \|T\| |_{s=0} =& \frac{1}{\|c_0'(0)\|} (\frac{d}{dt} \langle \nabla^c_{\frac{\partial}{\partial t}} X, T \rangle - \langle R(X,T)T,X \rangle \\
-        &+ \langle \nabla_{c_0} X, \nabla_{c_0}X \rangle - \langle \nabla_{c_0}X, \frac{T}{\|T\|} \rangle^2).
+        \frac{d^2}{ds^2} \|T\| |_{s=0} =& \frac{1}{\|c_0'(0)\|} \Bigg(\frac{d}{dt} \langle \nabla^c_{\frac{\partial}{\partial t}} X, T \rangle - \langle R(X,T)T,X \rangle \\
+        &+ \langle \nabla_{c_0} X, \nabla_{c_0}X \rangle - \langle \nabla_{c_0}X, \frac{T}{\|T\|} \rangle^2\Bigg).
     \end{aligned}
     \]
     Covariant differentiation of $X = X^{\perp} + \langle X, \frac{T}{\|T\|} \rangle \frac{T}{\|T\|}$ yields:
@@ -52,11 +52,11 @@ By continuity, $T(s,t) \neq 0$ for sufficiently small $s$. Thus, by replacing $\
         \langle \nabla_{c_0} X, \nabla_{c_0} X \rangle - \langle \nabla_{c_0}X, \frac{T}{\|T\|} \rangle^2 = \langle \nabla_{c_0} X^{\perp}, \nabla_{c_0} X^{\perp} \rangle.
     \end{aligned}
     \]
-    Thus:
+    Thus,
     \[
     \begin{aligned}
-        \frac{d^2}{ds^2} \|T\| |_{s=0} =& \frac{1}{\|c_0'(0)\|}(\frac{d}{dt} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle - \langle R(X,T)T,X \rangle \\
-        &+\langle \nabla_{c_0} X^{\perp}, \nabla_{c_0} X^{\perp} \rangle ).
+        \frac{d^2}{ds^2} \|T\| |_{s=0} =& \frac{1}{\|c_0'(0)\|}\Bigg(\frac{d}{dt} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle - \langle R(X,T)T,X \rangle \\
+        &+\langle \nabla_{c_0} X^{\perp}, \nabla_{c_0} X^{\perp} \rangle \Bigg).
     \end{aligned}
     \]
     Integrating with respect to $t$ from $0$ to $\ell$ yields the result.
@@ -65,14 +65,14 @@ By continuity, $T(s,t) \neq 0$ for sufficiently small $s$. Thus, by replacing $\
 From a Riemannian manifold $M$, the diameter is defined as:
 \[
 \begin{aligned}
-    diam(M) := \sup_{p,q \in M} d(p,q) \qquad (\leq + \infty)
+    \operatorname{diam}(M) := \sup_{p,q \in M} d(p,q) \qquad (\leq + \infty)
 \end{aligned}
 \]
 
 \begin{theorem}[Bonnet-Myers theorem]
     Let $M$ be a complete n-dimensional Riemannian manifold ($n \geq 2$) such that
     $Ric \geq (n-1)k$ for the same $k>0$.
-    Then $M$ is compact and $diam(M) \leq \frac{\pi}{\sqrt{k}}$
+    Then $M$ is compact and $\operatorname{diam}(M) \leq \frac{\pi}{\sqrt{k}}$
     \label{thm:13.2}
 \end{theorem}
 
@@ -82,29 +82,29 @@ From a Riemannian manifold $M$, the diameter is defined as:
     \begin{enumerate}
         \item Show that the sectional curvature of $M$ is $k$. \\
         (By \autoref{prop:9.7}, this implies $Ric = (n-1)k$.)
-        \item Show that $diam(M) = \frac{\pi}{\sqrt{k}}$
+        \item Show that $\operatorname{diam}(M) = \frac{\pi}{\sqrt{k}}$
     \end{enumerate}
     \label{prob:20}
 \end{problem}
 Problem \autoref{prob:20} shows \autoref{thm:13.1} is optimal. It is known that under the assumption of the Bonnet-Myers theorem if
-$diam(M) = \frac{\pi}{\sqrt{k}}$, then $M$ is isometric to $\mathbb{S}^n (\frac{1}{\sqrt{k}})$.
+$\operatorname{diam}(M) = \frac{\pi}{\sqrt{k}}$, then $M$ is isometric to $\mathbb{S}^n (\frac{1}{\sqrt{k}})$.
 
 \begin{proof}[of \autoref{thm:13.2}]
-    Showing $d(p,q) \leq \frac{\pi}{\sqrt{k}}$ $\forall p,q \in M$ implies $diam(M)\leq \frac{\pi}{\sqrt{k}}$.
+    Showing $d(p,q) \leq \frac{\pi}{\sqrt{k}}$ $\forall p,q \in M$ implies $\operatorname{diam}(M)\leq \frac{\pi}{\sqrt{k}}$.
     $M$ us then a bounded closed set: by Hopf-Rinow, $M$ is compact.
     Suppose $\exists p,q \in M$ such that $d(p,q) > \frac{\pi}{\sqrt{k}}$. By completeness,
     $\exists$ minimizing geodesic $\gamma: [0, \ell] \to M$ from $p$ to $q$ such that 
     $\|\gamma'(t)\|=1$ and $\ell = d(p,q) > \frac{\pi}{\sqrt{k}}$ (cf. \autoref{theorem:11.3}).
     Let $E_1(t), \dots, E_{n-1}(t)$ be parallel vector fields along $\gamma$ such that
-    $\{E_1(t), \dots, E_{n-1}(t), \gamma'(t)\}$ is an ONB of $T_{\gamma(t)}M$.
+    $\{E_1(t), \dots, E_{n-1}(t), \gamma'(t)\}$ is an orthonormal basis of $T_{\gamma(t)}M$.
     Set: $X_i(t):=\sin(\frac{\pi}{\gamma}t)E_i\implies (\nabla_{\gamma}X_i)(t) = \frac{\pi}{\ell} \cos(\frac{\pi}{\ell}t)E_i(t)$.
-    Let $\sigma_i(t):= Span_{\mathbb{R}}\{\gamma'(t), E_i(t)\}$. Then
+    Let $\sigma_i(t):= \operatorname{span}_{\mathbb{R}}\{\gamma'(t), E_i(t)\}$. Then,
     \[
     \begin{aligned}
-        \langle R(X_i(t)), \gamma'(t) \gamma'(t), X_i(t) \rangle = \sin^2(\frac{\pi}{\ell}t)K_{\sigma_i(t)},
+        \langle R(X_i(t)), \gamma'(t) \gamma'(t), X_i(t) \rangle = \sin^2\left(\frac{\pi}{\ell}t\right)K_{\sigma_i(t)},
     \end{aligned}
     \]
-    Yielding:
+    yielding,
     \[
     \begin{aligned}
         I_{\gamma}(X_i, X_i) = \int_0^{\ell} \{(\frac{\pi}{\ell})^2 \cos^2(\frac{\pi}{\ell}t)-\sin^2(\frac{\pi}{\ell} t)K_{\sigma_i(t)} \}dt.
@@ -114,8 +114,8 @@ $diam(M) = \frac{\pi}{\sqrt{k}}$, then $M$ is isometric to $\mathbb{S}^n (\frac{
     \[
     \begin{aligned}
         \sum_{i=1}^{n-1} I_{\gamma} (X_i, X_i) =& \int_0^{\ell} \{ (n-1)(\frac{\pi}{\ell})^2 \cos^2(\frac{\pi}{\ell}t)\\
-        &-\sin^2(\frac{\pi}{\ell}t) Ric(\gamma'(t), \gamma'(t))\}dt \\
-        \leq& \int_0^{\ell} \{(n-1)(\frac{\pi}{\ell})^2 \cos^2(\frac{\pi}{\ell} t) - (n-1)k \sin^2(\frac{\pi}{\ell}t)\} dt \\
+        &-\sin^2\left(\frac{\pi}{\ell}t\right) Ric(\gamma'(t), \gamma'(t))\}dt \\
+        \leq& \int_0^{\ell} \{(n-1)\left(\frac{\pi}{\ell}\right)^2 \cos^2\left(\frac{\pi}{\ell} t\right) - (n-1)k \sin^2\left(\frac{\pi}{\ell}t\right)\} dt \\
         =& \frac{(n-1)\ell}{2}\left(\frac{\pi^2}{\ell^2} - k \right) <0.
     \end{aligned}
     \]
