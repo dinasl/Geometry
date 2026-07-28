@@ -97,7 +97,7 @@ $\operatorname{diam}(M) = \frac{\pi}{\sqrt{k}}$, then $M$ is isometric to $\math
     $\|\gamma'(t)\|=1$ and $\ell = d(p,q) > \frac{\pi}{\sqrt{k}}$ (cf. \autoref{theorem:11.3}).
     Let $E_1(t), \dots, E_{n-1}(t)$ be parallel vector fields along $\gamma$ such that
     $\{E_1(t), \dots, E_{n-1}(t), \gamma'(t)\}$ is an orthonormal basis of $T_{\gamma(t)}M$.
-    Set: $X_i(t):=\sin(\frac{\pi}{\gamma}t)E_i\implies (\nabla_{\gamma}X_i)(t) = \frac{\pi}{\ell} \cos(\frac{\pi}{\ell}t)E_i(t)$.
+    Set: $X_i(t):=\sin\left(\frac{\pi}{\gamma}t\right)E_i\implies (\nabla_{\gamma}X_i)(t) = \frac{\pi}{\ell} \cos\left(\frac{\pi}{\ell}t\right)E_i(t)$.
     Let $\sigma_i(t):= \operatorname{span}_{\mathbb{R}}\{\gamma'(t), E_i(t)\}$. Then,
     \[
     \begin{aligned}
@@ -107,13 +107,13 @@ $\operatorname{diam}(M) = \frac{\pi}{\sqrt{k}}$, then $M$ is isometric to $\math
     yielding,
     \[
     \begin{aligned}
-        I_{\gamma}(X_i, X_i) = \int_0^{\ell} \{(\frac{\pi}{\ell})^2 \cos^2(\frac{\pi}{\ell}t)-\sin^2(\frac{\pi}{\ell} t)K_{\sigma_i(t)} \}dt.
+        I_{\gamma}(X_i, X_i) = \int_0^{\ell} \{(\frac{\pi}{\ell})^2 \cos^2(\frac{\pi}{\ell}t)-\sin^2\left(\frac{\pi}{\ell} t\right)K_{\sigma_i(t)} \}dt.
     \end{aligned}
     \]
     Summing over $i=1, \dots, n-1$ and using \autoref{prop:9.7}, $Ric \geq (n-1)k,$ and $\ell > \frac{\pi}{\sqrt{k}}$
     \[
     \begin{aligned}
-        \sum_{i=1}^{n-1} I_{\gamma} (X_i, X_i) =& \int_0^{\ell} \{ (n-1)(\frac{\pi}{\ell})^2 \cos^2(\frac{\pi}{\ell}t)\\
+        \sum_{i=1}^{n-1} I_{\gamma} (X_i, X_i) =& \int_0^{\ell} \{ (n-1)(\frac{\pi}{\ell})^2 \cos^2\left(\frac{\pi}{\ell}t\right)\\
         &-\sin^2\left(\frac{\pi}{\ell}t\right) Ric(\gamma'(t), \gamma'(t))\}dt \\
         \leq& \int_0^{\ell} \{(n-1)\left(\frac{\pi}{\ell}\right)^2 \cos^2\left(\frac{\pi}{\ell} t\right) - (n-1)k \sin^2\left(\frac{\pi}{\ell}t\right)\} dt \\
         =& \frac{(n-1)\ell}{2}\left(\frac{\pi^2}{\ell^2} - k \right) <0.
