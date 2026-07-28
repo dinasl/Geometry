@@ -1,0 +1,84 @@
+\section{Second variation formula and Bonnet-Myers theorem}
+Let $M$ be a Riemannian manifold, and $c:(-\epsilon, \epsilon)\times [0,\ell] \to M$ a $C^{\infty}$ map.
+Set $c_s(t)=c^t(s):=c(s,t)$. Assume $c_0$ is a non-trivial geodesic.
+Let $X:=dc(\frac{\partial}{\partial s}), \quad T:= dc(\frac{\partial}{\partial t}), \quad X^{\perp}:= X- \langle X, \frac{T}{\|T\|}\rangle \frac{T}{\|T\|}$.
+$X^{\perp}$ is the component of $X$ orthogonal to $T$. Since $c_0$ is non-trivial, $T(0,t) = c_0`(t) \neq 0$.
+By continuity, $T(s,t) \neq 0$ for sufficiently small $s$. Thus, by replacing $\epsilon >0$ if necessary, assume these are vector fields along $c$.
+
+\begin{theorem}[Second variation formula]
+    \[
+    \begin{aligned}
+        \frac{d^2}{ds^2} L(c_s)|_{s=0} = \frac{1}{\|c_0`(0)\|}\{[\langle \nabla^c_{\frac{\partial}{\partial s}}, T \rangle]_{t=0}^{t=\ell}+I_{c_0}\langle X^{\perp}, X^{\perp}\rangle \}
+    \end{aligned}
+    \]
+    All terms on the RHS are evaluated at $s=0$.
+    \label{thm:13.1}
+\end{theorem}
+\begin{proof}
+    \[
+    \begin{aligned}
+        \frac{d^2}{ds^2} L(c_s)|_{s=0} = \int_0^{\ell} \frac{d^2}{ds^2} \|T\| dt.
+    \end{aligned}
+    \]
+    Since $[\frac{\partial}{\partial s}, \frac{\partial}{\partial t}]=0$:
+    \[
+    \begin{aligned}
+        \frac{d}{ds} \|T\| = \frac{1}{2 \|T\|} \frac{\partial}{\partial s} \langle T, T \rangle = \frac{1}{\|T\|} \langle \nabla^c_{\frac{\partial}{\partial t}} T,T \rangle = \frac{1}{\|T\|} \langle \nabla_{\frac{\partial}{\partial t}}^c X, T \rangle.
+    \end{aligned}
+    \]
+    Thus 
+    \[
+    \begin{aligned}
+        \frac{\partial^2}{\partial s^2} \|T\| =& \frac{1}{\|T\|} \frac{\partial}{\partial s} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle - \frac{1}{\|T\|^2} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle \frac{\partial}{\partial s} \|T\| \\
+        =&\frac{1}{\|T\|} \left( \langle \nabla^c_{\frac{\partial}{\partial s}} \nabla^c_{\frac{\partial}{\partial t}} X, T \rangle + \langle \nabla^c_{\frac{\partial}{\partial t}} X, \nabla^c_{\frac{\partial}{\partial s}} T \rangle \right) \\
+        &-\frac{1}{\|T\|^3} \langle \nabla^c_{\frac{\partial}{\partial t}} X,T \rangle^2 \\
+        =& \frac{1}{\|T\|} ( \langle \nabla^c_{\frac{\partial}{\partial t}} \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle + \langle R(X,T)X, T \rangle \\
+        &+ \langle \nabla^c_{\frac{\partial}{\partial t}} X, \nabla^c_{\frac{\partial}{\partial t}} X \rangle )- \frac{1}{\|T\|^3} \langle \nabla^c_{\frac{\partial}{\partial t}} X, T \rangle^2.
+    \end{aligned}
+    \]
+    At $s=0$, $\nabla^c_{\frac{\partial}{\partial t}} X |_{s=0}= \nabla_{c_0} X$. Since $c_0$ is a geodesic,
+    $\|T\|_{s=0} = \|c_0`(0)\|$ and $\nabla_{c_0}T=0$. Thus:
+    \[
+    \begin{aligned}
+        \frac{d^2}{ds^2} \|T\| |_{s=0} =& \frac{1}{\|c_0`(0)\|} (\frac{d}{dt} \langle \nabla^c_{\frac{\partial}{\partial t}} X, T \rangle - \langle R(X,T)T,X \rangle \\
+        &+ \langle \nabla_{c_0} X, \nabla_{c_0}X \rangle - \langle \nabla_{c_0}X, \frac{T}{\|T\|} \rangle^2).
+    \end{aligned}
+    \]
+    Covariant differentiation of $X = X^{\perp} + \langle X, \frac{T}{\|T\|} \rangle \frac{T}{\|T\|}$ yields:
+    $\nabla_{c_0} X = \nabla_{c_0} X^{\perp} + \langle \nabla_{c_0} X, \frac{T}{\|T\|}\rangle \frac{T}{\|T\|}$.
+    Since $\langle X^{\perp}, T \rangle = 0 \implies \langle \nabla_{c_0} X^{\perp},T \rangle =0:$
+    \[
+    \begin{aligned}
+        \langle \nabla_{c_0} X, \nabla_{c_0} X \rangle - \langle \nabla_{c_0}X, \frac{T}{\|T\|} \rangle^2 = \langle \nabla_{c_0} X^{\perp}, \nabla_{c_0} X^{\perp} \rangle.
+    \end{aligned}
+    \]
+    Thus:
+    \[
+    \begin{aligned}
+        \frac{d^2}{ds^2} \|T\| |_{s=0} =& \frac{1}{\|c_0`(0)\|}(\frac{d}{dt} \langle \nabla^c_{\frac{\partial}{\partial s}} X, T \rangle - \langle R(X,T)T,X \rangle \\
+        &+\langle \nabla_{c_0} X^{\perp}, \nabla_{c_0} X^{\perp} \rangle ).
+    \end{aligned}
+    \]
+    Integrating with respect to $t$ from $0$ to $\ell$ yields the result.
+\end{proof}
+
+From a Riemannian manifold $M$, the diameter is defined as:
+\[
+\begin{aligned}
+    diam(M) := \sup_{p,q \in M} d(p,q) \qquad (\leq + \infty)
+\end{aligned}
+\]
+
+\begin{theorem}[Bonnet-Myers theorem]
+    Let $M$ be a complete n-dimensional Riemannian manifold ($n \geq 2$) such that
+    $Ric \geq (n-1)k$ for the same $k>0$.
+    Then $M$ is compact and $diam(M) \leq \frac{\pi}{\sqrt{k}}$
+\end{theorem}
+
+\begin{problem}[Final problem]
+    Let $n \geq 2$, $k>0$, and $M:= \mathbb{S}^n (\frac{1}{\sqrt{k}})$ be the $n$-dimensional sphere of radius $\frac{1}{\sqrt{k}}$.
+    Answer the following:
+    \begin{enumerate}
+        \item Show that the sectional curvature of $M$ is $k$
+    \end{enumerate}
+\end{problem}
