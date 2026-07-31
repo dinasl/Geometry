@@ -3,13 +3,14 @@ Let $M$ be a Riemannian manifold for $p \in M$ and $v \in T_p M$, let $\gamma_v 
 $\gamma_v(0)  =p$ and $\gamma_v'(0) = v$, where $J_v$ is an open interval containing $0$.
 
 \begin{definition}[Exponential map]
-For $v \in TM$ if $1 \in J_v$, define $\exp v := \gamma_v(1)$.
-Let $D:= {v \in TM | 1 \in J_v}$.
+For $v \in TM = \bigsqcup_{p \in M} T_p M$, if $1 \in J_v$, define $\exp v := \gamma_v(1)$.
+Let $D:= \{v \in TM | 1 \in J_v\}$.
 The map 
 \[
 \exp : D \to M
 \]
 is the \emph{exponential map}.
+
 For $p \in M$, let $D_p := D \cap T_pM$. The map
 \[
 \begin{aligned}
@@ -19,8 +20,8 @@ For $p \in M$, let $D_p := D \cap T_pM$. The map
 \]
 is the \emph{exponential map} at $p$.
 
-$\exp_p v \quad (v \in T_pM)$ is the point reached by traveling along the geodesic from $p$ in direction $v$ for the distance $\|v\|$.
-$\forall v \in D_p$ and $0 \leq \forall t \leq 1$ $1 \in J_v = t J_{tv} \subset J_{tv} \implies tv \in D_p$.
+$\exp_p v \quad (v \in D_p)$ is the point reached by traveling along the geodesic from $p$ in direction $v$ for the distance $\|v\|$.
+$\forall v \in D_p$ and $\forall t \in [0,1]$, $1 \in J_v = t J_{tv} \subset J_{tv} \implies tv \in D_p$.
 Thus, $D_p$ is a star shaped domain.
 \end{definition}
 
@@ -300,10 +301,10 @@ Thus $c([0,1]) \subset \exp_p(B(0_p,r))$, specifically $q \in \exp_p(B(0_p,r))$.
 Combining \autoref{lemma:10.5} and \autoref{lemma:10.9}, we have the following:
 
 \begin{theorem}\label{theorem:10.10}
-$\forall p_0 \in M$, there exists an open neighbourhood $0 \subset M$ of $p_0$ and $r >0$ s.t. the following hold
+$\forall p_0 \in M$, there exists an open neighbourhood $O \subset M$ of $p_0$ and $r >0$ s.t. the following hold
 \begin{enumerate}[label=(\arabic*)]
-\item $\forall p \in 0$, $B(0_p,r) \subset D_p$ and $\exp_p:B(0_p,r)\to B(p,r)$ is a diffeomorphism.
-\item $\forall p \in 0$ and $\forall q \in B(p,r)$, there exists a unique piecewise smooth minimizing curve
+\item $\forall p \in O$, $B(0_p,r) \subset D_p$ and $\exp_p:B(0_p,r)\to B(p,r)$ is a diffeomorphism.
+\item $\forall p \in O$ and $\forall q \in B(p,r)$, there exists a unique piecewise smooth minimizing curve
 (up to renormalization) connecting $p$ and $q$. Thus curve is the geodesic $\gamma_v:[0,1]\to M$ where
 \[
 v = (\exp_p|_{B(0_p,r)})^{-1}(q) \in B(0_p,r).
